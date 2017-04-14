@@ -15,6 +15,19 @@ function moregreetings_civicrm_pageRun( &$page ) {
   }
 }
 
+function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+
+
+  if ($op == 'edit' || $op == 'create') {
+    error_log("pba_debug_hook_post");
+    if ($objectName == 'Individual' || $objectName == 'Organization') {
+      error_log("pba_debug hoo_post Individual||Organization");
+      CRM_Moregreetings_Renderer::updateMoreGreetings($objectId);
+    }
+  }
+}
+
+
 /**
  * Implements hook_civicrm_enable().
  *
