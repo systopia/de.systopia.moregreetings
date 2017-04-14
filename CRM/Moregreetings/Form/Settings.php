@@ -70,7 +70,6 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     }
     $smarty = CRM_Core_Smarty::singleton();
     $renderOut = $smarty->fetch("string:$smartyValue");
-    error_log("pbaDebug render out: $renderOut");
     if (empty($renderOut)) {
       return FALSE;
     }

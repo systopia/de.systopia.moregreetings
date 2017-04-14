@@ -8,7 +8,6 @@ require_once 'moregreetings.civix.php';
 function moregreetings_civicrm_pageRun( &$page ) {
   if ($page->getVar('_name') == 'CRM_Contact_Page_View_Summary') {
       $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
-      error_log("script: " . $script);
       CRM_Core_Region::instance('page-header')->add(array(
         'script' => $script,
         ));
@@ -19,9 +18,7 @@ function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 
 
   if ($op == 'edit' || $op == 'create') {
-    error_log("pba_debug_hook_post");
     if ($objectName == 'Individual' || $objectName == 'Organization') {
-      error_log("pba_debug hoo_post Individual||Organization");
       CRM_Moregreetings_Renderer::updateMoreGreetings($objectId);
     }
   }
