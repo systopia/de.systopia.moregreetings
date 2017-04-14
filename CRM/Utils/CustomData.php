@@ -83,7 +83,7 @@ class CRM_Utils_CustomData {
          $customGroup = $this->createEntity('CustomGroup', $data);
       } else {
          // update CustomGroup
-         $this->updateEntity('CustomGroup', $data, $customGroup);
+         $this->updateEntity('CustomGroup', $data, $customGroup, array('extends'));
       }
 
       // now run the update for the CustomFields
@@ -182,7 +182,7 @@ class CRM_Utils_CustomData {
    /**
     * create a new entity
     */
-   protected function updateEntity($entity_type, $requested_data, $current_data) {
+   protected function updateEntity($entity_type, $requested_data, $current_data, $required_fields = array()) {
       $update_query = array();
 
       // first: identify fields that need to be updated
@@ -200,6 +200,12 @@ class CRM_Utils_CustomData {
       // run update if required
       if (!empty($update_query)) {
          $update_query['id'] = $current_data['id'];
+
+         // add required fields
+         foreach ($required_fields as $required_field) {
+            $update_query[$required_field] = $current_data[$required_field];
+         }
+
          error_log("UPDATE {$entity_type}: " . json_encode($update_query));
          return civicrm_api3($entity_type, 'create', $update_query);
       } else {
