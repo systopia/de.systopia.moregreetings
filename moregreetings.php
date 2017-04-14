@@ -3,6 +3,32 @@
 require_once 'moregreetings.civix.php';
 
 /**
+ * implement the hook to customize the rendered tab of our custom group
+ */
+function moregreetings_civicrm_pageRun( &$page ) {
+  if ($page->getVar('_name') == 'CRM_Contact_Page_View_Summary') {
+      $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
+      error_log("script: " . $script);
+      CRM_Core_Region::instance('page-header')->add(array(
+        'script' => $script,
+        ));
+  }
+}
+
+/**
+ * Implements hook_civicrm_enable().
+ *
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
+ */
+function moregreetings_civicrm_enable() {
+  _moregreetings_civix_civicrm_enable();
+
+  require_once 'CRM/Utils/CustomData.php';
+  $customData = new CRM_Utils_CustomData('de.systopia.moregreetings');
+  $customData->syncCustomGroup(__DIR__ . '/resources/moregreetings_custom_group.json');
+}
+
+/**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
@@ -47,18 +73,7 @@ function moregreetings_civicrm_uninstall() {
   _moregreetings_civix_civicrm_uninstall();
 }
 
-/**
- * Implements hook_civicrm_enable().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
- */
-function moregreetings_civicrm_enable() {
-  _moregreetings_civix_civicrm_enable();
 
-  require_once 'CRM/Utils/CustomData.php';
-  $customData = new CRM_Utils_CustomData('de.systopia.moregreetings');
-  $customData->syncCustomGroup(__DIR__ . '/resources/moregreetings_custom_group.json');
-}
 
 /**
  * Implements hook_civicrm_disable().
