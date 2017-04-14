@@ -12,13 +12,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: moregreetings.php
+msgid "More Greetings"
+msgstr ""
+
+###########################################
+#: moregreetings.php
 msgid "Greeting 1"
 msgstr ""
 
+#: moregreetings.php
+msgid "Greeting 2"
+msgstr ""
+
+###########################################
 #: moregreetings.php
 msgid "Protected 1"
 msgstr ""
 
 #: moregreetings.php
-msgid "More Greetings"
+msgid "Protected 2"
 msgstr ""
