@@ -2,16 +2,16 @@
 <extension key="de.systopia.moregreetings" type="module">
   <file>moregreetings</file>
   <name>moregreetings</name>
-  <description>Extensino for additional greetings</description>
+  <description>Extension for additional greetings</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>SYSTOPIA</author>
     <email>batroff@systopia.de</email>
   </maintainer>
   <urls>
-    <url desc="Main Extension Page">http://FIXME</url>
-    <url desc="Documentation">http://FIXME</url>
-    <url desc="Support">http://FIXME</url>
+    <url desc="Main Extension Page">github</url>
+    <url desc="Documentation">http://systopia.de</url>
+    <url desc="Support">systopia.de</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
   <releaseDate>2017-04-14</releaseDate>

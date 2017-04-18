@@ -60,11 +60,32 @@ class CRM_Moregreetings_Renderer {
     );
 
     foreach ($templates as $key => $value) {
+
+      if(CRM_Moregreetings_Renderer::checkProtectedField($contact_id, $mapping['protected'][$key])) {
+        continue;
+      }
       $renderOut = $smarty->fetch("string:$value");
-      $greeting_index = $mapping[$key];
+      $greeting_index = $mapping['greetings'][$key];
       $createArray["custom_{$greeting_index}"] = $renderOut;
     }
     $update_result = civicrm_api3('CustomValue', 'create', $createArray);
+  }
+
+  public static function checkProtectedField($contactId, $customFieldId) {
+
+    $result = civicrm_api3('Contact', 'getsingle', array(
+      'sequential' => 1,
+      'return' => array("custom_{$customFieldId}"),
+      'id' => $contactId,
+    ));
+    if (empty($result["custom_{$customFieldId}"]) || $result["custom_{$customFieldId}"] === 0)  {
+      return FALSE;
+    } else if ($result["custom_{$customFieldId}"] == 1) {
+      return TRUE;
+    } else {
+      error_log("Undefined value for Conatct {$contactId} in field custom_{$customFieldId}");
+      return NULL;
+    }
   }
 
   public static function getGreetingMappings() {
@@ -76,11 +97,14 @@ class CRM_Moregreetings_Renderer {
     ));
     foreach ($result['values'] as $value) {
       if (strpos($value['name'], '_protected') !== false) {
+        $mappingIndex = str_replace('_protected', '', $value['name']);
+        $mappingIndex = str_replace('greeting_field_', 'greeting_smarty_', $mappingIndex);
+        $mapping['protected'][$mappingIndex] = $value['id'];
         continue;
       } else {
         $mappingIndex = str_replace('greeting_field_', 'greeting_smarty_', $value['name']);
+        $mapping['greetings'][$mappingIndex] = $value['id'];
       }
-      $mapping[$mappingIndex] = $value['id'];
     }
     return $mapping;
   }
