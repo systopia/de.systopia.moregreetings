@@ -1,0 +1,6 @@
+TODO
+----
+ - create 10 fields and deactivate a configurable number
+ - update all greetings
+ - beautify inline edit
+ - beautify regular edit

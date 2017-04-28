@@ -18,7 +18,7 @@
 
 class CRM_Moregreetings_Config {
   private static $customGroup = NULL;
-
+  private static $customFields = NULL;
   /**
    * Get the Moregreetings CustomGroup
    */
@@ -35,5 +35,49 @@ class CRM_Moregreetings_Config {
   public static function getGroupID() {
     $group = self::getGroup();
     return $group['id'];
+  }
+
+  /**
+   * load all fields for the custom group
+   */
+  public static function getFields() {
+    if (self::$customFields === NULL) {
+      $fields = civicrm_api3('CustomField', 'get', array(
+        'custom_group_id' => self::getGroupID(),
+        'option.limit'    => 0));
+      self::$customFields = $fields['values'];
+    }
+    return self::$customFields;
+  }
+
+  /**
+   * get only the currently active fields
+   */
+  public static function getActiveFields() {
+    $fields = self::getFields();
+    $active_fields = array();
+
+    foreach ($fields as $field_id => $field) {
+      if ($field['is_active']) {
+        $active_fields[$field_id] = $field;
+      }
+    }
+    return $active_fields;
+  }
+
+  /**
+   * loads the current greetings data for a contact
+   */
+  public static function getCurrentData($contact_id) {
+    $field_keys = array();
+    $active_fields = self::getActiveFields();
+    foreach ($active_fields as $key => $field) {
+      $field_keys[] = "custom_{$field['id']}";
+    }
+
+    return civicrm_api3('Contact', 'getsingle', array(
+      'id'     => $contact_id,
+      'return' => implode(',', $field_keys),
+    ));
   }
 }

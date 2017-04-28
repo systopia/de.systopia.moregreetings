@@ -4,6 +4,9 @@
     <path>civicrm/admin/setting/moregreetings</path>
     <page_callback>CRM_Moregreetings_Form_Settings</page_callback>
     <title>Settings</title>
-    <access_arguments>access CiviCRM</access_arguments>
+    <access_arguments>administer CiviCRM</access_arguments>
+    <desc>MoreGreetings Configuration</desc>
+    <adminGroup>CiviContribute</adminGroup>
+    <icon>admin/small/07.png</icon>
   </item>
 </menu>

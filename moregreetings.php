@@ -53,7 +53,7 @@ function moregreetings_civicrm_buildForm($formName, &$form) {
  */
 function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
   if ($op == 'edit' || $op == 'create') {
-    if ($objectName == 'Individual' || $objectName == 'Organization') {
+    if ($objectName == 'Individual' || $objectName == 'Organization' || $objectName == 'Household') {
       CRM_Moregreetings_Renderer::updateMoreGreetings($objectId);
     }
   }
