@@ -22,7 +22,7 @@ cj(document).ready(function () {
   cj("div.crm-summary-demographic-block").after(cj(more_greetings_block));
 
   var rows = cj(more_greetings_block).find("div.crm-summary-row");
-  for (var i = 0; i < rows.length / 2; i+=2) {
+  for (var i = 0; i <= rows.length / 2; i+=2) {
     var flag = cj(rows[i+1]).find("div.crm-content").html();
     if (flag == 'LOCALISED_YES') {
       // mark protected rows:

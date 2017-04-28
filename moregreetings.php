@@ -32,8 +32,26 @@ function moregreetings_civicrm_pageRun( &$page ) {
   }
 }
 
-function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+/**
+ * Hook implementation: Inject JS code into create/edit form
+ */
+function moregreetings_civicrm_buildForm($formName, &$form) {
+  if ($formName == 'CRM_Contact_Form_Inline_CustomData') {
+    if ($form->_groupID == CRM_Moregreetings_Config::getGroupID()) {
+      // this is our form
+      $script = file_get_contents(__DIR__ . '/js/render_moregreetings_edit.js');
+      $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
+      CRM_Core_Region::instance('page-footer')->add(array(
+        'script' => $script,
+        ));
+    }
+  }
+}
 
+/**
+ * Hook implementation: update greetings on changes
+ */
+function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
   if ($op == 'edit' || $op == 'create') {
     if ($objectName == 'Individual' || $objectName == 'Organization') {
       CRM_Moregreetings_Renderer::updateMoreGreetings($objectId);
