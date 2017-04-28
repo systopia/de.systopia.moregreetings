@@ -104,7 +104,7 @@ class CRM_Utils_CustomData {
             $customField = $this->createEntity('CustomField', $customFieldSpec);
          } else {
             // update CustomField
-            $this->updateEntity('CustomField', $customFieldSpec, $customField);
+            $this->updateEntity('CustomField', $customFieldSpec, $customField, array('in_selector', 'is_view', 'is_searchable'));
          }
       }
    }
@@ -203,7 +203,11 @@ class CRM_Utils_CustomData {
 
          // add required fields
          foreach ($required_fields as $required_field) {
-            $update_query[$required_field] = $current_data[$required_field];
+            if (isset($requested_data[$required_field])) {
+              $update_query[$required_field] = $requested_data[$required_field];
+            } else {
+              $update_query[$required_field] = $current_data[$required_field];
+            }
          }
 
          error_log("UPDATE {$entity_type}: " . json_encode($update_query));
