@@ -7,11 +7,22 @@
  */
 class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
-  private static $number_of_greetings = 2;
-
   public function buildQuickForm() {
 
     $this->registerRule('is_valid_smarty', 'callback', 'validateSmarty', 'CRM_Moregreetings_Form_Settings');
+    $this->registerRule('is_valid_field_count', 'callback', 'validateFieldCount', 'CRM_Moregreetings_Form_Settings');
+
+    $this->add(
+      'text',
+      "greeting_count",
+      ts("Number of fields", array('domain' => 'de.systopia.moregreetings'))
+    );
+
+    $this->addRule("greeting_count",
+                  ts('Please enter a number between 1 and %1', array(
+                    1 => CRM_Moregreetings_Config::getMaxActiveFieldCount(),
+                    'domain' => 'de.systopia.moregreetings')),
+                  'is_valid_field_count');
 
     $this->assign('greetings_count', range(1,self::getNumberOfGreetings()));
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
@@ -34,7 +45,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     $this->addButtons(array(
       array(
         'type' => 'submit',
-        'name' => ts('Submit'),
+        'name' => ts('Save'),
         'isDefault' => TRUE,
       ),
     ));
@@ -44,13 +55,19 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     parent::buildQuickForm();
   }
 
+  /**
+   * set the default (=current) values in the form
+   */
   public function setDefaultValues() {
-
-    return CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $values = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $values['greeting_count'] = self::getNumberOfGreetings();
+    return $values;
   }
 
   public function postProcess() {
     $values = $this->exportValues();
+
+    // first: update the greetings
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       if (isset($values["greeting_smarty_{$i}"])) {
 
@@ -60,10 +77,23 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       }
     }
     CRM_Core_BAO_Setting::setItem($values_array, 'moregreetings', 'moregreetings_templates');
+
+    // then: adjust the greeting count
+    if ($values['greeting_count'] != self::getNumberOfGreetings()) {
+      CRM_Moregreetings_Config::setActiveFieldCount($values['greeting_count']);
+
+      // reload b/c the form has already been generated
+      $url = CRM_Utils_System::url('civicrm/admin/setting/moregreetings', "reset=1");
+      CRM_Utils_System::redirect($url);
+    }
+
     parent::postProcess();
   }
 
 
+  /**
+   * Form validation rule
+   */
   public static function validateSmarty($smartyValue) {
     if ($smartyValue === "") {
       return TRUE;
@@ -76,8 +106,15 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     return TRUE;
   }
 
-  public static function getNumberOfGreetings() {
+  /**
+   * Form validation rule
+   */
+  public static function validateFieldCount($field_count) {
+    return ($field_count > 0 && $field_count <= CRM_Moregreetings_Config::getMaxActiveFieldCount());
+  }
 
-    return self::$number_of_greetings;
+
+  public static function getNumberOfGreetings() {
+    return CRM_Moregreetings_Config::getActiveFieldCount();
   }
 }

@@ -19,6 +19,69 @@
 class CRM_Moregreetings_Config {
   private static $customGroup = NULL;
   private static $customFields = NULL;
+
+
+  /**
+   * Get the number of currently active greeting fields
+   */
+  public static function getActiveFieldCount() {
+    $active_fields = self::getActiveFields();
+    $field_counter = 0;
+    foreach ($active_fields as $field) {
+      if (preg_match("#^greeting_field_(?P<field_number>\\d+)$#", $field['name'])) {
+        $field_counter += 1;
+      }
+    }
+    return $field_counter;
+  }
+
+  /**
+   * Get the maximum number of greeting fields
+   */
+  public static function getMaxActiveFieldCount() {
+    return 9;
+  }
+
+  /**
+   * Set/adjust the number of active greeting fields
+   */
+  public static function setActiveFieldCount($count) {
+    if ($count < 1 || $count > self::getMaxActiveFieldCount()) {
+      throw new Exception("Illegal number of active fields: $count");
+    }
+
+    $all_fields = self::getFields();
+    $enabled_indexes = range(1, $count);
+    foreach ($all_fields as $field) {
+      if (preg_match("#^greeting_field_(?P<field_number>\\d+)(_protected)?$#", $field['name'], $matches)) {
+        // this is one of our fields...
+        if (in_array($matches['field_number'], $enabled_indexes)) {
+          // this field should now be active
+          if (!$field['is_active']) {
+            civicrm_api3('CustomField', 'create', array(
+              'id'        => $field['id'],
+              'is_active' => 1,
+              'data_type' => $field['data_type'],
+              'html_type' => $field['html_type'],
+              ));
+            self::$customFields = NULL; // reset cached data
+          }
+        } else {
+          if ($field['is_active']) {
+            // this field should NOT be active any more
+            civicrm_api3('CustomField', 'create', array(
+              'id'        => $field['id'],
+              'is_active' => 0,
+              'data_type' => $field['data_type'],
+              'html_type' => $field['html_type'],
+              ));
+            self::$customFields = NULL; // reset cached data
+          }
+        }
+      }
+    }
+  }
+
   /**
    * Get the Moregreetings CustomGroup
    */

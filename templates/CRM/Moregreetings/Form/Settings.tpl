@@ -18,7 +18,12 @@
 {include file="CRM/common/formButtons.tpl" location="top"}
 </div>
 
-{* FIELD EXAMPLE: OPTION 1 (AUTOMATIC LAYOUT) *}
+<div class="crm-section">
+  <div class="label">{$form.greeting_count.label}</div>
+  <div class="content">{$form.greeting_count.html}</div>
+  <div class="clear"></div>
+</div>
+
 
 {foreach from=$greetings_count item=i}
 <div class="crm-section">
