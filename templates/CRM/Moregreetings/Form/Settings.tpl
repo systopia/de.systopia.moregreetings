@@ -14,12 +14,10 @@
 | written permission from the original author(s).        |
 +-------------------------------------------------------*}
 
-<div class="crm-submit-buttons">
-{include file="CRM/common/formButtons.tpl" location="top"}
-</div>
-
 <div class="crm-section">
-  <div class="label">{$form.greeting_count.label}</div>
+  <div class="label">{$form.greeting_count.label}
+    <a onclick='CRM.help("{ts domain="de.systopia.moregreetings"}Number of Extra Greetings{/ts}", {literal}{"id":"id-count-help","file":"CRM\/moregreetings\/Form\/Settings"}{/literal}); return false;' href="#" title="{ts domain="de.systopia.moregreetings"}Help{/ts}" class="helpicon">&nbsp;</a>
+  </div>
   <div class="content">{$form.greeting_count.html}</div>
   <div class="clear"></div>
 </div>
@@ -28,7 +26,9 @@
 {foreach from=$greetings_count item=i}
 <div class="crm-section">
   {capture assign=greetings_key}greeting_smarty_{$i}{/capture}
-  <div class="label">{$form.$greetings_key.label}</div>
+  <div class="label">{$form.$greetings_key.label}
+    <a onclick='CRM.help("{ts domain="de.systopia.moregreetings"}Instructions{/ts}", {literal}{"id":"id-token-help","file":"CRM\/moregreetings\/Form\/Settings"}{/literal}); return false;' href="#" title="{ts domain="de.systopia.moregreetings"}Help{/ts}" class="helpicon">&nbsp;</a>
+  </div>
   <div class="content">{$form.$greetings_key.html}</div>
   <div class="clear"></div>
 </div>

@@ -1,0 +1,32 @@
+{*-------------------------------------------------------+
+| SYSTOPIA - MORE GREETINGS EXTENSION                    |
+| Copyright (C) 2017 SYSTOPIA                            |
+| Author: B. Endres (endres@systopia.de)                 |
+|         P. Batroff (batroff@systopia.de)               |
+| http://www.systopia.de/                                |
++--------------------------------------------------------+
+| This program is released as free software under the    |
+| Affero GPL license. You can redistribute it and/or     |
+| modify it under the terms of this license which you    |
+| can read by viewing the included agpl.txt or online    |
+| at www.gnu.org/licenses/agpl.html. Removal of this     |
+| copyright header is strictly prohibited without        |
+| written permission from the original author(s).        |
++-------------------------------------------------------*}
+
+{htxt id='id-count-help'}
+  <p>{ts domain="de.systopia.moregreetings"}You can decide how many custom greetings you need.{/ts}</p>
+  <p>{ts domain="de.systopia.moregreetings"}The other fields will merely be disabled, so you won't use any data when reducing the number.{/ts}</p>
+{/htxt}
+
+{htxt id='id-token-help'}
+  <p>{ts domain="de.systopia.moregreetings"}You can use the <a href="http://www.smarty.net/about_smarty">SMARTY language</a> to define your own logic here.{/ts}</p>
+  <p>
+    {ts domain="de.systopia.moregreetings"}Here's a list of the most relevant variables:{/ts}
+    <ul>
+      <li>{ts domain="de.systopia.moregreetings"}<code>{literal}{$contact.first_name}{/literal}</code>: Contact's first name{/ts}</li>
+      <li>{ts domain="de.systopia.moregreetings"}<code>{literal}{$contact.last_name}{/literal}</code>: Contact's last name{/ts}</li>
+    </ul>
+    {ts domain="de.systopia.moregreetings"}Essentially all variables the Contact.get API call produces are available.{/ts}
+  </p>
+{/htxt}

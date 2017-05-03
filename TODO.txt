@@ -1,7 +1,6 @@
 TODO
 ----
  - beautify regular edit
- - add help with tokens
  - l10n
 
 DONE
@@ -9,3 +8,4 @@ DONE
  - update all greetings
  - JS update (data depend, reload)
  - beautify inline edit
+ - add help with tokens
