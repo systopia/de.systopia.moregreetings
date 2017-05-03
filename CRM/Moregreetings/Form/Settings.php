@@ -98,9 +98,14 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     if ($smartyValue === "") {
       return TRUE;
     }
-    $smarty = CRM_Core_Smarty::singleton();
-    $renderOut = $smarty->fetch("string:$smartyValue");
-    if (empty($renderOut)) {
+
+    try {
+      $smarty = CRM_Core_Smarty::singleton();
+      $renderOut = $smarty->fetch("string:$smartyValue");
+      if (empty($renderOut)) {
+        return FALSE;
+      }
+    } catch (Exception $e) {
       return FALSE;
     }
     return TRUE;
