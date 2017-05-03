@@ -1,4 +1,19 @@
 <?php
+/*-------------------------------------------------------+
+| SYSTOPIA - MORE GREETINGS EXTENSION                    |
+| Copyright (C) 2017 SYSTOPIA                            |
+| Author: B. Endres (endres@systopia.de)                 |
+|         P. Batroff (batroff@systopia.de)               |
+| http://www.systopia.de/                                |
++--------------------------------------------------------+
+| This program is released as free software under the    |
+| Affero GPL license. You can redistribute it and/or     |
+| modify it under the terms of this license which you    |
+| can read by viewing the included agpl.txt or online    |
+| at www.gnu.org/licenses/agpl.html. Removal of this     |
+| copyright header is strictly prohibited without        |
+| written permission from the original author(s).        |
++--------------------------------------------------------*/
 
 /**
  * Form controller class
@@ -64,19 +79,34 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     return $values;
   }
 
+
+  /**
+   * POST PROCESS: Store the new values
+   */
   public function postProcess() {
     $values = $this->exportValues();
 
     // first: update the greetings
+    $old_greetings = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $greetings_changed = FALSE;
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       if (isset($values["greeting_smarty_{$i}"])) {
-
         $values_array["greeting_smarty_{$i}"] =  $values["greeting_smarty_{$i}"];
       } else {
         $values_array["greeting_smarty_{$i}"] = "";
       }
+
+      // check if it changed
+      if (CRM_Utils_Array::value("greeting_smarty_{$i}", $old_greetings) != $values_array["greeting_smarty_{$i}"]) {
+        $greetings_changed = TRUE;
+      }
     }
     CRM_Core_BAO_Setting::setItem($values_array, 'moregreetings', 'moregreetings_templates');
+
+    // trigger recalculation
+    if ($greetings_changed) {
+      CRM_Moregreetings_Config::restartCalculateAllGreetingsJob();
+    }
 
     // then: adjust the greeting count
     if ($values['greeting_count'] != self::getNumberOfGreetings()) {

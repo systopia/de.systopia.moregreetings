@@ -1,6 +1,11 @@
 TODO
 ----
- - create 10 fields and deactivate a configurable number
- - update all greetings
+ - JS update (data depend, reload)
  - beautify inline edit
  - beautify regular edit
+ - add help with tokens
+ - l10n
+
+DONE
+ - create 10 fields and deactivate a configurable number
+ - update all greetings

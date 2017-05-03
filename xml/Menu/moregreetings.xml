@@ -3,10 +3,10 @@
   <item>
     <path>civicrm/admin/setting/moregreetings</path>
     <page_callback>CRM_Moregreetings_Form_Settings</page_callback>
-    <title>Settings</title>
+    <title>More Greetings</title>
     <access_arguments>administer CiviCRM</access_arguments>
     <desc>MoreGreetings Configuration</desc>
-    <adminGroup>CiviContribute</adminGroup>
+    <adminGroup>Communications</adminGroup>
     <icon>admin/small/07.png</icon>
   </item>
 </menu>

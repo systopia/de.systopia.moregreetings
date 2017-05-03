@@ -143,4 +143,58 @@ class CRM_Moregreetings_Config {
       'return' => implode(',', $field_keys),
     ));
   }
+
+  /**
+   * Create/enable the cron job to re-calculate all MoreGreetings
+   */
+  public static function restartCalculateAllGreetingsJob() {
+    // find/create cronjob
+    $job = self::getAllGreetingsJob();
+
+    // start from zero:
+    CRM_Core_BAO_Setting::setItem('0', 'moregreetings', 'moregreetings_job_status');
+
+    // enable cronjob
+    if (!$job['is_active']) {
+      civicrm_api3('Job', 'create', array(
+        'id'        => $job['id'],
+        'is_active' => 1));
+    }
+  }
+
+  /**
+   * Disable the cron job to re-calculate all MoreGreetings
+   */
+  public static function stopCalculateAllGreetingsJob() {
+    // find/create cronjob
+    $job = self::getAllGreetingsJob();
+
+    if ($job['is_active']) {
+      civicrm_api3('Job', 'create', array(
+        'id'        => $job['id'],
+        'is_active' => 0));
+    }
+  }
+
+
+  /**
+   * Create/enable the cron job to re-calculate all MoreGreetings
+   */
+  public static function getAllGreetingsJob() {
+    // find/create cronjob
+    $jobs = civicrm_api3('Job', 'get', array(
+      'api_entity' => 'job',
+      'api_action' => 'update_moregreetings'));
+    if ($jobs['count'] == 0) {
+      return civicrm_api3('Job', 'create', array(
+        'name' => ts("Update MoreGreetings"),
+        'description'   => ts("Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself."),
+        'run_frequency' => 'Always',
+        'is_active'     => 0,
+        'api_entity'    => 'job',
+        'api_action'    => 'update_moregreetings'));
+    } else {
+      return reset($jobs['values']);
+    }
+  }
 }
