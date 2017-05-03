@@ -37,9 +37,7 @@ function moregreetings_beautify() {
   // add data-dependent-fields dependencies
   for (var i = 0; i < more_greetings_dependencies.length; i++) {
     var current_value = cj(more_greetings_dependencies[i]).attr('data-dependent-fields');
-    console.log(current_value);
     var fields = eval(current_value);
-    console.log(fields);
     if (fields) {
       if (fields.indexOf(more_greetings_group) == -1) {
         fields.push(more_greetings_group);

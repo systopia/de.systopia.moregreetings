@@ -15,26 +15,32 @@
 +--------------------------------------------------------*/
 
 // TODO: convert yes/no radion buttons to checkboxes
-// var more_greetings_block = "div.crm-custom-set-block-MOREGREETINGS";
+var more_greetings_group = "#custom-set-content-MOREGREETINGS";
+var form = cj(more_greetings_group).find("form[id=CustomData]");
 
+// first: hide the original values
+form.find("input.crm-form-radio").parent().parent().hide();
 
-// cj(document).ready(function () {
-//   // move more greetings block to right hand side
-//   cj("div.crm-summary-demographic-block").after(cj(more_greetings_block));
+// then: add protection checkboxes
+form.find("input.crm-form-text").each(function() {
+  cj(this).after('&nbsp;<span style="display: inline-block" class="ui-icon ui-icon-locked"/><input title="Write Protection" class="crm-form-checkbox moregreetings-protector" type="checkbox">');
+});
 
-//   var rows = cj(more_greetings_block).find("div.crm-summary-row");
-//   for (var i = 0; i < rows.length / 2; i+=2) {
-//     var flag = cj(rows[i+1]).find("div.crm-content").html();
-//     if (flag == 'LOCALISED_YES') {
-//       // mark protected rows:
-//       var greeting_label = cj(rows[i]).find("div.crm-label");
-//       greeting_label.html("<i>" + greeting_label.html() + "</i>");
-//       // var greeting = cj(rows[i]).find("div.crm-content");
-//       // greeting.html("<i>" + greeting.html() + "</i>");
-//     }
+// set them all to the correct value and add a listener
+form.find("input.moregreetings-protector").each(function() {
+  // copy protection value to checkbox
+  var protected = cj(this).closest("tr").next().find("input:checked").val();
+  if (protected == '1') {
+    cj(this).attr("checked", "checked");
+  }
 
-//     // remove the rows showing the protection flag
-//     cj(rows[i+1]).remove();
-//   }
-// });
-
+  // copy events to the radio buttons
+  cj(this).change(function() {
+    var new_value = cj(this).prop("checked");
+    if (new_value) {
+      cj(this).closest("tr").next().find("input.crm-form-radio[value=1]").prop('checked', true);
+    } else {
+      cj(this).closest("tr").next().find("input.crm-form-radio[value=0]").prop('checked', true);
+    }
+  });
+});
