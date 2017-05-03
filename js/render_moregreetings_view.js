@@ -15,12 +15,10 @@
 +--------------------------------------------------------*/
 
 var more_greetings_block = "div.crm-custom-set-block-MOREGREETINGS";
+var more_greetings_group = "#custom-set-content-MOREGREETINGS";
+var more_greetings_dependencies = ["#crm-contactname-content", "#communication-pref-block", "#crm-demographic-content"];
 
-
-cj(document).ready(function () {
-  // move more greetings block to right hand side
-  cj("div.crm-summary-demographic-block").after(cj(more_greetings_block));
-
+function moregreetings_beautify() {
   var rows = cj(more_greetings_block).find("div.crm-summary-row");
   for (var i = 0; i <= rows.length; i+=2) {
     var flag = cj(rows[i+1]).find("div.crm-content").html();
@@ -33,7 +31,32 @@ cj(document).ready(function () {
     }
 
     // remove the rows showing the protection flag
-    cj(rows[i+1]).remove();
+    cj(rows[i+1]).hide();
   }
+
+  // add data-dependent-fields dependencies
+  for (var i = 0; i < more_greetings_dependencies.length; i++) {
+    var current_value = cj(more_greetings_dependencies[i]).attr('data-dependent-fields');
+    console.log(current_value);
+    var fields = eval(current_value);
+    console.log(fields);
+    if (fields) {
+      if (fields.indexOf(more_greetings_group) == -1) {
+        fields.push(more_greetings_group);
+        cj(more_greetings_dependencies[i]).attr('data-dependent-fields', JSON.stringify(fields));
+      }
+    }
+  }
+}
+
+cj(document).ready(function () {
+  // move more greetings block to right hand side
+  cj("div.crm-summary-demographic-block").after(cj(more_greetings_block));
+
+  // beautify
+  moregreetings_beautify();
+
+  // inject data dependency
+  cj(document).bind("ajaxComplete", moregreetings_beautify);
 });
 
