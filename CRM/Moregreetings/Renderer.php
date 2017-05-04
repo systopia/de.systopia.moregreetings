@@ -53,6 +53,7 @@ class CRM_Moregreetings_Renderer {
     $greetings_update = array();
     foreach ($greetings_to_render as $greeting_key => $template) {
       $new_value = $smarty->fetch("string:$template");
+      $new_value = trim($new_value);
       // check if the value is really different (avoid unecessary updates)
       if ($new_value != $current_greetings[$greeting_key]) {
         $greetings_update[$greeting_key] = $new_value;
