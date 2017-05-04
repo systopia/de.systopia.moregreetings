@@ -29,7 +29,7 @@ cj(document).ready(function() {
 
   // then: add protection checkboxes
   group.find("input.crm-form-text").each(function() {
-    cj(this).after('&nbsp;<span style="display: inline-block" class="ui-icon ui-icon-locked"/><input title="Write Protection" class="crm-form-checkbox moregreetings-protector" type="checkbox"><span>Write Protection</span>');
+    cj(this).after('&nbsp;<span style="display: inline-block" class="ui-icon ui-icon-locked"/><input title="WRITE_PROTECTION_TS" class="crm-form-checkbox moregreetings-protector" type="checkbox"><span>WRITE_PROTECTION_TS</span>');
   });
 
 

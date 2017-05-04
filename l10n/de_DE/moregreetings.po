@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: de.systopia.moregreetings\n"
-"POT-Creation-Date: 2017-05-04 07:54+0200\n"
+"POT-Creation-Date: 2017-05-04 08:37+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Bjoern Endres <Bjoern.Endres@didonai.com>\n"
 "Language-Team: SYSTOPIA <info@systopia.de>\n"
@@ -20,6 +20,11 @@ msgstr ""
 msgctxt "menu"
 msgid "More Greetings"
 msgstr "Zusätzliche Grußformeln"
+
+#: xml/Menu/moregreetins.xml
+msgctxt "menu"
+msgid "MoreGreetings Configuration"
+msgstr "Konfiguration Zusätzliche Grußformeln"
 
 #: CRM/Moregreetings/Config.php
 msgid "Update MoreGreetings"
@@ -80,6 +85,10 @@ msgstr "Wieviele Kontakte sollen in einem Iterationsschritt bearbeitet werden."
 #: moregreetings.php
 msgid "Yes"
 msgstr "Ja"
+
+#: moregreetings.php
+msgid "Write Protection"
+msgstr "Überschreibschutz"
 
 #: templates/CRM/Moregreetings/Form/Settings.hlp
 msgid "You can decide how many custom greetings you need."

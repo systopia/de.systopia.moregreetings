@@ -29,7 +29,7 @@ form.find("input.crm-form-radio").parent().parent().hide();
 
 // then: add protection checkboxes
 form.find("input.crm-form-text").each(function() {
-  cj(this).after('&nbsp;<span style="display: inline-block" class="ui-icon ui-icon-locked"/><input title="Write Protection" class="crm-form-checkbox moregreetings-protector" type="checkbox">');
+  cj(this).after('&nbsp;<span style="display: inline-block" class="ui-icon ui-icon-locked"/><input title="WRITE_PROTECTION_TS" class="crm-form-checkbox moregreetings-protector" type="checkbox">');
 });
 
 // set them all to the correct value and add a listener

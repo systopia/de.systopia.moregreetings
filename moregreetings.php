@@ -24,7 +24,7 @@ function moregreetings_civicrm_pageRun( &$page ) {
   if ($page->getVar('_name') == 'CRM_Contact_Page_View_Summary') {
       $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
       $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
-      $script = str_replace('LOCALISED_YES', ts("Yes"), $script);
+      $script = str_replace('LOCALISED_YES', ts("Yes", array('domain' => 'de.systopia.moregreetings')), $script);
       CRM_Core_Region::instance('page-header')->add(array(
         'script' => $script,
         ));
@@ -40,6 +40,7 @@ function moregreetings_civicrm_buildForm($formName, &$form) {
       // this is our form
       $script = file_get_contents(__DIR__ . '/js/render_moregreetings_edit.js');
       $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
+      $script = str_replace('WRITE_PROTECTION_TS', ts("Write Protection", array('domain' => 'de.systopia.moregreetings')), $script);
       CRM_Core_Region::instance('page-footer')->add(array(
         'script' => $script,
         ));
@@ -48,6 +49,7 @@ function moregreetings_civicrm_buildForm($formName, &$form) {
     // this is our form
     $script = file_get_contents(__DIR__ . '/js/render_moregreetings_contactedit.js');
     $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
+    $script = str_replace('WRITE_PROTECTION_TS', ts("Write Protection", array('domain' => 'de.systopia.moregreetings')), $script);
     CRM_Core_Region::instance('page-footer')->add(array(
       'script' => $script,
       ));
