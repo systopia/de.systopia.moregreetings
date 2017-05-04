@@ -75,6 +75,9 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
    */
   public function setDefaultValues() {
     $values = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    if (!is_array($values)) {
+      $values = array();
+    }
     $values['greeting_count'] = self::getNumberOfGreetings();
     return $values;
   }
