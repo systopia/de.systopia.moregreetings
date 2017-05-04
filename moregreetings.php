@@ -21,7 +21,6 @@ require_once 'moregreetings.civix.php';
  * implement the hook to customize the rendered tab of our custom group
  */
 function moregreetings_civicrm_pageRun( &$page ) {
-
   if ($page->getVar('_name') == 'CRM_Contact_Page_View_Summary') {
       $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
       $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
@@ -45,7 +44,15 @@ function moregreetings_civicrm_buildForm($formName, &$form) {
         'script' => $script,
         ));
     }
+  } elseif ($formName == 'CRM_Contact_Form_Contact') {
+    // this is our form
+    $script = file_get_contents(__DIR__ . '/js/render_moregreetings_contactedit.js');
+    $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
+    CRM_Core_Region::instance('page-footer')->add(array(
+      'script' => $script,
+      ));
   }
+
 }
 
 /**

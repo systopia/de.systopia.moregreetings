@@ -1,6 +1,5 @@
 TODO
 ----
- - beautify regular edit
  - l10n
 
 DONE
@@ -9,3 +8,4 @@ DONE
  - JS update (data depend, reload)
  - beautify inline edit
  - add help with tokens
+ - beautify regular edit

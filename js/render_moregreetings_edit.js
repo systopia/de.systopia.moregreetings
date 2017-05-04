@@ -14,7 +14,13 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-// TODO: convert yes/no radion buttons to checkboxes
+/**
+ * Adjusts the quick edit form
+ *
+ * CAUTION: similar algorithm than 'render_moregreetings_contactedit.js'.
+ *   please propagate fixes to that file
+ */
+
 var more_greetings_group = "#custom-set-content-MOREGREETINGS";
 var form = cj(more_greetings_group).find("form[id=CustomData]");
 
