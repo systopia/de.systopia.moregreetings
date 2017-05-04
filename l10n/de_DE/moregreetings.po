@@ -5,33 +5,183 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: de.systopia.moregreetings\n"
-"POT-Creation-Date: 2017-04-14 14:16+0200\n"
+"POT-Creation-Date: 2017-05-04 07:54+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Bjoern Endres <Bjoern.Endres@didonai.com>\n"
 "Language-Team: SYSTOPIA <info@systopia.de>\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: moregreetings.php
+#: xml/Menu/moregreetins.xml
+msgctxt "menu"
 msgid "More Greetings"
 msgstr "Zusätzliche Grußformeln"
 
+#: CRM/Moregreetings/Config.php
+msgid "Update MoreGreetings"
+msgstr "Zusätzliche Grußformeln Aktualisieren"
+
+#: CRM/Moregreetings/Config.php
+msgid "Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself."
+msgstr "Diese Job wird die Zusatzgrußformeln aller Kontakte anpassen, zum Beispiel nach einer Änderung der Vorlage. Danach wird sich der Job selbst deaktivieren."
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Number of fields"
+msgstr "Anzahl der Zusatzgrußformeln"
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Please enter a number between 1 and %1"
+msgstr "Bitte geben Sie eine Zahl zwischen 1 und %1 ein"
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Greeting %1"
+msgstr "Grußformel %1"
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Please enter valid smarty code."
+msgstr "Diese Vorlage ist ungültig."
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Save"
+msgstr "Speichern"
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Job already running"
+msgstr "Es läuft bereits ein Job"
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Done."
+msgstr "Fertig."
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Interrupted processing, more contacts remain."
+msgstr "Verarbeitung planmäßig unterbrochen, weitere Kontate müssen angepasst werden."
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Maximum Runtime"
+msgstr "Maximale Laufzeit"
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Maximum runtime in seconds"
+msgstr "Maximale Laufzeit in Sekunden"
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Block Size"
+msgstr "Blockgröße"
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "How many contacts to process in one iteration"
+msgstr "Wieviele Kontakte sollen in einem Iterationsschritt bearbeitet werden."
+
 #: moregreetings.php
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "You can decide how many custom greetings you need."
+msgstr "Sie können selbst wählen, wieviele zusätzliche Grußformeln Sie benötigen."
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "The other fields will merely be disabled, so you won't use any data when reducing the number."
+msgstr "Die anderen Felder in der Datenbank werden dementsprechend deaktiviert. So verlieren Sie auch keine Daten in diesen Feldern."
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "You can use the <a href=\"http://www.smarty.net/about_smarty\">SMARTY language</a> to define your own logic here."
+msgstr "Sie können die <a href=\"http://www.smarty.net/about_smarty\">SMARTY Templatesprache</a> verwenden, um hier Ihre eigene Logik zu hinterlegen."
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "Here's a list of the most relevant variables:"
+msgstr "Hier ist eine Liste der wichtigsten Variablen:"
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "Essentially all variables the Contact.get API call produces are available."
+msgstr "Hinweis: Alle Variablen die durch den Contact.get API Aufruf geliefert werden sind hier auch zugänglich."
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "Number of Extra Greetings"
+msgstr "Anzahl zusätzlicher Grußformeln"
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "Help"
+msgstr "Hilfe"
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "Instructions"
+msgstr "Anleitung"
+
+#: resources/moregreetings_custom_group.json
 msgid "Greeting 1"
 msgstr "Grußformel 1"
 
-#: moregreetings.php
-msgid "Greeting 2"
-msgstr "Grußformel 2"
-
-#: moregreetings.php
+#: resources/moregreetings_custom_group.json
 msgid "Protected 1"
 msgstr "Geschützt 1"
 
-#: moregreetings.php
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 2"
+msgstr "Grußformel 2"
+
+#: resources/moregreetings_custom_group.json
 msgid "Protected 2"
 msgstr "Geschützt 2"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 3"
+msgstr "Grußformel 3"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 3"
+msgstr "Geschützt 3"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 4"
+msgstr "Grußformel 4"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 4"
+msgstr "Geschützt 4"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 5"
+msgstr "Grußformel 5"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 5"
+msgstr "Geschützt 5"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 6"
+msgstr "Grußformel 6"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 6"
+msgstr "Geschützt 6"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 7"
+msgstr "Grußformel 7"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 7"
+msgstr "Geschützt 7"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 8"
+msgstr "Grußformel 8"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 8"
+msgstr "Geschützt 8"
+
+#: resources/moregreetings_custom_group.json
+msgid "Greeting 9"
+msgstr "Grußformel 9"
+
+#: resources/moregreetings_custom_group.json
+msgid "Protected 9"
+msgstr "Geschützt 9"
+

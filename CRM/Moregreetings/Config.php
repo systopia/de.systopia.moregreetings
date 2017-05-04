@@ -187,8 +187,8 @@ class CRM_Moregreetings_Config {
       'api_action' => 'update_moregreetings'));
     if ($jobs['count'] == 0) {
       return civicrm_api3('Job', 'create', array(
-        'name' => ts("Update MoreGreetings"),
-        'description'   => ts("Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself."),
+        'name' => ts("Update MoreGreetings", array('domain' => 'de.systopia.moregreetings')),
+        'description'   => ts("Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself.", array('domain' => 'de.systopia.moregreetings')),
         'run_frequency' => 'Always',
         'is_active'     => 0,
         'api_entity'    => 'job',

@@ -44,7 +44,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       $this->add(
         'textarea', // field type
         "greeting_smarty_{$i}", // field name
-        "Greetings {$i}", // field label
+        ts("Greeting %1", array(1 => $i, 'domain' => 'de.systopia.moregreetings')), // field label
         array('rows' => 4,
               'cols' => 50,
         ), // list of options
@@ -60,7 +60,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     $this->addButtons(array(
       array(
         'type' => 'submit',
-        'name' => ts('Save'),
+        'name' => ts('Save', array('domain' => 'de.systopia.moregreetings')),
         'isDefault' => TRUE,
       ),
     ));

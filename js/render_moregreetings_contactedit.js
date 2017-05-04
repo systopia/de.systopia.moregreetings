@@ -15,7 +15,12 @@
 +--------------------------------------------------------*/
 
 
-
+/**
+ * Adjusts the create/edit form
+ *
+ * CAUTION: similar algorithm than 'render_moregreetings_edit.js'.
+ *   please propagate fixes to that file
+ */
 cj(document).ready(function() {
   var group = cj("#more_greetings_group");
 

@@ -22,7 +22,7 @@ function civicrm_api3_job_update_moregreetings($params) {
   $last_id = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_job_status');
   if ($last_id == 'busy') {
     // there's another job running
-    return civicrm_api3_create_success("Job already running");
+    return civicrm_api3_create_success(ts("Job already running", array('domain' => 'de.systopia.moregreetings')));
   }
 
   // ok, let's go
@@ -43,11 +43,11 @@ function civicrm_api3_job_update_moregreetings($params) {
   if ($last_id == 0) {
     // we're done!
     CRM_Moregreetings_Config::stopCalculateAllGreetingsJob();
-    return civicrm_api3_create_success("Done.");
+    return civicrm_api3_create_success(ts("Done.", array('domain' => 'de.systopia.moregreetings')));
   } else {
     // store last processed ID
     CRM_Core_BAO_Setting::setItem($last_id, 'moregreetings', 'moregreetings_job_status');
-    return civicrm_api3_create_success("Interrupted processing, more contacts remain.");
+    return civicrm_api3_create_success(ts("Interrupted processing, more contacts remain.", array('domain' => 'de.systopia.moregreetings')));
   }
 }
 
@@ -56,15 +56,15 @@ function _civicrm_api3_job_update_moregreetings_spec(&$params) {
   $params['max_time'] = array(
     'name'        => 'max_time',
     'uniqueName'  => 'max_time',
-    'title'       => 'Maximum Runtime',
-    'description' => 'Maximum runtime in seconds',
+    'title'       => ts('Maximum Runtime', array('domain' => 'de.systopia.moregreetings')),
+    'description' => ts('Maximum runtime in seconds', array('domain' => 'de.systopia.moregreetings')),
     'api.default' => 120,
   );
   $params['block_size'] = array(
-    'name'       => 'block_size',
-    'uniqueName' => 'block_size',
-    'title'      => 'Block Size',
-    'description' => 'How many contacts to process in one iteration',
+    'name'        => 'block_size',
+    'uniqueName'  => 'block_size',
+    'title'       => ts('Block Size', array('domain' => 'de.systopia.moregreetings')),
+    'description' => ts('How many contacts to process in one iteration', array('domain' => 'de.systopia.moregreetings')),
     'api.default' => 50,
   );
 }
