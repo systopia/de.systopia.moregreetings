@@ -63,10 +63,14 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
         'name' => ts('Save', array('domain' => 'de.systopia.moregreetings')),
         'isDefault' => TRUE,
       ),
+      array(
+        'type' => 'upload',
+        'name' => ts('Save & Apply', array('domain' => 'de.systopia.moregreetings')),
+        'isDefault' => FALSE,
+      ),
     ));
 
     // export form elements
-    // $this->assign('elementNames', $this->getRenderableElementNames());
     parent::buildQuickForm();
   }
 
@@ -106,11 +110,6 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     }
     CRM_Core_BAO_Setting::setItem($values_array, 'moregreetings', 'moregreetings_templates');
 
-    // trigger recalculation
-    if ($greetings_changed) {
-      CRM_Moregreetings_Config::restartCalculateAllGreetingsJob();
-    }
-
     // then: adjust the greeting count
     if ($values['greeting_count'] != self::getNumberOfGreetings()) {
       CRM_Moregreetings_Config::setActiveFieldCount($values['greeting_count']);
@@ -118,6 +117,11 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       // reload b/c the form has already been generated
       $url = CRM_Utils_System::url('civicrm/admin/setting/moregreetings', "reset=1");
       CRM_Utils_System::redirect($url);
+    }
+
+    if (isset($values['_qf_Settings_upload'])) {
+      // somebody pressed the SAVE & APPLY button:
+      CRM_Moregreetings_Job::launchApplicationRunner(); // doesn't return
     }
 
     parent::postProcess();

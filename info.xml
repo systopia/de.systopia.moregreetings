@@ -6,7 +6,7 @@
   <license>AGPL-3.0</license>
   <maintainer>
     <author>SYSTOPIA</author>
-    <email>batroff@systopia.de</email>
+    <email>endres@systopia.de</email>
   </maintainer>
   <urls>
     <url desc="Main Extension Page">https://github.com/systopia/de.systopia.moregreetings</url>
@@ -14,8 +14,8 @@
     <url desc="Support">https://github.com/systopia/de.systopia.moregreetings/issues</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
-  <releaseDate>2017-05-04</releaseDate>
-  <version>0.4.dev</version>
+  <releaseDate>2017-05-25</releaseDate>
+  <version>0.5.dev</version>
   <develStage>dev</develStage>
   <compatibility>
     <ver>4.6</ver>
