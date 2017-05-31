@@ -65,7 +65,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       ),
       array(
         'type' => 'upload',
-        'name' => ts('Save & Apply', array('domain' => 'de.systopia.moregreetings')),
+        'name' => ts('Save & Apply to all Contacts', array('domain' => 'de.systopia.moregreetings')),
         'isDefault' => FALSE,
       ),
     ));
