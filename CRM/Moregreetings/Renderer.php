@@ -34,7 +34,8 @@ class CRM_Moregreetings_Renderer {
     // load the contact
     if ($contact == NULL) {
       $contact = civicrm_api3('Contact', 'getsingle', array(
-        'id' => $contact_id,
+        'id'     => $contact_id,
+        'return' => self::getUsedContactFields($templates),
       ));
     }
 
@@ -80,9 +81,12 @@ class CRM_Moregreetings_Renderer {
    * @return last contact ID processed, 0 if none
    */
   public static function updateMoreGreetingsForContacts($from_id, $max_count) {
+    $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+
     $contact_query = civicrm_api3('Contact', 'get', array(
       'id'         => array('>=' => $from_id),
       'is_deleted' => 0,
+      'return'     => self::getUsedContactFields($templates),
       'options'    => array('limit' => $max_count),
     ));
 
@@ -130,5 +134,30 @@ class CRM_Moregreetings_Renderer {
     }
 
     return $fields_to_render;
+  }
+
+  /**
+   * Returns a comma-separated list of the fields used in the templates
+   */
+  protected static function getUsedContactFields($templates) {
+    $active_fields = CRM_Moregreetings_Config::getActiveFields();
+    $fields_used = array();
+
+    // now compile the list of unprotected active greeting fields
+    $fields_to_render = array();
+    foreach ($active_fields as $field_id => $field) {
+      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
+        $field_number = $matches['field_number'];
+        $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
+
+        if (preg_match_all('#\$contact\.(?P<field>\w+)#', $template, $tokens)) {
+          foreach ($tokens['field'] as $field_name) {
+            $fields_used[$field_name] = 1;
+          }
+        }
+      }
+    }
+
+    return implode(',', array_keys($fields_used));
   }
 }
