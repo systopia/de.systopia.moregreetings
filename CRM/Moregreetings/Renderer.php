@@ -42,6 +42,7 @@ class CRM_Moregreetings_Renderer {
     // TODO: assign more stuff?
     // prepare smarty
     $smarty = CRM_Core_Smarty::singleton();
+    CRM_Utils_Smarty::registerCustomFunctions($smarty);
     $smarty->assign('contact', $contact);
 
     // load the current greetings
