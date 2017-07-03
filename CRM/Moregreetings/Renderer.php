@@ -33,6 +33,8 @@ class CRM_Moregreetings_Renderer {
 
     // load the contact
     if ($contact == NULL) {
+      // remark: if you change these parameters, see if you also want to adjust
+      //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
       $contact = civicrm_api3('Contact', 'getsingle', array(
         'id'     => $contact_id,
         'return' => self::getUsedContactFields($templates),
@@ -83,6 +85,9 @@ class CRM_Moregreetings_Renderer {
    */
   public static function updateMoreGreetingsForContacts($from_id, $max_count) {
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+
+    // remark: if you change these parameters, see if you also want to adjust
+    //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
     $query_paremeters = array(
       'id'         => array('>=' => $from_id),
       'is_deleted' => 0,
@@ -90,6 +95,7 @@ class CRM_Moregreetings_Renderer {
       'return'     => self::getUsedContactFields($templates),
       'options'    => array('limit' => $max_count,
                             'sort'  => 'id asc'));
+
     $contact_query = civicrm_api3('Contact', 'get', $query_paremeters);
 
     $last_id = 0;

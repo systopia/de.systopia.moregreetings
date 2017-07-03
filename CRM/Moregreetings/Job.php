@@ -53,6 +53,8 @@ class CRM_Moregreetings_Job {
     $used_fields = CRM_Moregreetings_Renderer::getUsedContactFields($templates);
 
     // load contacts
+    // remark: if you change these parameters, see if you also want to adjust
+    //  CRM_Moregreetings_Renderer::updateMoreGreetings and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
     $contacts = civicrm_api3('Contact', 'get', array(
       'id'           => array('IN' => $contact_ids),
       'return'       => $used_fields,
