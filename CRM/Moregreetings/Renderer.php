@@ -83,13 +83,14 @@ class CRM_Moregreetings_Renderer {
    */
   public static function updateMoreGreetingsForContacts($from_id, $max_count) {
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
-
-    $contact_query = civicrm_api3('Contact', 'get', array(
+    $query_paremeters = array(
       'id'         => array('>=' => $from_id),
       'is_deleted' => 0,
+      'sequential' => 1,
       'return'     => self::getUsedContactFields($templates),
-      'options'    => array('limit' => $max_count),
-    ));
+      'options'    => array('limit' => $max_count,
+                            'sort'  => 'id asc'));
+    $contact_query = civicrm_api3('Contact', 'get', $query_paremeters);
 
     $last_id = 0;
     foreach ($contact_query['values'] as $contact) {
@@ -140,7 +141,7 @@ class CRM_Moregreetings_Renderer {
   /**
    * Returns a comma-separated list of the fields used in the templates
    */
-  protected static function getUsedContactFields($templates) {
+  public static function getUsedContactFields($templates) {
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
     $fields_used = array();
 

@@ -48,9 +48,14 @@ class CRM_Moregreetings_Job {
       $contact_ids[] = $id_query->contact_id;
     }
 
+    // determine the fields to load
+    $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $used_fields = CRM_Moregreetings_Renderer::getUsedContactFields($templates);
+
     // load contacts
     $contacts = civicrm_api3('Contact', 'get', array(
       'id'           => array('IN' => $contact_ids),
+      'return'       => $used_fields,
       'option.limit' => 0));
 
     // apply
