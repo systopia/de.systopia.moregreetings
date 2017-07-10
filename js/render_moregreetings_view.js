@@ -48,8 +48,15 @@ function moregreetings_beautify() {
 }
 
 cj(document).ready(function () {
-  // move more greetings block to right hand side
-  cj("div.crm-summary-demographic-block").after(cj(more_greetings_block));
+  // move more greetings block to right hand side (see #4)
+  var leftTab = cj("div.crm-summary-comm-pref-block").parent();
+  var section = leftTab.parent();
+  var rightTab = cj(section).find("div.contactCardRight");
+  if (!rightTab.length) { // not found, probably Organisation screen
+    leftTab.after('<div class="contactCardRight"></div>');
+    rightTab = cj(section).find("div.contactCardRight");
+  }
+  cj(rightTab).append(cj(more_greetings_block));
 
   // beautify
   moregreetings_beautify();
