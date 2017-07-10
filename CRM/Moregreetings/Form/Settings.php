@@ -70,6 +70,11 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       ),
     ));
 
+    // add link
+    $group_id  = CRM_Moregreetings_Config::getGroupID();
+    $group_url = CRM_Utils_System::url('civicrm/admin/custom/group/field', "reset=1&action=browse&gid={$group_id}");
+    $this->assign('group_url', $group_url);
+
     // export form elements
     parent::buildQuickForm();
   }

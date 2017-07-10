@@ -39,3 +39,8 @@
 <div class="crm-submit-buttons">
 {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
+
+<br/>
+<div class="crm-section">
+  <p>{ts domain="de.systopia.moregreetings" 1=$group_url}If you want to change the labels of the indivdual greetings, you can do so <b><a href="%1">here</a></b> (admin permissions required).{/ts}
+</div>
