@@ -3,18 +3,18 @@
 The extension will allow you to set up additional greetings (i.e. for mailings or data exports) that are automatically created and updated depending on configuration and data in your CiviCRM instalation.
 
 
- ## Features
-Sets up to 9 additional contact greeting fields 
+## Features
+Sets up to 9 additional contact greeting fields
 Allows to configure the rules of the creation of the greetings using SMARTY - based on the data already in the CiviCRM
-Gives the option to update added greeting fields for all contacts in the database 
+Gives the option to update added greeting fields for all contacts in the database
 
 
- ## Installation
+## Installation
 
 Simply download and install this extension
 
 
- ## Usage
+## Usage
 
 Go to Administer -> Administration Console (under Communications section)
 
@@ -32,7 +32,7 @@ Clicking "Save & apply to all contacts" will update all of the additional greeti
 
 You can change a greeting manually by clicking Edit on the More greetings data set on the contact summary screen.
 
-Manual changes will be overwritten the next time someone will use "Save & apply to all contacts". 
+Manual changes will be overwritten the next time someone will use "Save & apply to all contacts".
 
 Also every time the fields that are involved in the greeting creation rule are changed (i.e. prefix, first name, last name), the appropriate greeting will be updated.
 
