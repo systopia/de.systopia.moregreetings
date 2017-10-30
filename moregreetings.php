@@ -77,7 +77,7 @@ function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 function moregreetings_civicrm_enable() {
   _moregreetings_civix_civicrm_enable();
 
-  require_once 'CRM/Utils/CustomData.php';
+  require_once 'CRM/Moregreetings/CustomData.php';
   $customData = new CRM_Moregreetings_CustomData('de.systopia.moregreetings');
   $customData->syncCustomGroup(__DIR__ . '/resources/moregreetings_custom_group.json');
 }
