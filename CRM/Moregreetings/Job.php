@@ -97,4 +97,33 @@ class CRM_Moregreetings_Job {
     ));
     $runner->runAllViaWeb(); // does not return
   }
+
+  /**
+   * Use CRM_Queue_Runner to apply the templates
+   * This doesn't redirect to the runner
+   */
+  public static function launchCron() {
+    // get general contact count (not deleted)
+    $contact_count = CRM_Core_DAO::singleValueQuery("SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0");
+
+    // create a queue
+    $queue = CRM_Queue_Service::singleton()->create(array(
+      'type'  => 'Sql',
+      'name'  => 'moregreetings_cron',
+      'reset' => TRUE,
+    ));
+
+    // create the items
+    for ($offset=0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
+      $queue->createItem(new CRM_Moregreetings_Job($offset, MOREGREETINGS_JOB_SIZE));
+    }
+
+    // create a runner and launch it
+    $runner = new CRM_Queue_Runner(array(
+      'title'     => ts("Applying Moregreetings Templates by Cron Job", array('domain' => 'de.systopia.moregreetings')),
+      'queue'     => $queue,
+      'errorMode' => CRM_Queue_Runner::ERROR_ABORT,
+    ));
+    return $runner->runAll();
+  }
 }
