@@ -44,7 +44,7 @@ class CRM_Moregreetings_Job {
       LIMIT {$this->count}
       OFFSET {$this->offset}");
     $contact_ids = array();
-    while($id_query->fetch()) {
+    while ($id_query->fetch()) {
       $contact_ids[] = $id_query->contact_id;
     }
 
@@ -73,21 +73,7 @@ class CRM_Moregreetings_Job {
    * This doesn't return, but redirects to the runner
    */
   public static function launchApplicationRunner() {
-    // get general contact count (not deleted)
-    $contact_count = CRM_Core_DAO::singleValueQuery("SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0");
-
-    // create a queue
-    $queue = CRM_Queue_Service::singleton()->create(array(
-      'type'  => 'Sql',
-      'name'  => 'moregreetings_application',
-      'reset' => TRUE,
-    ));
-
-    // create the items
-    for ($offset=0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
-      $queue->createItem(new CRM_Moregreetings_Job($offset, MOREGREETINGS_JOB_SIZE));
-    }
-
+    $queue = self::prepareQueue('moregreetings_application');
     // create a runner and launch it
     $runner = new CRM_Queue_Runner(array(
       'title'     => ts("Applying Moregreetings Templates", array('domain' => 'de.systopia.moregreetings')),
@@ -103,22 +89,7 @@ class CRM_Moregreetings_Job {
    * This doesn't redirect to the runner
    */
   public static function launchCron() {
-    // get general contact count (not deleted)
-    $contact_count = CRM_Core_DAO::singleValueQuery("SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0");
-
-    // create a queue
-    $queue = CRM_Queue_Service::singleton()->create(array(
-      'type'  => 'Sql',
-      'name'  => 'moregreetings_cron',
-      'reset' => TRUE,
-    ));
-
-    // create the items
-    for ($offset=0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
-      $queue->createItem(new CRM_Moregreetings_Job($offset, MOREGREETINGS_JOB_SIZE));
-    }
-
-    // create a runner and launch it
+    $queue = self::prepareQueue('moregreetings_cron');
     $runner = new CRM_Queue_Runner(array(
       'title'     => ts("Applying Moregreetings Templates by Cron Job", array('domain' => 'de.systopia.moregreetings')),
       'queue'     => $queue,
@@ -126,4 +97,31 @@ class CRM_Moregreetings_Job {
     ));
     return $runner->runAll();
   }
+
+  /**
+   * Prepare queue.
+   *
+   * @param string $name Name of queue
+   *
+   * @return \CRM_Queue_Queue
+   */
+  private static function prepareQueue($name) {
+    // get general contact count (not deleted)
+    $contact_count = CRM_Core_DAO::singleValueQuery("SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0");
+
+    // create a queue
+    $queue = CRM_Queue_Service::singleton()->create(array(
+      'type'  => 'Sql',
+      'name'  => $name,
+      'reset' => TRUE,
+    ));
+
+    // create the items
+    for ($offset = 0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
+      $queue->createItem(new CRM_Moregreetings_Job($offset, MOREGREETINGS_JOB_SIZE));
+    }
+
+    return $queue;
+  }
+
 }
