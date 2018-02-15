@@ -62,7 +62,7 @@ class CRM_Moregreetings_Job {
     //  CRM_Moregreetings_Renderer::updateMoreGreetings and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
     $contacts = civicrm_api3('Contact', 'get', array(
       'id'           => array('IN' => $contact_ids),
-      'return'       => $used_fields . ',' . implode($field_keys, ','),
+      'return'       => $used_fields . ',' . implode(',', $field_keys),
       'option.limit' => 0));
 
     // apply
