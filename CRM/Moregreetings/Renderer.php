@@ -47,11 +47,9 @@ class CRM_Moregreetings_Renderer {
     CRM_Utils_Smarty::registerCustomFunctions($smarty);
     $smarty->assign('contact', $contact);
 
-    // load the current greetings
-    $current_greetings = CRM_Moregreetings_Config::getCurrentData($contact_id);
 
     // get the fields to render
-    $greetings_to_render = self::getGreetingsToRender($contact, $templates, $current_greetings);
+    $greetings_to_render = self::getGreetingsToRender($contact, $templates, $contact);
 
     // render the greetings
     $greetings_update = array();
@@ -59,7 +57,7 @@ class CRM_Moregreetings_Renderer {
       $new_value = $smarty->fetch("string:$template");
       $new_value = trim($new_value);
       // check if the value is really different (avoid unecessary updates)
-      if ($new_value != $current_greetings[$greeting_key]) {
+      if ($new_value != $contact[$greeting_key]) {
         $greetings_update[$greeting_key] = $new_value;
       }
     }
@@ -152,7 +150,6 @@ class CRM_Moregreetings_Renderer {
     $fields_used = array();
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
     foreach ($active_fields as $field_id => $field) {
       if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
         $field_number = $matches['field_number'];

@@ -52,12 +52,17 @@ class CRM_Moregreetings_Job {
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
     $used_fields = CRM_Moregreetings_Renderer::getUsedContactFields($templates);
 
+    $active_fields = CRM_Moregreetings_Config::getActiveFields();
+    foreach ($active_fields as $key => $field) {
+      $field_keys[] = "custom_{$field['id']}";
+    }
+
     // load contacts
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Renderer::updateMoreGreetings and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
     $contacts = civicrm_api3('Contact', 'get', array(
       'id'           => array('IN' => $contact_ids),
-      'return'       => $used_fields,
+      'return'       => $used_fields . ',' . implode($field_keys, ','),
       'option.limit' => 0));
 
     // apply
