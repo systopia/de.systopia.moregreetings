@@ -22,6 +22,14 @@
  */
 class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
+  /**
+   * @var string | array | NULL
+   *   Used to store the original error handler, which will be temporarily
+   *   replaced for identifying smarty errors when saving the MoreGreetings
+   *   configuration form.
+   */
+  protected static $_original_error_handler = NULL;
+
   public function buildQuickForm() {
 
     $this->registerRule('is_valid_smarty', 'callback', 'validateSmarty', 'CRM_Moregreetings_Form_Settings');
@@ -145,38 +153,21 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       $smarty = CRM_Core_Smarty::singleton();
       CRM_Utils_Smarty::registerCustomFunctions($smarty);
 
-      // Replace the current error handler which will throw an exception, that
-      // we will be catching, to be able to identify Smarty errors and
-      // invalidate the Smarty input accordingly.
-      $original_error_handler = set_error_handler(array(get_class(), 'smartyErrorHandler'));
+      // Smarty uses trigger_error() to indicate Smarty errors. In order to
+      // fetch those, replace the current error handler with a custom one, which
+      // will throw an exception, that will be caught here. Store as a static
+      // class member in order to access it within the custom error handler.
+      static::$_original_error_handler = set_error_handler(array(get_class(), 'smartyErrorHandler'));
 
       // Try the rendering.
       try {
-          $renderOut = $smarty->fetch('string:' . $smartyValue);
+        $renderOut = $smarty->fetch('string:' . $smartyValue);
       } catch (ErrorException $exception) {
-        // Check for "Smarty error:" in the error message.
-        if (strpos($exception->getMessage(), 'Smarty error:') === 0) {
-          $renderOut = FALSE;
-        }
-        else {
-          $renderOut = '';
-        }
-        // Call the original error handler with the original error parameters.
-        // This makes sure the error still gets printed or logged or whatever
-        // the original error handler is supposed to do with it.
-        call_user_func(
-          $original_error_handler,
-          $exception->getCode(),
-          $exception->getMessage(),
-          $exception->getFile(),
-          $exception->getLine(),
-          array()
-        );
+        // Coming from the custom error handler.
+        $renderOut = FALSE;
       }
-      // Restore the original error handler for subsequent error handling.
-      restore_error_handler();
 
-      if ($renderOut === FALSE) {
+      if (!is_string($renderOut)) {
         return FALSE;
       }
     } catch (Exception $e) {
@@ -195,20 +186,32 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
    * @param $errLine
    *
    * @throws \ErrorException
-   *
-   * @return bool
    */
   public static function smartyErrorHandler($errNo, $errStr, $errFile, $errLine, $errContext) {
-    // TODO: Find a way to pass $errContext with the exception. This may need a
-    // custom exception class. However, when using Drupal, its error handler
-    // does not need it.
-    throw new ErrorException(
-      $errStr,
+    // Call the original error handler with the original error parameters. This
+    // makes sure the error still gets printed or logged or whatever the
+    // original error handler is supposed to do with it.
+    call_user_func(
+      static::$_original_error_handler,
       $errNo,
-      1,
+      $errStr,
       $errFile,
-      $errLine
+      $errLine,
+      $errContext
     );
+
+    // Restore the original error handler for subsequent error handling.
+    restore_error_handler();
+
+    if (strpos($errStr, 'Smarty error:') === 0) {
+      throw new ErrorException(
+        $errStr,
+        $errNo,
+        1,
+        $errFile,
+        $errLine
+      );
+    }
   }
 
   /**
