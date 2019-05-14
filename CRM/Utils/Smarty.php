@@ -21,11 +21,15 @@ class CRM_Utils_Smarty {
 
   /**
    * register custom smarty functions with the smarty instance
+   *
+   * @param Smarty $smarty
    */
   public static function registerCustomFunctions($smarty) {
     $smarty->register_modifier('mg_startswith', array('CRM_Utils_Smarty', 'startswith'));
     $smarty->register_modifier('mg_endswith',   array('CRM_Utils_Smarty', 'endswith'));
     $smarty->register_modifier('mg_contains',   array('CRM_Utils_Smarty', 'contains'));
+    $smarty->register_modifier('lcfirst',    'lcfirst');
+    $smarty->register_modifier('ucfirst',    'ucfirst');
   }
 
   /**
