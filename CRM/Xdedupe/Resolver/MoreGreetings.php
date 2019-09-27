@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| SYSTOPIA's Extended Deduper                            |
+| SYSTOPIA - MORE GREETINGS EXTENSION                    |
 | Copyright (C) 2019 SYSTOPIA                            |
 | Author: B. Endres (endres@systopia.de)                 |
 | http://www.systopia.de/                                |
@@ -14,39 +14,21 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-use CRM_Xdedupe_ExtensionUtil as E;
-
 use Civi\API\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use \Civi\Core\Event\GenericHookEvent;
 
 /**
- * Implements a resolver for basic contact fields
+ * Implements a resolver to resolve conflicts in the MoreGreetings fields
  */
-class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver implements EventSubscriberInterface {
-
-  /**
-   * Subscribe to the list events, so we can plug the built-in ones
-   */
-  public static function getSubscribedEvents() {
-    return [
-        'civi.xdedupe.resolvers' => ['addBuiltinResolvers', Events::W_MIDDLE],
-    ];
-  }
-
-  /**
-   * Return the list of built-in resolvers
-   */
-  public function addBuiltinResolvers(GenericHookEvent $xdedupe_list) {
-    $xdedupe_list->list[] = 'CRM_Xdedupe_Resolver_MoreGreetings';
-  }
+class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
 
     /**
    * get the name of the finder
    * @return string name
    */
   public function getName() {
-    return E::ts("More Greetings");
+    return ts("More Greetings", array('domain' => 'de.systopia.moregreetings'));
   }
 
   /**
@@ -54,7 +36,7 @@ class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver implements
    * @return string name
    */
   public function getHelp() {
-    return E::ts("Will make sure differing MoreGreetings values will not get in the way, by dropping them before the merge and recalculating them after.");
+    return ts("Will make sure differing MoreGreetings values will not get in the way, by dropping them before the merge and recalculating them after.", array('domain' => 'de.systopia.moregreetings'));
   }
 
   /**
