@@ -89,6 +89,9 @@ function moregreetings_civicrm_enable() {
  */
 function moregreetings_civicrm_config(&$config) {
   _moregreetings_civix_civicrm_config($config);
+
+  require_once 'CRM/Xdedupe/Resolver/MoreGreetings.php';
+  \Civi::dispatcher()->addSubscriber(new CRM_Xdedupe_Resolver_MoreGreetings(null));
 }
 
 /**
