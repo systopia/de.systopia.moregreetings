@@ -121,8 +121,13 @@ class CRM_Moregreetings_CustomData {
   * will take a JSON source file and synchronise the
   * CustomGroup/CustomField data in the system with
   * those specs
+   *
+   * @param string $source_file
+   * @param array $restrict_field_properties
+   *   For custom field updates, an array containing custom field properties
+   *   that should be updated. All other properties will not be updated.
   */
-  public function syncCustomGroup($source_file) {
+  public function syncCustomGroup($source_file, $restrict_field_properties = FALSE) {
     $force_update = FALSE;
     $data = json_decode(file_get_contents($source_file), TRUE);
     if (empty($data)) {
@@ -168,6 +173,17 @@ class CRM_Moregreetings_CustomData {
 
     // now run the update for the CustomFields
     foreach ($data['_fields'] as $customFieldSpec) {
+      // If given field properties in $restrict_field_properties, remove them
+      // from the data to update.
+      if (!empty($restrict_field_properties)) {
+        $customFieldSpec = array_filter($customFieldSpec, function($field_name) use ($restrict_field_properties, $customFieldSpec) {
+          return
+            in_array($field_name, $customFieldSpec['_lookup'])
+            || substr($field_name, 0, 1) == '_'
+            || in_array($field_name, $restrict_field_properties);
+        }, ARRAY_FILTER_USE_KEY);
+      }
+
       $this->translateStrings($customFieldSpec);
       $customFieldSpec['custom_group_id'] = $customGroup['id'];
       $customFieldSpec['_lookup'][] = 'custom_group_id';
