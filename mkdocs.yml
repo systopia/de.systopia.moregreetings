@@ -1,8 +1,9 @@
 site_name: More greetings
 repo_url: https://github.com/systopia/de.systopia.moregreetings
-theme: material
+theme: 
+  name: material
 
-pages:
+nav:
 - Home: index.md
 
 markdown_extensions:
