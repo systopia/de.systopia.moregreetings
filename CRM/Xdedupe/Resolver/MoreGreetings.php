@@ -52,6 +52,9 @@ class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
     if (!empty($all_contact_ids)) {
       $all_contact_ids_list = implode(',', $all_contact_ids);
       CRM_Core_DAO::executeQuery("DELETE FROM civicrm_value_moregreetings WHERE entity_id IN ({$all_contact_ids_list})");
+
+      // suppress new generation
+      CRM_Moregreetings_Renderer::addExcludedContactIDs($all_contact_ids);
     }
 
     return TRUE;
@@ -65,6 +68,7 @@ class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
    * @throws Exception if the conflict couldn't be resolved
    */
   public function postProcess($main_contact_id, $other_contact_ids) {
+    CRM_Moregreetings_Renderer::clearExcludedContactIDs();
     CRM_Moregreetings_Renderer::updateMoreGreetings($main_contact_id);
     // todo: other contacts, too? no, right!?
   }
