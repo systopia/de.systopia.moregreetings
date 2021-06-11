@@ -4,7 +4,6 @@
 {if $contact.contact_type == 'Organization'}
 {strip}
   {crmAPI var='result' entity='Relationship' action='get' return="contact_id_b" relationship_type_id=15 contact_id_a=$contact.contact_id}
-  {* FIX: get only the first one *}
   {foreach from=$result.values item=relationship}
     {if $smarty.foreach.relationship.first}
       {assign var='b' value=$relationship.contact_id_b}
