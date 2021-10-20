@@ -80,13 +80,19 @@ class CRM_Utils_Smarty {
    *    the minimum length to be tested for
    * @param $token_indices array|string
    *    only check the given indices instead of all - provided they exist.
+   * @param $trim boolean
+   *    trims the tokens with the default trim set
    *
    * Smarty usage: {if $contact.first_name|tokens_have_min_length:' ':2}
    *     is true, if no single characters are used in the first_name
    */
-  public static function tokens_have_min_length($string, $split_string, $length, $token_indices = null) {
+  public static function tokens_have_min_length($string, $split_string, $length, $token_indices = null, $trim = true) {
     $length = (int) $length;
     $tokens = explode($split_string, $string);
+
+    if ($trim) {
+      $tokens = array_map('trim', $tokens);
+    }
 
     // default for token indices is all
     if ($token_indices === null) {
@@ -120,13 +126,20 @@ class CRM_Utils_Smarty {
    *    the term used to split the string
    * @param $index integer
    *    the index of the token to return
+   * @param $trim boolean
+   *    trims the token with the default trim set
    *
    * Smarty usage: {$contact.first_name|token_extract:' ':1}
    *    will return the 'van' if the first_name is "Herbert van Halen"
    */
-  public static function token_extract($string, $split_string, $index = 0) {
+  public static function token_extract($string, $split_string, $index = 0, $trim = true) {
     $index = (int) $index;
     $tokens = explode($split_string, $string);
-    return $tokens[$index] ?? '';
+    $token = $tokens[$index] ?? '';
+    if ($trim) {
+      return trim($token);
+    } else {
+      return $token;
+    }
   }
 }
