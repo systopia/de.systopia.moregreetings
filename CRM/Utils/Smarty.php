@@ -109,7 +109,7 @@ class CRM_Utils_Smarty {
     if ($all) {
       // now check if all of them have the minimal length
       foreach ($tokens as $index => $token) {
-        if (isset($token_indices[$index])) {
+        if (in_array($index, $token_indices)) {
           if (strlen($token) < $length) {
             return false;
           }
@@ -119,14 +119,13 @@ class CRM_Utils_Smarty {
     } else {
       // now check if some of them have the minimal length
       foreach ($tokens as $index => $token) {
-        if (isset($token_indices[$index])) {
+        if (in_array($index, $token_indices)) {
           if (strlen($token) >= $length) {
             return true;
           }
         }
       }
       return false;
-
     }
   }
 
