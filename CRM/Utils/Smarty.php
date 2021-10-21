@@ -80,13 +80,15 @@ class CRM_Utils_Smarty {
    *    the minimum length to be tested for
    * @param $token_indices array|string
    *    only check the given indices instead of all - provided they exist.
+   * @param $all boolean
+   *    test if all the tokens have minimum length, or just some
    * @param $trim boolean
    *    trims the tokens with the default trim set
    *
    * Smarty usage: {if $contact.first_name|tokens_have_min_length:' ':2}
    *     is true, if no single characters are used in the first_name
    */
-  public static function tokens_have_min_length($string, $split_string, $length, $token_indices = null, $trim = true) {
+  public static function tokens_have_min_length($string, $split_string, $length, $token_indices = null, $all = true, $trim = true) {
     $length = (int) $length;
     $tokens = explode($split_string, $string);
 
@@ -104,16 +106,28 @@ class CRM_Utils_Smarty {
       $token_indices = explode(',', $token_indices);
     }
 
-    // now check all of them
-    foreach ($tokens as $index => $token) {
-      if (isset($token_indices[$index])) {
-        if (strlen($token) < $length) {
-          return false;
+    if ($all) {
+      // now check if all of them have the minimal length
+      foreach ($tokens as $index => $token) {
+        if (isset($token_indices[$index])) {
+          if (strlen($token) < $length) {
+            return false;
+          }
         }
       }
-    }
+      return true;
+    } else {
+      // now check if some of them have the minimal length
+      foreach ($tokens as $index => $token) {
+        if (isset($token_indices[$index])) {
+          if (strlen($token) >= $length) {
+            return true;
+          }
+        }
+      }
+      return false;
 
-    return true;
+    }
   }
 
   /**
