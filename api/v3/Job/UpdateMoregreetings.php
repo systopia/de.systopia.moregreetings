@@ -42,7 +42,7 @@ function civicrm_api3_job_update_moregreetings($params) {
 
   // store last processed ID
   CRM_Core_BAO_Setting::setItem($last_id, 'moregreetings', 'moregreetings_job_status');
-  
+
   if ($last_id == 0) {
     // we're done!
     CRM_Moregreetings_Config::stopCalculateAllGreetingsJob();
