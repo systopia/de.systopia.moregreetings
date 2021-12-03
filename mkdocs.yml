@@ -4,22 +4,21 @@ theme:
   name: material
 
 nav:
-- Home: index.md
-- Basics: basics.md
-- Installation: installation.md
-- Usage: usage.md
-- Example: example.md
+  - Home: index.md
+  - Basics: basics.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Example: example.md
 
 markdown_extensions:
-- attr_list
-- admonition
-- def_list
-- codehilite
-
-- toc:
-    permalink: true
-- pymdownx.superfences
-- pymdownx.inlinehilite
-- pymdownx.tilde
-- pymdownx.betterem
-- pymdownx.mark
+  - attr_list
+  - admonition
+  - def_list
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
