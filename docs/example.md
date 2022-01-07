@@ -135,4 +135,4 @@ alternating endings for different genders.
 
 To better understand this greeting form field, the structure of the field is
 being visually represented here in the form of an
-image: ![graphic](/Images/Example_MoreGreetings.png)
+image: ![graphic](/docs/Images/Example_MoreGreetings.png)
