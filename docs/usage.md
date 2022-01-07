@@ -41,3 +41,7 @@
 - Click the **Edit** button next to the greeting field whose content you do not
   want to change.
 - Check the **Write Protection** box to the right of the desired field.
+
+## Usage in documents and emails (mail merge) As with CiviCRM's regular
+   greetings you should have a token menu from which you can select the
+   desired greeting when editing an email or a template.
