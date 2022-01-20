@@ -2,7 +2,7 @@
 <extension key="de.systopia.moregreetings" type="module">
   <file>moregreetings</file>
   <name>More Greeting Options</name>
-  <description>Extension for additional greetings</description>
+  <description>Extension to allow additional, customised greetings</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>SYSTOPIA</author>
