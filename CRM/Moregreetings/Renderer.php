@@ -21,10 +21,18 @@
  */
 class CRM_Moregreetings_Renderer {
 
+  /** @var array list of contact ids that should be excluded from updating */
+  protected static $excluded_contact_ids = [];
+
   /**
    * Re-calculate the more-greetings for one contact
    */
   public static function updateMoreGreetings($contact_id, $contact = NULL) {
+    // check exclusion list
+    if (in_array($contact_id, self::$excluded_contact_ids)) {
+      return;
+    }
+
     // load the templates
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
     if (!is_array($templates)) {
@@ -167,5 +175,25 @@ class CRM_Moregreetings_Renderer {
     }
 
     return implode(',', array_keys($fields_used));
+  }
+
+  /**
+   * Add a list of contact IDs to the exclusion list
+   *
+   * @param array $excluded_contact_ids
+   *   list of contact IDs to be excluded from rendering
+   */
+  public static function addExcludedContactIDs($excluded_contact_ids) {
+    self::$excluded_contact_ids = array_merge(self::$excluded_contact_ids, $excluded_contact_ids);
+  }
+
+  /**
+   * Clear the list of contact_ids to be excluded from rendering
+   *
+   * @return array
+   *   previously set list of contact IDs
+   */
+  public static function clearExcludedContactIDs() {
+    self::$excluded_contact_ids = [];
   }
 }
