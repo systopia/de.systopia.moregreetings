@@ -558,6 +558,9 @@ class CRM_Moregreetings_CustomData {
 
     /**
      * Get a mapping: custom_group_id => custom_group_name
+     *
+     * @return array
+     *   mapping custom_group_id => custom_group_name
      */
     public static function getGroup2Name() {
         if (self::$custom_group2name === NULL) {
@@ -617,8 +620,11 @@ class CRM_Moregreetings_CustomData {
      *
      * @todo make it more efficient?
      *
-     * @param array $params      the parameter array as used by the API
-     * @param array $group_names list of group names to process. Default is: all
+     * @param array $params
+     *   the parameter array as used by the API
+     *
+     * @param array $group_names
+     *   list of group names to process. Default is: all
      */
     public static function unREST(&$params, $group_names = NULL) {
         if ($group_names == NULL || !is_array($group_names)) {
@@ -699,9 +705,14 @@ class CRM_Moregreetings_CustomData {
     /**
      * Get the current field value from CiviCRM's pre-hook structure
      *
-     * @param $params pre-hook data
-     * @param $field_id custom field ID
-     * @return mixed the current value
+     * @param $params array
+     *   pre-hook data
+     *
+     * @param $field_id string
+     *   custom field ID
+     *
+     * @return mixed
+     *   the current value
      */
     public static function getPreHookCustomDataValue($params, $field_id) {
         if ($field_id) {
@@ -720,9 +731,14 @@ class CRM_Moregreetings_CustomData {
     /**
      * Set a field value in CiviCRM's pre-hook structure right in the pre hook data
      *
-     * @param $params pre-hook data
-     * @param $field_id custom field ID
-     * @param $value the new value
+     * @param $params array
+     *    pre-hook data
+     *
+     * @param $field_id string
+     *    custom field ID
+     *
+     * @param $value mixed
+     *    the new value
      */
     public static function setPreHookCustomDataValue(&$params, $field_id, $value) {
         if ($field_id) {
