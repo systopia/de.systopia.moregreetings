@@ -21,7 +21,7 @@ use CRM_Moregreetings_ExtensionUtil as E;
 /**
  * Collection of upgrade steps.
  */
-class CRM_Moregreetings_Upgrader extends CRM_Moregreetings_Upgrader_Base {
+class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
 
   /**
    * Update greetings fields to make them searchable and displayable in reports.
