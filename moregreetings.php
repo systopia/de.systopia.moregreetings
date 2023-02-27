@@ -17,6 +17,8 @@
 
 require_once 'moregreetings.civix.php';
 
+use CRM_Moregreetings_ExtensionUtil as E;
+
 /**
  * implement the hook to customize the rendered tab of our custom group
  */
@@ -102,29 +104,25 @@ function moregreetings_civicrm_install() {
   _moregreetings_civix_civicrm_install();
 }
 
-// --- Functions below this ship commented out. Uncomment as required. ---
-
-/**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
- *
-
- // */
-
 /**
  * Implements hook_civicrm_navigationMenu().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
- *
+ */
 function moregreetings_civicrm_navigationMenu(&$menu) {
-  _moregreetings_civix_insert_navigation_menu($menu, NULL, array(
-    'label' => ts('The Page', array('domain' => 'de.systopia.moregreetings')),
-    'name' => 'the_page',
-    'url' => 'civicrm/the-page',
-    'permission' => 'access CiviReport,access CiviContribute',
-    'operator' => 'OR',
-    'separator' => 0,
-  ));
+  _moregreetings_civix_insert_navigation_menu(
+    $menu,
+    'Administer/Communications',
+    [
+      'label' => E::ts('More Greetings'),
+      'name' => 'moregreetings',
+      'url' => 'civicrm/admin/setting/moregreetings',
+      // TODO: Adjust permission once there is a separate one.
+      'permission' => 'administer CiviCRM',
+      'operator' => 'OR',
+      'separator' => 0,
+      'icon' => 'crm-i fa-comments-o',
+    ]
+  );
   _moregreetings_civix_navigationMenu($menu);
-} // */
+}
