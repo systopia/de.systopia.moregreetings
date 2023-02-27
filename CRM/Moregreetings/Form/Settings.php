@@ -49,10 +49,12 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
     $this->assign('greetings_count', range(1,self::getNumberOfGreetings()));
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
+      $fields = CRM_Moregreetings_Config::getFields();
+      $field_id = array_search('greeting_field_'.$i, array_column($fields, 'name', 'id'));
       $this->add(
         'textarea', // field type
         "greeting_smarty_{$i}", // field name
-        ts("Greeting %1", array(1 => $i, 'domain' => 'de.systopia.moregreetings')), // field label
+        $fields[$field_id]['label'] . ' (' . ts("Greeting %1", array(1 => $i, 'domain' => 'de.systopia.moregreetings')) . ')', // field label
         array('rows' => 4,
               'cols' => 50,
         ), // list of options
