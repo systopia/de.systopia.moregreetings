@@ -190,17 +190,20 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
    * @throws \ErrorException
    */
   public static function smartyErrorHandler($errNo, $errStr, $errFile, $errLine, $errContext = []) {
+    
     // Call the original error handler with the original error parameters. This
     // makes sure the error still gets printed or logged or whatever the
     // original error handler is supposed to do with it.
-    call_user_func(
-      static::$_original_error_handler,
-      $errNo,
-      $errStr,
-      $errFile,
-      $errLine,
-      $errContext
-    );
+    if (!empty(static::$_original_error_handler)) {
+      call_user_func(
+        static::$_original_error_handler,
+        $errNo,
+        $errStr,
+        $errFile,
+        $errLine,
+        $errContext
+      );
+    }
 
     // Restore the original error handler for subsequent error handling.
     restore_error_handler();
