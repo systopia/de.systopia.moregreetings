@@ -194,7 +194,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     // Call the original error handler with the original error parameters. This
     // makes sure the error still gets printed or logged or whatever the
     // original error handler is supposed to do with it.
-    if (!empty(static::$_original_error_handler)) {
+    if (is_callable(static::$_original_error_handler)) {
       call_user_func(
         static::$_original_error_handler,
         $errNo,
