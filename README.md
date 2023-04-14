@@ -6,5 +6,5 @@
 - Gives the option to update added greeting fields for all contacts in the database
 
 ## Documentation
-- https://docs.civicrm.org/moregreetings/en/latest
-- https://docs.civicrm.org/moregreetings/de/latest
+- EN: https://docs.civicrm.org/moregreetings/en/latest (automatic publishing)
+- DE: https://docs.civicrm.org/moregreetings/de/latest (automatic publishing)
