@@ -159,7 +159,9 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       // fetch those, replace the current error handler with a custom one, which
       // will throw an exception, that will be caught here. Store as a static
       // class member in order to access it within the custom error handler.
-      static::$_original_error_handler = set_error_handler(array(get_class(), 'smartyErrorHandler'));
+      if (!isset(static::$_original_error_handler)) {
+        static::$_original_error_handler = set_error_handler(array(get_class(), 'smartyErrorHandler'));
+      }
 
       // Try the rendering.
       try {
@@ -204,6 +206,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
     // Restore the original error handler for subsequent error handling.
     restore_error_handler();
+    static::$_original_error_handler = NULL;
 
     if (strpos($errStr, 'Smarty error:') === 0) {
       throw new ErrorException(
