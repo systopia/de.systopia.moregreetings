@@ -25,13 +25,17 @@ class CRM_Utils_Smarty {
    * @param Smarty $smarty
    */
   public static function registerCustomFunctions($smarty) {
-    $smarty->register_modifier('mg_startswith',            ['CRM_Utils_Smarty', 'startswith']);
-    $smarty->register_modifier('mg_endswith',              ['CRM_Utils_Smarty', 'endswith']);
-    $smarty->register_modifier('mg_contains',              ['CRM_Utils_Smarty', 'contains']);
-    $smarty->register_modifier('tokens_have_min_length',   ['CRM_Utils_Smarty', 'tokens_have_min_length']);
-    $smarty->register_modifier('token_extract',            ['CRM_Utils_Smarty', 'token_extract']);
-    $smarty->register_modifier('lcfirst',    'lcfirst');
-    $smarty->register_modifier('ucfirst',    'ucfirst');
+    static $registered = FALSE;
+    if (!$registered) {
+      $smarty->register_modifier('mg_startswith',            ['CRM_Utils_Smarty', 'startswith']);
+      $smarty->register_modifier('mg_endswith',              ['CRM_Utils_Smarty', 'endswith']);
+      $smarty->register_modifier('mg_contains',              ['CRM_Utils_Smarty', 'contains']);
+      $smarty->register_modifier('tokens_have_min_length',   ['CRM_Utils_Smarty', 'tokens_have_min_length']);
+      $smarty->register_modifier('token_extract',            ['CRM_Utils_Smarty', 'token_extract']);
+      $smarty->register_modifier('lcfirst',    'lcfirst');
+      $smarty->register_modifier('ucfirst',    'ucfirst');
+      $registered = TRUE;
+    }
   }
 
   /**
