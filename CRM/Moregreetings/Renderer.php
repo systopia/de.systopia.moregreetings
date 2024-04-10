@@ -15,6 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+use Civi\Api4\Contact;
+
 /**
  * update current greetings
  *
@@ -27,7 +29,7 @@ class CRM_Moregreetings_Renderer {
   /**
    * Re-calculate the more-greetings for one contact
    */
-  public static function updateMoreGreetings($contact_id, $contact = NULL) {
+  public static function updateMoreGreetings($contact_id, $contact = NULL): void {
     // check exclusion list
     if (in_array($contact_id, self::$excluded_contact_ids)) {
       return;
@@ -36,17 +38,18 @@ class CRM_Moregreetings_Renderer {
     // load the templates
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
     if (!is_array($templates)) {
-      return NULL;
+      return;
     }
 
     // load the contact
     if ($contact == NULL) {
       // remark: if you change these parameters, see if you also want to adjust
       //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
-      $contact = civicrm_api3('Contact', 'getsingle', array(
-        'id'     => $contact_id,
-        'return' => self::getUsedContactFields($templates),
-      ));
+      $contact = Contact::get(FALSE)
+        ->setSelect(self::getUsedContactFields($templates))
+        ->addWhere('id', '=', $contact_id)
+        ->execute()
+        ->single();
     }
 
     // TODO: assign more stuff?
@@ -86,28 +89,27 @@ class CRM_Moregreetings_Renderer {
   /**
    * Re-calculate the more-greetings for a list of contacts ()
    *
-   * @param $from_id    only consider contact with ID >= $from_id
-   * @param $max_count  process no more than $max_count contacts
+   * @param int $from_id    only consider contact with ID >= $from_id
+   * @param int $max_count  process no more than $max_count contacts
    *
-   * @return last contact ID processed, 0 if none
+   * @return int last contact ID processed, 0 if none
    */
-  public static function updateMoreGreetingsForContacts($from_id, $max_count) {
+  public static function updateMoreGreetingsForContacts($from_id, $max_count): int {
     $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
 
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
-    $query_paremeters = array(
-      'id'         => array('>=' => $from_id),
-      'is_deleted' => 0,
-      'sequential' => 1,
-      'return'     => self::getUsedContactFields($templates),
-      'options'    => array('limit' => $max_count,
-                            'sort'  => 'id asc'));
-
-    $contact_query = civicrm_api3('Contact', 'get', $query_paremeters);
+    $contacts = Contact::get(FALSE)
+      ->setSelect(self::getUsedContactFields($templates))
+      ->addSelect('id')
+      ->addWhere('id', '>=', $from_id)
+      ->addWhere('is_deleted', '=', false)
+      ->addOrderBy('id')
+      ->setLimit($max_count)
+      ->execute();
 
     $last_id = 0;
-    foreach ($contact_query['values'] as $contact) {
+    foreach ($contacts as $contact) {
       $last_id = $contact['id'];
       self::updateMoreGreetings($last_id, $contact);
     }
@@ -153,9 +155,9 @@ class CRM_Moregreetings_Renderer {
   }
 
   /**
-   * Returns a comma-separated list of the fields used in the templates
+   * @phpstan-return list<string> Fields used in the templates
    */
-  public static function getUsedContactFields($templates) {
+  public static function getUsedContactFields($templates): array {
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
     $fields_used = array();
 
@@ -174,7 +176,7 @@ class CRM_Moregreetings_Renderer {
       }
     }
 
-    return implode(',', array_keys($fields_used));
+    return array_keys($fields_used);
   }
 
   /**
