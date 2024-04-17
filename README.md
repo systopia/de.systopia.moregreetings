@@ -8,3 +8,9 @@
 ## Documentation
 - EN: https://docs.civicrm.org/moregreetings/en/latest (automatic publishing)
 - DE: https://docs.civicrm.org/moregreetings/de/latest (automatic publishing)
+
+## Known Issues
+
+With recent CiviCRM versions APIv3 doesn't return some fields for contacts like
+`email_greeting_display` which might lead to empty placeholders. This is
+resolved in version 1.2-beta3 or later of this extension.
