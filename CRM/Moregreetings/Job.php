@@ -15,6 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+use Civi\Api4\Contact;
+
 define('MOREGREETINGS_JOB_SIZE', 250);
 /**
  * Runner Job to apply the current templates to all contacts
@@ -55,13 +57,14 @@ class CRM_Moregreetings_Job {
     // load contacts
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Renderer::updateMoreGreetings and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
-    $contacts = civicrm_api3('Contact', 'get', array(
-      'id'           => array('IN' => $contact_ids),
-      'return'       => $used_fields,
-      'option.limit' => 0));
+    $contacts = Contact::get(FALSE)
+      ->setSelect($used_fields)
+      ->addSelect('id')
+      ->addWhere('id', 'IN', $contact_ids)
+      ->execute();
 
     // apply
-    foreach ($contacts['values'] as $contact) {
+    foreach ($contacts as $contact) {
       CRM_Moregreetings_Renderer::updateMoreGreetings($contact['id'], $contact);
     }
 
