@@ -19,6 +19,13 @@ language [here](https://www.smarty.net).
   the condition.
 - The `|` character means that Smarty combines several functions and executes
   them one after the other.
+- Fields specific to a contact type (for example `first_name` for Individuals) must only be accessed on corresponding contacts. Use statements like the following:
+
+```smarty
+{if $contact_type == 'Individual'}
+    {capture assign=first_name}{$contact.first_name}{/capture}
+{/if}
+```
 
 In the example here, Smarty first checks the contact type (*Household*,
 *Organization*, or *Individual*) of the respective contact. It then
