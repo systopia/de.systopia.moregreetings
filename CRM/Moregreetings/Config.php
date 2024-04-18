@@ -152,7 +152,7 @@ class CRM_Moregreetings_Config {
     $job = self::getAllGreetingsJob();
 
     // start from zero:
-    CRM_Core_BAO_Setting::setItem('0', 'moregreetings', 'moregreetings_job_status');
+    Civi::settings()->set('moregreetings_job_status', '0');
 
     // enable cronjob
     if (!$job['is_active']) {

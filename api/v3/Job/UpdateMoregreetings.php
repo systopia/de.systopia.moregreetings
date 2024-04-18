@@ -19,14 +19,14 @@
  * Cron Job to update the more-greetings for all contacts
  */
 function civicrm_api3_job_update_moregreetings($params) {
-  $last_id = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_job_status');
+  $last_id = Civi::settings()->get('moregreetings_job_status');
   if ($last_id == 'busy') {
     // there's another job running
     return civicrm_api3_create_success(ts("Job already running", array('domain' => 'de.systopia.moregreetings')));
   }
 
   // ok, let's go
-  CRM_Core_BAO_Setting::setItem('busy', 'moregreetings', 'moregreetings_job_status');
+  Civi::settings()->set('moregreetings_job_status', 'busy');
   $start_time = microtime(TRUE);
 
   // run the renderer on blocks of contacts until the time runs out
@@ -41,7 +41,7 @@ function civicrm_api3_job_update_moregreetings($params) {
   }
 
   // store last processed ID
-  CRM_Core_BAO_Setting::setItem((string)$last_id, 'moregreetings', 'moregreetings_job_status');
+  Civi::settings()->set('moregreetings_job_status', (string)$last_id);
 
   if ($last_id == 0) {
     // we're done!
