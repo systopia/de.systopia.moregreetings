@@ -41,7 +41,7 @@ function civicrm_api3_job_update_moregreetings($params) {
   }
 
   // store last processed ID
-  Civi::settings()->set('moregreetings_job_status', (string)$last_id);
+  Civi::settings()->set('moregreetings_job_status', (string) $last_id);
 
   if ($last_id == 0) {
     // we're done!
