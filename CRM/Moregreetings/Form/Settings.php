@@ -93,7 +93,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
    * set the default (=current) values in the form
    */
   public function setDefaultValues() {
-    $values = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $values = Civi::settings()->get('moregreetings_templates');
     if (!is_array($values)) {
       $values = array();
     }
@@ -109,7 +109,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     $values = $this->exportValues();
 
     // first: update the greetings
-    $old_greetings = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $old_greetings = Civi::settings()->get('moregreetings_templates');
     $greetings_changed = FALSE;
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       if (isset($values["greeting_smarty_{$i}"])) {
@@ -123,7 +123,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
         $greetings_changed = TRUE;
       }
     }
-    CRM_Core_BAO_Setting::setItem($values_array, 'moregreetings', 'moregreetings_templates');
+    Civi::settings()->set('moregreetings_templates', $values_array);
 
     // then: adjust the greeting count
     if ($values['greeting_count'] != self::getNumberOfGreetings()) {

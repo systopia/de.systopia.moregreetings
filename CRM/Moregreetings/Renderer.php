@@ -36,7 +36,7 @@ class CRM_Moregreetings_Renderer {
     }
 
     // load the templates
-    $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $templates = Civi::settings()->get('moregreetings_templates');
     if (!is_array($templates)) {
       return;
     }
@@ -95,7 +95,7 @@ class CRM_Moregreetings_Renderer {
    * @return int last contact ID processed, 0 if none
    */
   public static function updateMoreGreetingsForContacts($from_id, $max_count): int {
-    $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $templates = Civi::settings()->get('moregreetings_templates');
 
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
