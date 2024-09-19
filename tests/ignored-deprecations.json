@@ -1,0 +1,1317 @@
+[
+    {
+        "location": "Civi\\Test\\CiviTestListenerPHPUnit7",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class implements \"PHPUnit\\Framework\\TestListener\" that is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Test\\CiviTestListenerPHPUnit7",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class uses \"PHPUnit\\Framework\\TestListenerDefaultImplementation\" that is deprecated The `TestListener` interface is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Test\\CiviTestListener",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class implements \"PHPUnit\\Framework\\TestListener\" that is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Test\\CiviTestListener",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class uses \"PHPUnit\\Framework\\TestListenerDefaultImplementation\" that is deprecated The `TestListener` interface is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "The \"CRM_Utils_System_Base::isLoaded()\" method is considered internal. It may change without further notice. You should not extend it from \"CRM_Utils_System_UnitTests\".",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "Method \"CRM_Utils_System_Base::authenticate()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_System_UnitTests\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "Method \"CRM_Utils_System_Base::cmsRootPath()\" might add \"?string\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_System_UnitTests\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "Method \"CRM_Utils_System_Base::postURL()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_System_UnitTests\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "Method \"CRM_Utils_System_Base::url()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_System_UnitTests\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_System_UnitTests",
+        "message": "Method \"CRM_Utils_System_Base::getLoginURL()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_System_UnitTests\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_SqlGroup",
+        "message": "Method \"CRM_Utils_Cache_Interface::has()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_SqlGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_SqlGroup",
+        "message": "Method \"CRM_Utils_Cache_Interface::flush()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_SqlGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_SqlGroup",
+        "message": "Method \"CRM_Utils_Cache_Interface::clear()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_SqlGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Cache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Cache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"Psr\\SimpleCache\\CacheInterface::getMultiple()\" might add \"iterable\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"Psr\\SimpleCache\\CacheInterface::setMultiple()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"Psr\\SimpleCache\\CacheInterface::deleteMultiple()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"CRM_Utils_Cache_Interface::set()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"CRM_Utils_Cache_Interface::get()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"CRM_Utils_Cache_Interface::delete()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"CRM_Utils_Cache_Interface::clear()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_CacheWrapper",
+        "message": "Method \"CRM_Utils_Cache_Interface::has()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_CacheWrapper\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_ArrayCache",
+        "message": "Method \"CRM_Utils_Cache_Interface::flush()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_ArrayCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_ArrayCache",
+        "message": "Method \"CRM_Utils_Cache_Interface::clear()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_ArrayCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_Cache_ArrayCache",
+        "message": "Method \"CRM_Utils_Cache_Interface::has()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_Cache_ArrayCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Core\\Compiler\\AutoServiceScannerPass",
+        "message": "Method \"Symfony\\Component\\DependencyInjection\\Compiler\\CompilerPassInterface::process()\" might add \"void\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Core\\Compiler\\AutoServiceScannerPass\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Core\\Compiler\\EventScannerPass",
+        "message": "Method \"Symfony\\Component\\DependencyInjection\\Compiler\\CompilerPassInterface::process()\" might add \"void\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Core\\Compiler\\EventScannerPass\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Core\\Compiler\\SpecProviderPass",
+        "message": "Method \"Symfony\\Component\\DependencyInjection\\Compiler\\CompilerPassInterface::process()\" might add \"void\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Core\\Compiler\\SpecProviderPass\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Extension",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Extension\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_LocationType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_LocationType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Managed",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Managed\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Mapping",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Mapping\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_MessageTemplate",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_MessageTemplate\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_OptionGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_OptionGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_PreferencesDate",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_PreferencesDate\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Translation",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Translation\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_PrevNextCache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_PrevNextCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_RecurringEntity",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_RecurringEntity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_BAO_RecurringEntity",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_BAO_RecurringEntity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_ACL_DAO_ACL",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_ACL_DAO_ACL\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_ACL_DAO_ACLEntityRole",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_ACL_DAO_ACLEntityRole\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_Contact",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_Contact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_RelationshipType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_RelationshipType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_SavedSearch",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_SavedSearch\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_ContactType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_ContactType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Batch_DAO_Batch",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Batch_DAO_Batch\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Batch_BAO_Batch",
+        "message": "The \"CRM_Batch_BAO_Batch::links()\" method will require a new \"array $new_links\" argument in the next major version of its parent class \"DB_DataObject\", not defining it is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Batch_DAO_EntityBatch",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Batch_DAO_EntityBatch\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingComponent",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingComponent\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingAB",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingAB\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_BouncePattern",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_BouncePattern\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_Premium",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_Premium\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_FinancialAccount",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_FinancialAccount\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_PaymentProcessorType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_PaymentProcessorType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_FinancialType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_FinancialType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_EntityFinancialAccount",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_EntityFinancialAccount\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_FinancialItem",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_FinancialItem\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_MembershipStatus",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_MembershipStatus\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Campaign_DAO_Campaign",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Campaign_DAO_Campaign\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Campaign_DAO_Survey",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Campaign_DAO_Survey\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_DAO_ParticipantStatusType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_DAO_ParticipantStatusType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Dedupe_DAO_DedupeRuleGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Dedupe_DAO_DedupeRuleGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Dedupe_DAO_DedupeRule",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Dedupe_DAO_DedupeRule\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Dedupe_DAO_DedupeException",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Dedupe_DAO_DedupeException\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Case_DAO_CaseType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Case_DAO_CaseType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Friend_DAO_Friend",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Friend_DAO_Friend\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Pledge_DAO_PledgeBlock",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Pledge_DAO_PledgeBlock\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Queue_DAO_Queue",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Queue_DAO_Queue\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Queue_DAO_QueueItem",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Queue_DAO_QueueItem\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_PCP_DAO_PCP",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_PCP_DAO_PCP\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Cxn_DAO_Cxn",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Cxn_DAO_Cxn\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Country",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Country\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_CustomGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_CustomGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_BAO_CustomGroup",
+        "message": "Method \"CRM_Core_DAO::buildOptions()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_BAO_CustomGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_CustomField",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_CustomField\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_BAO_CustomField",
+        "message": "Method \"CRM_Core_DAO::buildOptions()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_BAO_CustomField\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Domain",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Domain\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Email",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Email\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_File",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_File\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_IM",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_IM\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Job",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Job\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Log",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Log\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_MailSettings",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_MailSettings\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Navigation",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Navigation\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Note",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Note\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_OptionValue",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_OptionValue\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Phone",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Phone\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Tag",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Tag\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_UFMatch",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_UFMatch\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_UserJob",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_UserJob\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_OpenID",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_OpenID\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Website",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Website\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Setting",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Setting\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_WordReplacement",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_WordReplacement\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_StatusPreference",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_StatusPreference\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_Group",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_Group\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_SubscriptionHistory",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_SubscriptionHistory\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_GroupContactCache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_GroupContactCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_GroupNesting",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_GroupNesting\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_GroupOrganization",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_GroupOrganization\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventSubscribe",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventSubscribe\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventConfirm",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventConfirm\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_ContributionPage",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_ContributionPage\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_Product",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_Product\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_Widget",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_Widget\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_PaymentProcessor",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_PaymentProcessor\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_SMS_DAO_SmsProvider",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_SMS_DAO_SmsProvider\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_MembershipType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_MembershipType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_MembershipBlock",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_MembershipBlock\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Case_DAO_Case",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Case_DAO_Case\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Case_DAO_CaseContact",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Case_DAO_CaseContact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Pledge_DAO_Pledge",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Pledge_DAO_Pledge\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Report_DAO_ReportInstance",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Report_DAO_ReportInstance\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Price_DAO_PriceSet",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Price_DAO_PriceSet\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_County",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_County\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Dashboard",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Dashboard\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Discount",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Discount\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_BAO_Discount",
+        "message": "Method \"CRM_Core_DAO::buildOptions()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_BAO_Discount\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_EntityTag",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_EntityTag\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_UFGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_UFGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_UFField",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_UFField\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_UFJoin",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_UFJoin\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_ActionSchedule",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_ActionSchedule\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_ActionLog",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_ActionLog\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_DashboardContact",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_DashboardContact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_Relationship",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_Relationship\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_BAO_Relationship",
+        "message": "Method \"CRM_Core_DAO::buildOptions()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_BAO_Relationship\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_RelationshipCache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_RelationshipCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_Mailing",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_Mailing\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingTrackableURL",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingTrackableURL\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingJob",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingJob\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingRecipients",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingRecipients\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_Spool",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_Spool\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventQueue",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventQueue\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventBounce",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventBounce\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventDelivered",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventDelivered\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventForward",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventForward\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventOpened",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventOpened\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventReply",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventReply\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventTrackableURLOpen",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventTrackableURLOpen\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Event_DAO_MailingEventUnsubscribe",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Event_DAO_MailingEventUnsubscribe\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_ContributionRecur",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_ContributionRecur\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_BAO_ContributionRecur",
+        "message": "Method \"CRM_Core_DAO::buildOptions()\" might add \"array|bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_BAO_ContributionRecur\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_FinancialTrxn",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_FinancialTrxn\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_Membership",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_Membership\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_MembershipLog",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_MembershipLog\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_DAO_Activity",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Activity_DAO_Activity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_DAO_ActivityContact",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Activity_DAO_ActivityContact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_BAO_ActivityContact",
+        "message": "The \"CRM_Activity_BAO_ActivityContact::links()\" method will require a new \"array $new_links\" argument in the next major version of its parent class \"DB_DataObject\", not defining it is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Price_DAO_PriceField",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Price_DAO_PriceField\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Price_DAO_PriceFieldValue",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Price_DAO_PriceFieldValue\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_PCP_DAO_PCPBlock",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_PCP_DAO_PCPBlock\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Address",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Address\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_GroupContact",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_GroupContact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_Contribution",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_Contribution\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_ContributionSoft",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_ContributionSoft\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_EntityFinancialTrxn",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_EntityFinancialTrxn\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_DAO_MembershipPayment",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Member_DAO_MembershipPayment\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_DAO_Event",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_DAO_Event\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_DAO_Participant",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_DAO_Participant\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_DAO_ParticipantPayment",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_DAO_ParticipantPayment\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Pledge_DAO_PledgePayment",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Pledge_DAO_PledgePayment\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Price_DAO_LineItem",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Price_DAO_LineItem\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_ActionMapping",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Activity_ActionMapping\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Token\\AbstractTokenSubscriber",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Token\\AbstractTokenSubscriber\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_Tokens",
+        "message": "Method \"CRM_Core_EntityTokens::getActiveTokens()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"CRM_Activity_Tokens\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Campaign_Info",
+        "message": "Method \"CRM_Core_Component_Info::getActivityTypes()\" might add \"?array\" as a native return type declaration in the future. Do the same in child class \"CRM_Campaign_Info\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Case_Info",
+        "message": "Method \"CRM_Core_Component_Info::getReferenceCounts()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Case_Info\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_ActionMapping",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Contact_ActionMapping\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Cxn_CiviCxnStore",
+        "message": "Method \"Civi\\Cxn\\Rpc\\CxnStore\\CxnStoreInterface::getAll()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Cxn_CiviCxnStore\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Cxn_CiviCxnStore",
+        "message": "Method \"Civi\\Cxn\\Rpc\\CxnStore\\CxnStoreInterface::getByCxnId()\" might add \"?array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Cxn_CiviCxnStore\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Cxn_CiviCxnStore",
+        "message": "Method \"Civi\\Cxn\\Rpc\\CxnStore\\CxnStoreInterface::getByAppId()\" might add \"?array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Cxn_CiviCxnStore\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "HTML_QuickForm_Page",
+        "message": "Method \"HTML_QuickForm::exportValues()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"HTML_QuickForm_Page\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Logging_ReportDetail",
+        "message": "Method \"CRM_Report_Form::buildQuery()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Logging_ReportDetail\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Logging_ReportDetail",
+        "message": "Method \"CRM_Report_Form::limit()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Logging_ReportDetail\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_ActionTokens",
+        "message": "Method \"Civi\\Token\\AbstractTokenSubscriber::checkActive()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_ActionTokens\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Tokens",
+        "message": "Method \"Civi\\Token\\AbstractTokenSubscriber::checkActive()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_Tokens\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Member_ActionMapping",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Member_ActionMapping\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_ACL_DAO_ACLCache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_ACL_DAO_ACLCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_PrintLabel",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_PrintLabel\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Payment_Dummy",
+        "message": "Method \"CRM_Core_Payment::doRefund()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Payment_Dummy\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Payment_Manual",
+        "message": "Method \"CRM_Core_Payment::checkConfig()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Payment_Manual\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Payment_Manual",
+        "message": "Method \"CRM_Core_Payment::supportsNoEmailProvided()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Payment_Manual\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_DrupalBase",
+        "message": "Method \"CRM_Core_Permission_Base::isModulePermissionSupported()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_DrupalBase\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_Backdrop",
+        "message": "Method \"CRM_Core_Permission_Base::getAvailablePermissions()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_Backdrop\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_Backdrop",
+        "message": "Method \"CRM_Core_Permission_Base::isModulePermissionSupported()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_Backdrop\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_Drupal",
+        "message": "Method \"CRM_Core_Permission_Base::getAvailablePermissions()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_Drupal\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_Drupal",
+        "message": "Method \"CRM_Core_Permission_Base::isModulePermissionSupported()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_Drupal\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_Joomla",
+        "message": "Method \"CRM_Core_Permission_Base::isModulePermissionSupported()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_Joomla\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_WordPress",
+        "message": "Method \"CRM_Core_Permission_Base::getAvailablePermissions()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_WordPress\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_Permission_WordPress",
+        "message": "Method \"CRM_Core_Permission_Base::isModulePermissionSupported()\" might add \"bool\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_Permission_WordPress\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::fillWithSql()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::fillWithArray()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::fetch()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::getSelection()\" might add \"?array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::getPositions()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Redis",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::getCount()\" might add \"int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Redis\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_PrevNextCache_Sql",
+        "message": "Method \"CRM_Core_PrevNextCache_Interface::fillWithArray()\" might add \"bool\" as a native return type declaration in the future. Do the same in implementation \"CRM_Core_PrevNextCache_Sql\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Dedupe_BAO_Rule",
+        "message": "The \"CRM_Dedupe_BAO_DedupeRule::validateContacts()\" method is considered internal do not call from outside tested core code. No universe uses Feb 2024. It may change without further notice. You should not extend it from \"CRM_Dedupe_BAO_Rule\".",
+        "count": 1
+    },
+    {
+        "location": "CRM_Dedupe_BAO_Rule",
+        "message": "The \"CRM_Dedupe_BAO_DedupeRule::dedupeRuleFields()\" method is considered internal do not call from outside tested core code. No universe uses Feb 2024. It may change without further notice. You should not extend it from \"CRM_Dedupe_BAO_Rule\".",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_ActionMapping_ByEvent",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Event_ActionMapping_ByEvent\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_ActionMapping_ByTemplate",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Event_ActionMapping_ByTemplate\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_ActionMapping_ByType",
+        "message": "Method \"Civi\\ActionSchedule\\MappingInterface::getId()\" might add \"string|int\" as a native return type declaration in the future. Do the same in implementation \"CRM_Event_ActionMapping_ByType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_Service_ListUnsubscribe",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Mailing_Service_ListUnsubscribe\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Queue_Queue_SqlParallel",
+        "message": "Method \"CRM_Queue_Queue::claimItem()\" might add \"object\" as a native return type declaration in the future. Do the same in child class \"CRM_Queue_Queue_SqlParallel\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Activity_Import_Parser_Activity",
+        "message": "Method \"CRM_Import_Parser::init()\" might add \"void\" as a native return type declaration in the future. Do the same in child class \"CRM_Activity_Import_Parser_Activity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_Import_Parser_Contact",
+        "message": "Method \"CRM_Import_Parser::init()\" might add \"void\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_Import_Parser_Contact\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_Import_Parser_Contribution",
+        "message": "Method \"CRM_Import_Parser::init()\" might add \"void\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_Import_Parser_Contribution\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_Import_Parser_Participant",
+        "message": "Method \"CRM_Import_Parser::init()\" might add \"void\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_Import_Parser_Participant\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_BAO_ExportFormat_CSV",
+        "message": "Method \"CRM_Financial_BAO_ExportFormat::export()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_BAO_ExportFormat_CSV\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_BAO_ExportFormat_IIF",
+        "message": "Method \"CRM_Financial_BAO_ExportFormat::export()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_BAO_ExportFormat_IIF\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Core\\MetadataFlush",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Core\\MetadataFlush\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Core\\Url",
+        "message": "Method \"JsonSerializable::jsonSerialize()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Core\\Url\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Managed\\MultisiteManaged",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Managed\\MultisiteManaged\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Token\\ImpliedContextSubscriber",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Token\\ImpliedContextSubscriber\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\WorkflowMessage\\TestBanner",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\WorkflowMessage\\TestBanner\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Generic\\AbstractAction",
+        "message": "Method \"ArrayAccess::offsetGet()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Generic\\AbstractAction\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Service\\Autocomplete\\EventAutocompleteProvider",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Service\\Autocomplete\\EventAutocompleteProvider\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Service\\Spec\\RequestSpec",
+        "message": "Method \"Iterator::rewind()\" might add \"void\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Service\\Spec\\RequestSpec\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Service\\Spec\\RequestSpec",
+        "message": "Method \"Iterator::current()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Service\\Spec\\RequestSpec\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Service\\Spec\\RequestSpec",
+        "message": "Method \"Iterator::key()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Service\\Spec\\RequestSpec\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Api4\\Service\\Spec\\SpecGatherer",
+        "message": "Method \"Symfony\\Component\\EventDispatcher\\EventSubscriberInterface::getSubscribedEvents()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"Civi\\Api4\\Service\\Spec\\SpecGatherer\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Extension_Upgrader_Base",
+        "message": "Method \"CRM_Extension_Upgrader_Interface::notify()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"CRM_Extension_Upgrader_Base\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_AbstractFieldCoder",
+        "message": "Method \"API_Wrapper::fromApiInput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_AbstractFieldCoder\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_AbstractFieldCoder",
+        "message": "Method \"API_Wrapper::toApiOutput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_AbstractFieldCoder\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_HTMLInputCoder",
+        "message": "Method \"CRM_Utils_API_AbstractFieldCoder::decodeOutput()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_API_HTMLInputCoder\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_NullOutputCoder",
+        "message": "Method \"CRM_Utils_API_AbstractFieldCoder::decodeOutput()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"CRM_Utils_API_NullOutputCoder\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_ReloadOption",
+        "message": "Method \"API_Wrapper::fromApiInput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_ReloadOption\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_ReloadOption",
+        "message": "Method \"API_Wrapper::toApiOutput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_ReloadOption\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_MatchOption",
+        "message": "Method \"API_Wrapper::fromApiInput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_MatchOption\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_API_MatchOption",
+        "message": "Method \"API_Wrapper::toApiOutput()\" might add \"array\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_API_MatchOption\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_BounceType",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_BounceType\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_EntityFile",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_EntityFile\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_JobLog",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_JobLog\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_LocBlock",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_LocBlock\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_MappingField",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_MappingField\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_StateProvince",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_StateProvince\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Worldregion",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Worldregion\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_ContributionProduct",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_ContributionProduct\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_PaymentToken",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_PaymentToken\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contribute_DAO_PremiumsProduct",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contribute_DAO_PremiumsProduct\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Price_DAO_PriceSetEntity",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Price_DAO_PriceSetEntity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Mailing_DAO_MailingGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Mailing_DAO_MailingGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_LazyArray",
+        "message": "Method \"ArrayAccess::offsetGet()\" might add \"mixed\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_LazyArray\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Utils_LazyArray",
+        "message": "Method \"IteratorAggregate::getIterator()\" might add \"\\Traversable\" as a native return type declaration in the future. Do the same in implementation \"CRM_Utils_LazyArray\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Component",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Component\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_AddressFormat",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_AddressFormat\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_SystemLog",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_SystemLog\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Contact_DAO_ACLContactCache",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Contact_DAO_ACLContactCache\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Financial_DAO_Currency",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Financial_DAO_Currency\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Campaign_DAO_CampaignGroup",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Campaign_DAO_CampaignGroup\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_Cart_DAO_Cart",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_Cart_DAO_Cart\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Menu",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Menu\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Core_DAO_Timezone",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Core_DAO_Timezone\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Case_DAO_CaseActivity",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Case_DAO_CaseActivity\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Event_Cart_DAO_EventInCart",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Event_Cart_DAO_EventInCart\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "civi\\test\\civitestlistener",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class implements \"PHPUnit\\Framework\\TestListener\" that is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "civi\\test\\civitestlistener",
+        "message": "The \"Civi\\Test\\CiviTestListenerPHPUnit7\" class uses \"PHPUnit\\Framework\\TestListenerDefaultImplementation\" that is deprecated The `TestListener` interface is deprecated.",
+        "count": 1
+    },
+    {
+        "location": "HTML_QuickForm_Rule_Email",
+        "message": "Method \"HTML_QuickForm_Rule::getValidationScript()\" might add \"array\" as a native return type declaration in the future. Do the same in child class \"HTML_QuickForm_Rule_Email\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Afform_DAO_AfformSubmission",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Afform_DAO_AfformSubmission\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Search_DAO_SearchDisplay",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Search_DAO_SearchDisplay\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "CRM_Search_DAO_SearchSegment",
+        "message": "Method \"CRM_Core_DAO::getEntityTitle()\" might add \"string\" as a native return type declaration in the future. Do the same in child class \"CRM_Search_DAO_SearchSegment\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    },
+    {
+        "location": "Civi\\Token\\TokenRowIterator",
+        "message": "Method \"IteratorIterator::current()\" might add \"mixed\" as a native return type declaration in the future. Do the same in child class \"Civi\\Token\\TokenRowIterator\" now to avoid errors or add an explicit @return annotation to suppress this message.",
+        "count": 1
+    }
+]

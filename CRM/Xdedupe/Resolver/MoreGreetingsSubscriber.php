@@ -27,7 +27,7 @@ class CRM_Xdedupe_Resolver_MoreGreetingsSubscriber implements EventSubscriberInt
   /**
    * Subscribe to the list events, so we can plug the built-in ones
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
         'civi.xdedupe.resolvers' => ['addBuiltinResolvers', Events::W_MIDDLE],
     ];

@@ -51,7 +51,7 @@ class CRM_Moregreetings_Job {
     }
 
     // determine the fields to load
-    $templates = CRM_Core_BAO_Setting::getItem('moregreetings', 'moregreetings_templates');
+    $templates = Civi::settings()->get('moregreetings_templates');
     $used_fields = CRM_Moregreetings_Renderer::getUsedContactFields($templates);
 
     // load contacts
