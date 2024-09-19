@@ -1,6 +1,11 @@
 /.phpcs.cache
 /.phpunit.result.cache
 /.phpstan/
+/composer.lock
 /phpstan.neon
+/vendor/
 /tools/*/vendor/
 /tools/*/composer.lock
+/ci/composer.lock
+/ci/vendor/
+/tests/phpunit/bootstrap.local.php
