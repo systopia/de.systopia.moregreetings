@@ -43,4 +43,21 @@ class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
     return TRUE;
   }
 
+
+  /**
+   * Make sure users get a warning about the switch to APIv4
+   *
+   * @return bool TRUE on success
+   * @throws Exception
+   */
+  public function upgrade_5002() {
+    CRM_Core_Session::setStatus(
+      E::ts('MoreGreetings has switched to APIv4, which means that some tokens might not work any more.') . '<br/><br/>' .
+           E::ts('An example would be the defunct <code>$individual_prefix</code> token, which can be substituted by the <code>prefix_id:label</code>') . '<br/><br/>'.
+           E::ts('Make sure you test your greeting templates well before you continue using MoreGreetings.'),
+      E::ts("Warning"),
+      'alert', ['expires' => 0]);
+    return TRUE;
+  }
+
 }
