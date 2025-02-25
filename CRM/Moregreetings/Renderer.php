@@ -54,7 +54,7 @@ class CRM_Moregreetings_Renderer {
     }
 
     // TODO: assign more stuff?
-    $template_vars = [
+    $templateVars = [
       'contact' => $contact
     ];
 
@@ -67,7 +67,7 @@ class CRM_Moregreetings_Renderer {
     // render the greetings
     $greetings_update = array();
     foreach ($greetings_to_render as $greeting_key => $template) {
-      $new_value = \CRM_Utils_String::parseOneOffStringThroughSmarty($template, $template_vars);
+      $new_value = \CRM_Utils_String::parseOneOffStringThroughSmarty($template, $templateVars);
       $new_value = trim($new_value);
       // check if the value is really different (avoid unecessary updates)
       if ($new_value != $current_greetings[$greeting_key]) {
