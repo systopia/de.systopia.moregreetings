@@ -146,8 +146,8 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     $renderOut = NULL;
     try {
       $renderOut = \CRM_Utils_String::parseOneOffStringThroughSmarty($smartyValue);
-    } catch (\CRM_Core_Exception $exception) {
-      // Coming from parseOneOffStringThroughSmarty
+    } 
+    catch (\CRM_Core_Exception $exception) {
       return FALSE;
     }
 
