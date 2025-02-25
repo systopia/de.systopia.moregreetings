@@ -21,7 +21,9 @@ jobs:
         # that container fails with:
         # The file "tests/phpunit/api/v4/services.xml" does not exist (in: "/var/www/html/sites/all/modules/civicrm").
         # Thus, the least version here is 5.39.
-        civicrm-image-tags: [ '5-drupal', '5.39-drupal-php7.4' ]
+        # In addition the method CRM_Utils_String::parseOneOffStringThroughSmarty is being used
+        # Thus, the least version is now 5.75
+        civicrm-image-tags: [ '5-drupal', '5.75-drupal-php8.0' ]
     name: PHPUnit with Docker image michaelmcandrew/civicrm:${{ matrix.civicrm-image-tags }}
     env:
       CIVICRM_IMAGE_TAG: ${{ matrix.civicrm-image-tags }}
