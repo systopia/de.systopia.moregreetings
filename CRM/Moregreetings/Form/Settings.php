@@ -22,14 +22,6 @@
  */
 class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
-  /**
-   * @var string | array | NULL
-   *   Used to store the original error handler, which will be temporarily
-   *   replaced for identifying smarty errors when saving the MoreGreetings
-   *   configuration form.
-   */
-  protected static $_original_error_handler = NULL;
-
   public function buildQuickForm() {
 
     $this->registerRule('is_valid_smarty', 'callback', 'validateSmarty', 'CRM_Moregreetings_Form_Settings');
@@ -142,7 +134,6 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     parent::postProcess();
   }
 
-
   /**
    * Form validation rule
    */
@@ -151,69 +142,16 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       return TRUE;
     }
 
+    // Try the rendering.
+    $renderOut = NULL;
     try {
-      $smarty = CRM_Core_Smarty::singleton();
-      CRM_Utils_Smarty::registerCustomFunctions($smarty);
-
-      // Smarty uses trigger_error() to indicate Smarty errors. In order to
-      // fetch those, replace the current error handler with a custom one, which
-      // will throw an exception, that will be caught here. Store as a static
-      // class member in order to access it within the custom error handler.
-      static::$_original_error_handler = set_error_handler(array(get_class(), 'smartyErrorHandler'));
-
-      // Try the rendering.
-      try {
-        $renderOut = $smarty->fetch('string:' . $smartyValue);
-      } catch (ErrorException $exception) {
-        // Coming from the custom error handler.
-        $renderOut = FALSE;
-      }
-
-      if (!is_string($renderOut)) {
-        return FALSE;
-      }
-    } catch (Exception $e) {
+      $renderOut = \CRM_Utils_String::parseOneOffStringThroughSmarty($smartyValue);
+    } 
+    catch (\CRM_Core_Exception $exception) {
       return FALSE;
     }
-    return TRUE;
-  }
 
-  /**
-   * Error handler that throws an exception, that can be caught and Smarty
-   * errors be identified.
-   *
-   * @param $errNo
-   * @param $errStr
-   * @param $errFile
-   * @param $errLine
-   *
-   * @throws \ErrorException
-   */
-  public static function smartyErrorHandler($errNo, $errStr, $errFile, $errLine, $errContext = []) {
-    // Call the original error handler with the original error parameters. This
-    // makes sure the error still gets printed or logged or whatever the
-    // original error handler is supposed to do with it.
-    call_user_func(
-      static::$_original_error_handler,
-      $errNo,
-      $errStr,
-      $errFile,
-      $errLine,
-      $errContext
-    );
-
-    // Restore the original error handler for subsequent error handling.
-    restore_error_handler();
-
-    if (strpos($errStr, 'Smarty error:') === 0) {
-      throw new ErrorException(
-        $errStr,
-        $errNo,
-        1,
-        $errFile,
-        $errLine
-      );
-    }
+    return is_string($renderOut);
   }
 
   /**
