@@ -17,11 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # The info.xml says CiviCRM 5.38 is supported. Though running phpunit in
-        # that container fails with:
-        # The file "tests/phpunit/api/v4/services.xml" does not exist (in: "/var/www/html/sites/all/modules/civicrm").
-        # Thus, the least version here is 5.39.
-        civicrm-image-tags: [ '5-drupal', '5.39-drupal-php7.4' ]
+        civicrm-image-tags: [ '5-drupal-php8.3', '5-drupal-php8.0', '5-drupal-php7.4' ]
     name: PHPUnit with Docker image michaelmcandrew/civicrm:${{ matrix.civicrm-image-tags }}
     env:
       CIVICRM_IMAGE_TAG: ${{ matrix.civicrm-image-tags }}
