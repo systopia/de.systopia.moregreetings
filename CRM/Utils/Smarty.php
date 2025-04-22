@@ -26,14 +26,28 @@ class CRM_Utils_Smarty {
    */
   public static function registerCustomFunctions($smarty) {
     static $registered = FALSE;
-    if (!$registered) {
-      $smarty->register_modifier('mg_startswith',            ['CRM_Utils_Smarty', 'startswith']);
-      $smarty->register_modifier('mg_endswith',              ['CRM_Utils_Smarty', 'endswith']);
-      $smarty->register_modifier('mg_contains',              ['CRM_Utils_Smarty', 'contains']);
-      $smarty->register_modifier('tokens_have_min_length',   ['CRM_Utils_Smarty', 'tokens_have_min_length']);
-      $smarty->register_modifier('token_extract',            ['CRM_Utils_Smarty', 'token_extract']);
-      $smarty->register_modifier('lcfirst',    'lcfirst');
-      $smarty->register_modifier('ucfirst',    'ucfirst');
+    if($smarty && !$registered) {
+      if(!$smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
+        $smarty->registerPlugin("modifier", 'mg_startswith', ['CRM_Utils_Smarty', 'startswith']);
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'mg_endswith')) {
+        $smarty->registerPlugin("modifier", 'mg_endswith', ['CRM_Utils_Smarty', 'endswith']);
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'mg_contains')) {
+        $smarty->registerPlugin("modifier", 'mg_contains', ['CRM_Utils_Smarty', 'contains']);
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'tokens_have_min_length')) {
+        $smarty->registerPlugin("modifier", 'tokens_have_min_length', ['CRM_Utils_Smarty', 'tokens_have_min_length']);
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'token_extract')) {
+        $smarty->registerPlugin("modifier", 'token_extract', ['CRM_Utils_Smarty', 'token_extract']);
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'lcfirst')) {
+        $smarty->registerPlugin("modifier", 'lcfirst', 'lcfirst');
+      }
+      if(!$smarty->getRegisteredPlugin('modifier', 'ucfirst')) {
+        $smarty->registerPlugin("modifier", 'ucfirst', 'ucfirst');
+      }
       $registered = TRUE;
     }
   }
