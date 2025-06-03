@@ -17,6 +17,7 @@
 
 use Civi\Api4\Contact;
 
+
 /**
  * update current greetings
  *
@@ -53,10 +54,9 @@ class CRM_Moregreetings_Renderer {
     }
 
     // TODO: assign more stuff?
-    // prepare smarty
-    $smarty = CRM_Core_Smarty::singleton();
-    CRM_Utils_Smarty::registerCustomFunctions($smarty);
-    $smarty->assign('contact', $contact);
+    $templateVars = [
+      'contact' => $contact
+    ];
 
     // load the current greetings
     $current_greetings = CRM_Moregreetings_Config::getCurrentData($contact_id);
@@ -67,7 +67,7 @@ class CRM_Moregreetings_Renderer {
     // render the greetings
     $greetings_update = array();
     foreach ($greetings_to_render as $greeting_key => $template) {
-      $new_value = $smarty->fetch("string:$template");
+      $new_value = \CRM_Utils_String::parseOneOffStringThroughSmarty($template, $templateVars);
       $new_value = trim($new_value);
       // check if the value is really different (avoid unecessary updates)
       if ($new_value != $current_greetings[$greeting_key]) {

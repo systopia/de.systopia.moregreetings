@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # The info.xml says CiviCRM 5.38 is supported. Though running phpunit in
-        # that container fails with:
-        # The file "tests/phpunit/api/v4/services.xml" does not exist (in: "/var/www/html/sites/all/modules/civicrm").
-        # Thus, the least version here is 5.39.
-        civicrm-image-tags: [ '5-drupal', '5.39-drupal-php7.4' ]
+        # Instead of smarty::fetch() the new method CRM_Utils_String::parseOneOffStringThroughSmarty() is being used
+        # Thus, the least civicrm version is now 5.75
+        # This extension is still supposed to be compatibe with php 7.4 but no docker image exists for that version
+        # Thus, we currently use the lowest php version for the selected civicrm image (php 8.0)
+        civicrm-image-tags: [ '5-drupal', '5.75-drupal-php8.0' ]
     name: PHPUnit with Docker image michaelmcandrew/civicrm:${{ matrix.civicrm-image-tags }}
     env:
       CIVICRM_IMAGE_TAG: ${{ matrix.civicrm-image-tags }}
