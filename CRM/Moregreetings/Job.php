@@ -65,6 +65,12 @@ class CRM_Moregreetings_Job {
 
     // apply
     foreach ($contacts as $contact) {
+      foreach ($used_fields as $templateFieldName => $api4FieldName) {
+        if ($templateFieldName !== $api4FieldName) {
+          // Ensure compatibility with APIv3 custom field names.
+          $contact[$templateFieldName] = $contact[$api4FieldName];
+        }
+      }
       CRM_Moregreetings_Renderer::updateMoreGreetings($contact['id'], $contact);
     }
 

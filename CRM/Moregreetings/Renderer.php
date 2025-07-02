@@ -17,14 +17,16 @@
 
 use Civi\Api4\Contact;
 
-
 /**
  * update current greetings
  *
  */
 class CRM_Moregreetings_Renderer {
 
-  /** @var array list of contact ids that should be excluded from updating */
+  /**
+   * @phpstan-var list<int>
+   *   A list of contact ids that should be excluded from updating.
+   */
   protected static $excluded_contact_ids = [];
 
   /**
@@ -46,11 +48,18 @@ class CRM_Moregreetings_Renderer {
     if ($contact == NULL) {
       // remark: if you change these parameters, see if you also want to adjust
       //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
+      $usedContactFields = self::getUsedContactFields($templates);
       $contact = Contact::get(FALSE)
-        ->setSelect(self::getUsedContactFields($templates))
+        ->setSelect($usedContactFields)
         ->addWhere('id', '=', $contact_id)
         ->execute()
         ->single();
+      foreach ($usedContactFields as $templateFieldName => $api4FieldName) {
+        if ($templateFieldName !== $api4FieldName) {
+          // Copy field value to the legacy field name.
+          $contact[$templateFieldName] = $contact[$api4FieldName];
+        }
+      }
     }
 
     // TODO: assign more stuff?
@@ -99,24 +108,31 @@ class CRM_Moregreetings_Renderer {
 
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
+    $usedContactFields = self::getUsedContactFields($templates);
     $contacts = Contact::get(FALSE)
-      ->setSelect(self::getUsedContactFields($templates))
+      ->setSelect($usedContactFields)
       ->addSelect('id')
       ->addWhere('id', '>=', $from_id)
-      ->addWhere('is_deleted', '=', false)
+      ->addWhere('is_deleted', '=', FALSE)
       ->addOrderBy('id')
       ->setLimit($max_count)
       ->execute();
 
     $last_id = 0;
     foreach ($contacts as $contact) {
+      foreach ($usedContactFields as $templateFieldName => $api4FieldName) {
+        if ($templateFieldName !== $api4FieldName) {
+          // Copy field value to the legacy field name.
+          $contact[$templateFieldName] = $contact[$api4FieldName];
+        }
+      }
+
       $last_id = $contact['id'];
       self::updateMoreGreetings($last_id, $contact);
     }
 
     return $last_id;
   }
-
 
   /**
    * Get an array [custom_key] => [template]
@@ -155,28 +171,44 @@ class CRM_Moregreetings_Renderer {
   }
 
   /**
-   * @phpstan-return list<string> Fields used in the templates
+   * @phpstan-return array<string, string>
+   *   A mapping of template field names to APIv4 field names, e.g. `custom_n` to API4-style
+   *   (`custom_group_name.custom_field_name`) custom field names.
    */
   public static function getUsedContactFields($templates): array {
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
-    $fields_used = array();
+    $fields_used = [];
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
+    $fields_to_render = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
 
         if (preg_match_all('#\$contact\.(?P<field>\w+)#', $template, $tokens)) {
+          $customFieldIds = [];
           foreach ($tokens['field'] as $field_name) {
-            $fields_used[$field_name] = 1;
+            // TODO: Translate legacy custom field names ("custom_123") to API4 notation.
+            if (1 === preg_match('#^custom_(?P<field_id>\d+)$#', $field_name, $customFieldMatches)) {
+              $customFieldIds[] = $customFieldMatches['field_id'];
+            }
+            else {
+              $fields_used[$field_name] = $field_name;
+            }
+          }
+          $customFields = \Civi\Api4\CustomField::get(FALSE)
+            ->addSelect('custom_group_id:name', 'name')
+            ->addWhere('id', 'IN', $customFieldIds)
+            ->execute();
+          foreach ($customFields as $customField) {
+            $fields_used[$field_name] = $customField['custom_group_id:name'] . '.' . $customField['name'];
           }
         }
       }
     }
 
-    return array_keys($fields_used);
+    return $fields_used;
   }
 
   /**
