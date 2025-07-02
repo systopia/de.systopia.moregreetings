@@ -46,11 +46,18 @@ class CRM_Moregreetings_Renderer {
     if ($contact == NULL) {
       // remark: if you change these parameters, see if you also want to adjust
       //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
+      $usedContactFields = self::getUsedContactFields($templates);
       $contact = Contact::get(FALSE)
-        ->setSelect(self::getUsedContactFields($templates))
+        ->setSelect($usedContactFields)
         ->addWhere('id', '=', $contact_id)
         ->execute()
         ->single();
+      foreach ($usedContactFields as $key => $usedContactField) {
+        if (!is_numeric($key)) {
+          // $key is the API4 name of a custom field, copy its value to the legacy field name.
+          $contact[$key] = $contact[$usedContactField];
+        }
+      }
     }
 
     // TODO: assign more stuff?
@@ -99,17 +106,25 @@ class CRM_Moregreetings_Renderer {
 
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
+    $usedContactFields = self::getUsedContactFields($templates);
     $contacts = Contact::get(FALSE)
-      ->setSelect(self::getUsedContactFields($templates))
+      ->setSelect($usedContactFields)
       ->addSelect('id')
       ->addWhere('id', '>=', $from_id)
-      ->addWhere('is_deleted', '=', false)
+      ->addWhere('is_deleted', '=', FALSE)
       ->addOrderBy('id')
       ->setLimit($max_count)
       ->execute();
 
     $last_id = 0;
     foreach ($contacts as $contact) {
+      foreach ($usedContactFields as $key => $usedContactField) {
+        if (!is_numeric($key)) {
+          // $key is the API4 name of a custom field, copy its value to the legacy field name.
+          $contact[$key] = $contact[$usedContactField];
+        }
+      }
+
       $last_id = $contact['id'];
       self::updateMoreGreetings($last_id, $contact);
     }
@@ -169,14 +184,26 @@ class CRM_Moregreetings_Renderer {
         $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
 
         if (preg_match_all('#\$contact\.(?P<field>\w+)#', $template, $tokens)) {
+          $customFields = [];
           foreach ($tokens['field'] as $field_name) {
-            $fields_used[$field_name] = 1;
+            // TODO: Translate legacy custom field names ("custom_123") to API4 notation.
+            if (preg_match("#^custom_(?P<field_id>\d+)$#", $field_name, $customFieldMatches)) {
+              $customFields[] = $customFieldMatches['field_id'];
+              continue;
+            }
+            $fields_used[] = $field_name;
+          }
+          foreach (\Civi\Api4\CustomField::get(FALSE)
+            ->addSelect('custom_group_id:name', 'name')
+            ->addWhere('id', 'IN', $customFields)
+            ->execute() as $customField) {
+            $fields_used[$field_name] = $customField['custom_group_id:name'] . '.' . $customField['name'];
           }
         }
       }
     }
 
-    return array_keys($fields_used);
+    return $fields_used;
   }
 
   /**

@@ -65,6 +65,12 @@ class CRM_Moregreetings_Job {
 
     // apply
     foreach ($contacts as $contact) {
+      foreach ($usedContactFields as $key => $usedContactField) {
+        if (!is_numeric($key)) {
+          // $key is the API4 name of a custom field, copy its value to the legacy field name.
+          $contact[$key] = $contact[$usedContactField];
+        }
+      }
       CRM_Moregreetings_Renderer::updateMoreGreetings($contact['id'], $contact);
     }
 
