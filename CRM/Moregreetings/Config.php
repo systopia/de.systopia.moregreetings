@@ -200,4 +200,18 @@ class CRM_Moregreetings_Config {
       return reset($jobs['values']);
     }
   }
+
+  /**
+   * Should the renderer generate legacy tokens like 'custom_123'
+   *
+   * This option would automatically be set when updating from an older version,
+   *   but would be off for new installations
+   *
+   * @return bool
+   */
+  public static function renderLegacyTokens() : bool
+  {
+    $render_legacy_tokens = Civi::settings()->get('more_greetings_render_legacy_tokens');
+    return !empty($render_legacy_tokens);
+  }
 }

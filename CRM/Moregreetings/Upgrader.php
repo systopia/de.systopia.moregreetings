@@ -43,7 +43,6 @@ class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
     return TRUE;
   }
 
-
   /**
    * Make sure users get a warning about the switch to APIv4
    *
@@ -60,4 +59,18 @@ class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
     return TRUE;
   }
 
+  /**
+   * Make sure the legacy token option is set with the upgrader if undefined,
+   *   because that means that the user is coming from an older version
+   *
+   * @return bool TRUE on success
+   */
+  public function upgrade_5003() {
+    $current_value = Civi::settings()->get('more_greetings_render_legacy_tokens');
+    if ($current_value === NULL) {
+      Civi::settings()->set('more_greetings_render_legacy_tokens', 1);
+      Civi::log()->info('MoreGreetings: enabled generation of legacy tokens like "custom_12".');
+    }
+    return TRUE;
+  }
 }
