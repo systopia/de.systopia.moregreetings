@@ -174,10 +174,10 @@ class CRM_Moregreetings_Renderer {
    */
   public static function getUsedContactFields($templates): array {
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
-    $fields_used = array();
+    $fields_used = [];
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
+    $fields_to_render = [];
     foreach ($active_fields as $field_id => $field) {
       if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
         $field_number = $matches['field_number'];
