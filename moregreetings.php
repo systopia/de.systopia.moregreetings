@@ -116,7 +116,7 @@ function moregreetings_civicrm_navigationMenu(&$menu) {
     [
       'label' => E::ts('More Greetings'),
       'name' => 'moregreetings',
-      'url' => 'civicrm/admin/setting/moregreetings',
+      'url' => CRM_Utils_System::url('civicrm/admin/setting/moregreetings'),
       // TODO: Adjust permission once there is a separate one.
       'permission' => 'administer CiviCRM',
       'operator' => 'OR',
