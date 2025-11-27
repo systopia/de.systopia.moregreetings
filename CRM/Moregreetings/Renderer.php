@@ -176,39 +176,40 @@ class CRM_Moregreetings_Renderer {
    *   (`custom_group_name.custom_field_name`) custom field names.
    */
   public static function getUsedContactFields($templates): array {
-    $active_fields = CRM_Moregreetings_Config::getActiveFields();
-    $fields_used = [];
+    $activeFields = CRM_Moregreetings_Config::getActiveFields();
+    $fieldsUsed = [];
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = [];
-    foreach ($active_fields as $field_id => $field) {
+    $fieldsToRender = [];
+    foreach ($activeFields as $fieldId => $field) {
       if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
-        $field_number = $matches['field_number'];
-        $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
+        $fieldNumber = $matches['field_number'];
+        $template = CRM_Utils_Array::value("greeting_smarty_{$fieldNumber}", $templates, '');
 
         if (preg_match_all('#\$contact\.(?P<field>\w+)#', $template, $tokens)) {
           $customFieldIds = [];
-          foreach ($tokens['field'] as $field_name) {
-            // TODO: Translate legacy custom field names ("custom_123") to API4 notation.
-            if (1 === preg_match('#^custom_(?P<field_id>\d+)$#', $field_name, $customFieldMatches)) {
+          foreach ($tokens['field'] as $fieldName) {
+            // Translate legacy custom field names ("custom_123") to API4 notation.
+            if (1 === preg_match('#^custom_(?P<field_id>\d+)$#', $fieldName, $customFieldMatches)) {
               $customFieldIds[] = $customFieldMatches['field_id'];
             }
             else {
-              $fields_used[$field_name] = $field_name;
+              $fieldsUsed[$fieldName] = $fieldName;
             }
           }
           $customFields = \Civi\Api4\CustomField::get(FALSE)
-            ->addSelect('custom_group_id:name', 'name')
+            ->addSelect('id', 'custom_group_id:name', 'name')
             ->addWhere('id', 'IN', $customFieldIds)
-            ->execute();
-          foreach ($customFields as $customField) {
-            $fields_used[$field_name] = $customField['custom_group_id:name'] . '.' . $customField['name'];
+            ->execute()
+            ->indexBy('id');
+          foreach ($customFields as $customFieldId => $customField) {
+            $fieldsUsed['custom_' . $customFieldId] = $customField['custom_group_id:name'] . '.' . $customField['name'];
           }
         }
       }
     }
 
-    return $fields_used;
+    return $fieldsUsed;
   }
 
   /**
