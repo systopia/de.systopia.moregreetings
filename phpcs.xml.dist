@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="CiviCRM - PHPStan"
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="CiviCRM - Modified"
          xsi:noNamespaceSchemaLocation="tools/phpcs/vendor/squizlabs/php_codesniffer/phpcs.xsd">
-    <description>CiviCRM coding standard with support for PHPStan type hints and some additional rules</description>
+    <description>CiviCRM coding standard with some additional changes</description>
 
     <!-- TODO: Commented paths should be commented in. -->
     <!--<file>api</file>-->
     <!--<file>CRM</file>-->
     <file>tests</file>
     <!--<file>moregreetings.php</file>-->
+
+    <exclude-pattern>/CRM/Moregreetings/DAO/.*\.php$</exclude-pattern>
 
     <arg name="extensions" value="php"/>
     <arg name="cache" value=".phpcs.cache"/>
@@ -21,6 +23,9 @@
         <!-- Conflicts with PHPStan type hints -->
         <exclude name="Drupal.Commenting.VariableComment.IncorrectVarType"/>
         <exclude name="Drupal.Commenting.FunctionComment.ParamTypeSpaces"/>
+        <exclude name="Drupal.Commenting.FunctionComment.ReturnTypeSpaces"/>
+
+        <!-- Don't enforce phpdoc type hint because it (might) only duplicate a PHP type hint -->
         <exclude name="Drupal.Commenting.VariableComment.MissingVar"/>
 
         <!-- Don't enforce phpdoc type hint because it (might) only duplicate a PHP type hint -->
@@ -28,8 +33,6 @@
 
         <!-- False positive when license header is set and variable has no comment -->
         <exclude name="Drupal.Commenting.VariableComment.WrongStyle"/>
-
-        <exclude name="Drupal.Commenting.VariableComment.MissingVar"/>
     </rule>
 
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
