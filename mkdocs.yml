@@ -1,13 +1,13 @@
 site_name: More Greeting Options
-repo_url: https://github.com/systopia/de.systopia.moregreetings
+site_description: Extension to allow additional, customised greetings
 site_author: SYSTOPIA
-site_url: https://github.com/systopia/de.systopia.moregreetings
+repo_url: https://github.com/systopia/de.systopia.moregreetings
 
-theme: 
+theme:
   name: material
 
 nav:
-  - Home: index.md
+  - Introduction: index.md
   - Basics: basics.md
   - Installation: installation.md
   - Usage: usage.md
@@ -19,7 +19,7 @@ markdown_extensions:
   - def_list
   - codehilite
   - toc:
-      permalink: True
+      permalink: true
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.tilde

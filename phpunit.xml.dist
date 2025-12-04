@@ -13,7 +13,7 @@
   </php>
 
   <testsuites>
-    <testsuite name="My Test Suite">
+    <testsuite name="de.systopia.moregreetings Test Suite">
       <directory>./tests/phpunit</directory>
     </testsuite>
   </testsuites>
