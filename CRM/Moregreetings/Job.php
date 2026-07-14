@@ -15,6 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 use Civi\Api4\Contact;
 
 define('MOREGREETINGS_JOB_SIZE', 250);
@@ -27,14 +29,16 @@ class CRM_Moregreetings_Job {
   protected $offset = NULL;
   protected $count  = NULL;
 
-
   protected function __construct($offset, $count) {
     $this->offset  = $offset;
     $this->count   = $count;
 
     // set title
-    $this->title = ts("Updating moregreetings on contacts %1-%2", array(
-          1 => $this->offset, 2 => $this->offset + $this->count, 'domain' => 'de.systopia.moregreetings'));
+    $this->title = ts('Updating moregreetings on contacts %1-%2', [
+      1 => $this->offset,
+      2 => $this->offset + $this->count,
+      'domain' => 'de.systopia.moregreetings',
+    ]);
   }
 
   public function run($context) {
@@ -45,8 +49,8 @@ class CRM_Moregreetings_Job {
       WHERE is_deleted = 0
       LIMIT {$this->count}
       OFFSET {$this->offset}");
-    $contact_ids = array();
-    while($id_query->fetch()) {
+    $contact_ids = [];
+    while ($id_query->fetch()) {
       $contact_ids[] = $id_query->contact_id;
     }
 
@@ -77,27 +81,29 @@ class CRM_Moregreetings_Job {
    */
   public static function launchApplicationRunner() {
     // get general contact count (not deleted)
-    $contact_count = CRM_Core_DAO::singleValueQuery("SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0");
+    $contact_count = CRM_Core_DAO::singleValueQuery('SELECT COUNT(id) FROM civicrm_contact WHERE is_deleted=0');
 
     // create a queue
-    $queue = CRM_Queue_Service::singleton()->create(array(
+    $queue = CRM_Queue_Service::singleton()->create([
       'type'  => 'Sql',
       'name'  => 'moregreetings_application',
       'reset' => TRUE,
-    ));
+    ]);
 
     // create the items
-    for ($offset=0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
+    for ($offset = 0; $offset < $contact_count; $offset += MOREGREETINGS_JOB_SIZE) {
       $queue->createItem(new CRM_Moregreetings_Job($offset, MOREGREETINGS_JOB_SIZE));
     }
 
     // create a runner and launch it
-    $runner = new CRM_Queue_Runner(array(
-      'title'     => ts("Applying Moregreetings Templates", array('domain' => 'de.systopia.moregreetings')),
+    $runner = new CRM_Queue_Runner([
+      'title'     => ts('Applying Moregreetings Templates', ['domain' => 'de.systopia.moregreetings']),
       'queue'     => $queue,
       'errorMode' => CRM_Queue_Runner::ERROR_ABORT,
-      'onEndUrl'  => CRM_Utils_System::url('civicrm/admin/setting/moregreetings', "reset=1"),
-    ));
-    $runner->runAllViaWeb(); // does not return
+      'onEndUrl'  => CRM_Utils_System::url('civicrm/admin/setting/moregreetings', 'reset=1'),
+    ]);
+    // does not return
+    $runner->runAllViaWeb();
   }
+
 }

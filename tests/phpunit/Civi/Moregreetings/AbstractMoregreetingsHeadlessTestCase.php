@@ -28,7 +28,6 @@ abstract class AbstractMoregreetingsHeadlessTestCase extends TestCase implements
    */
   protected function setUserPermissions(?array $permissions): void {
     $userPermissions = \CRM_Core_Config::singleton()->userPermissionClass;
-    // @phpstan-ignore-next-line
     $userPermissions->permissions = $permissions;
   }
 

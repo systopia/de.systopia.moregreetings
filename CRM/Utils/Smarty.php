@@ -14,6 +14,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 /**
  * provides some useful smarty functions
  */
@@ -24,29 +26,29 @@ class CRM_Utils_Smarty {
    *
    * @param Smarty $smarty
    */
-  public static function registerCustomFunctions($smarty) {
+  public static function registerCustomFunctions($smarty): void {
     static $registered = FALSE;
-    if($smarty && !$registered) {
-      if(!$smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
-        $smarty->registerPlugin("modifier", 'mg_startswith', ['CRM_Utils_Smarty', 'startswith']);
+    if ($smarty && !$registered) {
+      if (!$smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
+        $smarty->registerPlugin('modifier', 'mg_startswith', ['CRM_Utils_Smarty', 'startswith']);
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'mg_endswith')) {
-        $smarty->registerPlugin("modifier", 'mg_endswith', ['CRM_Utils_Smarty', 'endswith']);
+      if (!$smarty->getRegisteredPlugin('modifier', 'mg_endswith')) {
+        $smarty->registerPlugin('modifier', 'mg_endswith', ['CRM_Utils_Smarty', 'endswith']);
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'mg_contains')) {
-        $smarty->registerPlugin("modifier", 'mg_contains', ['CRM_Utils_Smarty', 'contains']);
+      if (!$smarty->getRegisteredPlugin('modifier', 'mg_contains')) {
+        $smarty->registerPlugin('modifier', 'mg_contains', ['CRM_Utils_Smarty', 'contains']);
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'tokens_have_min_length')) {
-        $smarty->registerPlugin("modifier", 'tokens_have_min_length', ['CRM_Utils_Smarty', 'tokens_have_min_length']);
+      if (!$smarty->getRegisteredPlugin('modifier', 'tokens_have_min_length')) {
+        $smarty->registerPlugin('modifier', 'tokens_have_min_length', ['CRM_Utils_Smarty', 'tokens_have_min_length']);
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'token_extract')) {
-        $smarty->registerPlugin("modifier", 'token_extract', ['CRM_Utils_Smarty', 'token_extract']);
+      if (!$smarty->getRegisteredPlugin('modifier', 'token_extract')) {
+        $smarty->registerPlugin('modifier', 'token_extract', ['CRM_Utils_Smarty', 'token_extract']);
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'lcfirst')) {
-        $smarty->registerPlugin("modifier", 'lcfirst', 'lcfirst');
+      if (!$smarty->getRegisteredPlugin('modifier', 'lcfirst')) {
+        $smarty->registerPlugin('modifier', 'lcfirst', 'lcfirst');
       }
-      if(!$smarty->getRegisteredPlugin('modifier', 'ucfirst')) {
-        $smarty->registerPlugin("modifier", 'ucfirst', 'ucfirst');
+      if (!$smarty->getRegisteredPlugin('modifier', 'ucfirst')) {
+        $smarty->registerPlugin('modifier', 'ucfirst', 'ucfirst');
       }
       $registered = TRUE;
     }
@@ -56,7 +58,7 @@ class CRM_Utils_Smarty {
    * Checks whether the modified string starts with $prefix
    * Smarty usage: {if $contact.formal_title|mg_startswith:'Dr'}
    */
-  public static function startswith($string, $prefix) {
+  public static function startswith($string, $prefix): bool {
     return substr($string, 0, strlen($prefix)) == $prefix;
   }
 
@@ -64,7 +66,7 @@ class CRM_Utils_Smarty {
    * Checks whether the modified string ends with $suffix
    * Smarty usage: {if $contact.formal_title|mg_endswith:'Dr'}
    */
-  public static function endswith($string, $suffix) {
+  public static function endswith($string, $suffix): bool {
     return substr($string, (strlen($string) - strlen($suffix))) == $suffix;
   }
 
@@ -72,13 +74,15 @@ class CRM_Utils_Smarty {
    * Checks whether the modified string contains $substring
    * Smarty usage: {if $contact.formal_title|mg_contains:'Dr'}
    */
-  public static function contains($string, $substring) {
+  public static function contains($string, $substring): bool {
     if (strlen($string) == 0) {
       return strlen($substring) == 0;
-    } else {
+    }
+    else {
       if (strlen($substring) == 0) {
         return FALSE;
-      } else {
+      }
+      else {
         $strstr = strstr($string, $substring);
         return strlen($strstr) > 0;
       }
@@ -106,7 +110,14 @@ class CRM_Utils_Smarty {
    * Smarty usage: {if $contact.first_name|tokens_have_min_length:' ':2}
    *     is true, if no single characters are used in the first_name
    */
-  public static function tokens_have_min_length($string, $split_string, $length, $token_indices = null, $all = true, $trim = true) {
+  // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+  public static function tokens_have_min_length(
+    $string,
+    $split_string,
+    $length,
+    $token_indices = NULL, bool $all = TRUE,
+    $trim = TRUE
+  ): bool {
     $length = (int) $length;
     $tokens = explode($split_string, $string);
 
@@ -115,7 +126,7 @@ class CRM_Utils_Smarty {
     }
 
     // default for token indices is all
-    if ($token_indices === null) {
+    if ($token_indices === NULL) {
       $token_indices = array_keys($tokens);
     }
 
@@ -129,21 +140,22 @@ class CRM_Utils_Smarty {
       foreach ($tokens as $index => $token) {
         if (in_array($index, $token_indices)) {
           if (strlen($token) < $length) {
-            return false;
+            return FALSE;
           }
         }
       }
-      return true;
-    } else {
+      return TRUE;
+    }
+    else {
       // now check if some of them have the minimal length
       foreach ($tokens as $index => $token) {
         if (in_array($index, $token_indices)) {
           if (strlen($token) >= $length) {
-            return true;
+            return TRUE;
           }
         }
       }
-      return false;
+      return FALSE;
     }
   }
 
@@ -163,14 +175,16 @@ class CRM_Utils_Smarty {
    * Smarty usage: {$contact.first_name|token_extract:' ':1}
    *    will return the 'van' if the first_name is "Herbert van Halen"
    */
-  public static function token_extract($string, $split_string, $index = 0, $trim = true) {
+  public static function token_extract($string, $split_string, $index = 0, $trim = TRUE): string {
     $index = (int) $index;
     $tokens = explode($split_string, $string);
     $token = $tokens[$index] ?? '';
     if ($trim) {
       return trim($token);
-    } else {
+    }
+    else {
       return $token;
     }
   }
+
 }

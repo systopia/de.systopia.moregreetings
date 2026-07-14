@@ -15,6 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 /**
  * Form controller class
  *
@@ -23,58 +25,77 @@
 class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
 
   public function buildQuickForm() {
-
-    $this->registerRule('is_valid_smarty', 'callback', 'validateSmarty', 'CRM_Moregreetings_Form_Settings');
-    $this->registerRule('is_valid_field_count', 'callback', 'validateFieldCount', 'CRM_Moregreetings_Form_Settings');
+    $this->registerRule(
+      'is_valid_smarty', 'callback', 'validateSmarty', 'CRM_Moregreetings_Form_Settings'
+    );
+    $this->registerRule(
+      'is_valid_field_count',
+      'callback',
+      'validateFieldCount',
+      'CRM_Moregreetings_Form_Settings'
+    );
 
     $this->add(
       'text',
-      "greeting_count",
-      ts("Number of fields", array('domain' => 'de.systopia.moregreetings'))
+      'greeting_count',
+      ts('Number of fields', ['domain' => 'de.systopia.moregreetings'])
     );
 
-    $this->addRule("greeting_count",
-                  ts('Please enter a number between 1 and %1', array(
-                    1 => CRM_Moregreetings_Config::getMaxActiveFieldCount(),
-                    'domain' => 'de.systopia.moregreetings')),
-                  'is_valid_field_count');
+    $this->addRule('greeting_count',
+      ts('Please enter a number between 1 and %1', [
+        1 => CRM_Moregreetings_Config::getMaxActiveFieldCount(),
+        'domain' => 'de.systopia.moregreetings',
+      ]),
+      'is_valid_field_count');
 
-    $this->assign('greetings_count', range(1,self::getNumberOfGreetings()));
+    $this->assign('greetings_count', range(1, self::getNumberOfGreetings()));
+    // phpcs:ignore Generic.CodeAnalysis.ForLoopWithTestFunctionCall.NotAllowed
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       $fields = CRM_Moregreetings_Config::getFields();
-      $field_id = array_search('greeting_field_'.$i, array_column($fields, 'name', 'id'));
+      $field_id = array_search('greeting_field_' . $i, array_column($fields, 'name', 'id'));
       $this->add(
-        'textarea', // field type
-        "greeting_smarty_{$i}", // field name
-        $fields[$field_id]['label'] . ' (' . ts("Greeting %1", array(1 => $i, 'domain' => 'de.systopia.moregreetings')) . ')', // field label
-        array('rows' => 4,
-              'cols' => 50,
-        ), // list of options
-        FALSE // is required
+      // field type
+        'textarea',
+        // field name
+        "greeting_smarty_{$i}",
+        // field label
+        $fields[$field_id]['label'] . ' (' . ts('Greeting %1', [
+          1 => $i,
+          'domain' => 'de.systopia.moregreetings',
+        ]) . ')',
+        [
+          'rows' => 4,
+          'cols' => 50,
+          // list of options
+        ],
+        // is required
+        FALSE
       );
       $this->addRule("greeting_smarty_{$i}",
-                    ts('Please enter valid smarty code.', array('domain' => 'de.systopia.moregreetings')),
-                    'is_valid_smarty'
+        ts('Please enter valid smarty code.', ['domain' => 'de.systopia.moregreetings']),
+        'is_valid_smarty'
       );
     }
     // add form elements
 
-    $this->addButtons(array(
-      array(
+    $this->addButtons([
+      [
         'type' => 'submit',
-        'name' => ts('Save', array('domain' => 'de.systopia.moregreetings')),
+        'name' => ts('Save', ['domain' => 'de.systopia.moregreetings']),
         'isDefault' => TRUE,
-      ),
-      array(
+      ],
+      [
         'type' => 'upload',
-        'name' => ts('Save & Apply to all Contacts', array('domain' => 'de.systopia.moregreetings')),
+        'name' => ts('Save & Apply to all Contacts', ['domain' => 'de.systopia.moregreetings']),
         'isDefault' => FALSE,
-      ),
-    ));
+      ],
+    ]);
 
     // add link
-    $group_id  = CRM_Moregreetings_Config::getGroupID();
-    $group_url = CRM_Utils_System::url('civicrm/admin/custom/group/field', "reset=1&action=browse&gid={$group_id}");
+    $group_id = CRM_Moregreetings_Config::getGroupID();
+    $group_url = CRM_Utils_System::url(
+      'civicrm/admin/custom/group/field', "reset=1&action=browse&gid={$group_id}"
+    );
     $this->assign('group_url', $group_url);
 
     // export form elements
@@ -87,12 +108,11 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
   public function setDefaultValues() {
     $values = Civi::settings()->get('moregreetings_templates');
     if (!is_array($values)) {
-      $values = array();
+      $values = [];
     }
     $values['greeting_count'] = self::getNumberOfGreetings();
     return $values;
   }
-
 
   /**
    * POST PROCESS: Store the new values
@@ -103,11 +123,13 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     // first: update the greetings
     $old_greetings = Civi::settings()->get('moregreetings_templates');
     $greetings_changed = FALSE;
+    // phpcs:ignore Generic.CodeAnalysis.ForLoopWithTestFunctionCall.NotAllowed
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       if (isset($values["greeting_smarty_{$i}"])) {
-        $values_array["greeting_smarty_{$i}"] =  $values["greeting_smarty_{$i}"];
-      } else {
-        $values_array["greeting_smarty_{$i}"] = "";
+        $values_array["greeting_smarty_{$i}"] = $values["greeting_smarty_{$i}"];
+      }
+      else {
+        $values_array["greeting_smarty_{$i}"] = '';
       }
 
       // check if it changed
@@ -122,13 +144,14 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       CRM_Moregreetings_Config::setActiveFieldCount($values['greeting_count']);
 
       // reload b/c the form has already been generated
-      $url = CRM_Utils_System::url('civicrm/admin/setting/moregreetings', "reset=1");
+      $url = CRM_Utils_System::url('civicrm/admin/setting/moregreetings', 'reset=1');
       CRM_Utils_System::redirect($url);
     }
 
     if (isset($values['_qf_Settings_upload'])) {
       // somebody pressed the SAVE & APPLY button:
-      CRM_Moregreetings_Job::launchApplicationRunner(); // doesn't return
+      // doesn't return
+      CRM_Moregreetings_Job::launchApplicationRunner();
     }
 
     parent::postProcess();
@@ -138,7 +161,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
    * Form validation rule
    */
   public static function validateSmarty($smartyValue) {
-    if ($smartyValue === "") {
+    if ($smartyValue === '') {
       return TRUE;
     }
 
@@ -146,7 +169,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     $renderOut = NULL;
     try {
       $renderOut = \CRM_Utils_String::parseOneOffStringThroughSmarty($smartyValue);
-    } 
+    }
     catch (\CRM_Core_Exception $exception) {
       return FALSE;
     }
@@ -161,8 +184,8 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
     return ($field_count > 0 && $field_count <= CRM_Moregreetings_Config::getMaxActiveFieldCount());
   }
 
-
   public static function getNumberOfGreetings() {
     return CRM_Moregreetings_Config::getActiveFieldCount();
   }
+
 }

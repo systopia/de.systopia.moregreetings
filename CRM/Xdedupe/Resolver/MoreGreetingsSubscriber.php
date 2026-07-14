@@ -14,10 +14,11 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
 
 use Civi\API\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use \Civi\Core\Event\GenericHookEvent;
+use Civi\Core\Event\GenericHookEvent;
 
 /**
  * Subscribe to XDedupe events, so we can register our resolver
@@ -29,7 +30,7 @@ class CRM_Xdedupe_Resolver_MoreGreetingsSubscriber implements EventSubscriberInt
    */
   public static function getSubscribedEvents(): array {
     return [
-        'civi.xdedupe.resolvers' => ['addBuiltinResolvers', Events::W_MIDDLE],
+      'civi.xdedupe.resolvers' => ['addBuiltinResolvers', Events::W_MIDDLE],
     ];
   }
 
@@ -39,4 +40,5 @@ class CRM_Xdedupe_Resolver_MoreGreetingsSubscriber implements EventSubscriberInt
   public function addBuiltinResolvers(GenericHookEvent $xdedupe_list) {
     $xdedupe_list->list[] = 'CRM_Xdedupe_Resolver_MoreGreetings';
   }
+
 }

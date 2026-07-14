@@ -16,6 +16,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 use CRM_Moregreetings_ExtensionUtil as E;
 
 /**
@@ -29,20 +31,19 @@ class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
    * @return bool TRUE on success
    * @throws Exception
    */
-  public function upgrade_5001() {
+  public function upgrade_5001(): bool {
     // Update custom fields specification, this should alter the "is_searchable"
     // property.
     $customData = new CRM_Moregreetings_CustomData(E::LONG_NAME);
     $customData->syncCustomGroup(
       E::path('/resources/moregreetings_custom_group.json'),
-      array(
+      [
         'is_searchable',
-      )
+      ]
     );
 
     return TRUE;
   }
-
 
   /**
    * Make sure users get a warning about the switch to APIv4
@@ -50,12 +51,14 @@ class CRM_Moregreetings_Upgrader extends CRM_Extension_Upgrader_Base {
    * @return bool TRUE on success
    * @throws Exception
    */
-  public function upgrade_5002() {
+  public function upgrade_5002(): bool {
     CRM_Core_Session::setStatus(
+      // phpcs:ignore Generic.Files.LineLength.TooLong
       E::ts('MoreGreetings has switched to APIv4, which means that some tokens might not work any more.') . '<br/><br/>' .
-           E::ts('An example would be the defunct <code>$individual_prefix</code> token, which can be substituted by the <code>prefix_id:label</code>') . '<br/><br/>'.
-           E::ts('Make sure you test your greeting templates well before you continue using MoreGreetings.'),
-      E::ts("Warning"),
+      // phpcs:ignore Generic.Files.LineLength.TooLong
+      E::ts('An example would be the defunct <code>$individual_prefix</code> token, which can be substituted by the <code>prefix_id:label</code>') . '<br/><br/>' .
+      E::ts('Make sure you test your greeting templates well before you continue using MoreGreetings.'),
+      E::ts('Warning'),
       'alert', ['expires' => 0]);
     return TRUE;
   }

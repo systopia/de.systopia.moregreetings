@@ -15,8 +15,9 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-use Civi\Api4\Contact;
+declare(strict_types = 1);
 
+use Civi\Api4\Contact;
 
 /**
  * update current greetings
@@ -24,7 +25,8 @@ use Civi\Api4\Contact;
  */
 class CRM_Moregreetings_Renderer {
 
-  /** @var array list of contact ids that should be excluded from updating */
+  /**
+   * @var array list of contact ids that should be excluded from updating */
   protected static $excluded_contact_ids = [];
 
   /**
@@ -55,7 +57,7 @@ class CRM_Moregreetings_Renderer {
 
     // TODO: assign more stuff?
     $templateVars = [
-      'contact' => $contact
+      'contact' => $contact,
     ];
 
     // load the current greetings
@@ -65,7 +67,7 @@ class CRM_Moregreetings_Renderer {
     $greetings_to_render = self::getGreetingsToRender($contact, $templates, $current_greetings);
 
     // render the greetings
-    $greetings_update = array();
+    $greetings_update = [];
     foreach ($greetings_to_render as $greeting_key => $template) {
       $new_value = \CRM_Utils_String::parseOneOffStringThroughSmarty($template, $templateVars);
       $new_value = trim($new_value);
@@ -80,11 +82,8 @@ class CRM_Moregreetings_Renderer {
       $greetings_update['entity_id'] = $contact_id;
       $greetings_update['entity_table'] = 'civicrm_contact';
       civicrm_api3('CustomValue', 'create', $greetings_update);
-    } else {
-      // error_log("Nothing to do");
     }
   }
-
 
   /**
    * Re-calculate the more-greetings for a list of contacts ()
@@ -103,7 +102,7 @@ class CRM_Moregreetings_Renderer {
       ->setSelect(self::getUsedContactFields($templates))
       ->addSelect('id')
       ->addWhere('id', '>=', $from_id)
-      ->addWhere('is_deleted', '=', false)
+      ->addWhere('is_deleted', '=', FALSE)
       ->addOrderBy('id')
       ->setLimit($max_count)
       ->execute();
@@ -117,20 +116,19 @@ class CRM_Moregreetings_Renderer {
     return $last_id;
   }
 
-
   /**
    * Get an array [custom_key] => [template]
    * of the fields to be rendered for this contact,
    * i.e. all the fields are there and not protected
    */
-  protected static function getGreetingsToRender($contact, $templates, $current_data) {
+  protected static function getGreetingsToRender($contact, $templates, $current_data): array {
     // first: load
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
 
     // compile a list of protected field data (field_numbers)
-    $protected_fields = array();
+    $protected_fields = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\\d+)_protected$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\\d+)_protected$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         if (!empty($current_data["custom_{$field['id']}"])) {
           $protected_fields[] = $field_number;
@@ -139,9 +137,9 @@ class CRM_Moregreetings_Renderer {
     }
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
+    $fields_to_render = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         if (!in_array($field_number, $protected_fields)) {
           // this field is not protected
@@ -159,12 +157,12 @@ class CRM_Moregreetings_Renderer {
    */
   public static function getUsedContactFields($templates): array {
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
-    $fields_used = array();
+    $fields_used = [];
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
+    $fields_to_render = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
 
@@ -185,17 +183,17 @@ class CRM_Moregreetings_Renderer {
    * @param array $excluded_contact_ids
    *   list of contact IDs to be excluded from rendering
    */
-  public static function addExcludedContactIDs($excluded_contact_ids) {
+  public static function addExcludedContactIDs($excluded_contact_ids): void {
     self::$excluded_contact_ids = array_merge(self::$excluded_contact_ids, $excluded_contact_ids);
   }
 
   /**
    * Clear the list of contact_ids to be excluded from rendering
    *
-   * @return array
-   *   previously set list of contact IDs
+   * @return void previously set list of contact IDs
    */
-  public static function clearExcludedContactIDs() {
+  public static function clearExcludedContactIDs(): void {
     self::$excluded_contact_ids = [];
   }
+
 }

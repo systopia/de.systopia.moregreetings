@@ -1,0 +1,132 @@
+#: CRM/Moregreetings/Config.php
+msgid "Update MoreGreetings"
+msgstr ""
+
+#: CRM/Moregreetings/Config.php
+msgid "Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself."
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Number of fields"
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Please enter a number between 1 and %1"
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Greeting %1"
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Please enter valid smarty code."
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Save"
+msgstr ""
+
+#: CRM/Moregreetings/Form/Settings.php
+msgid "Save & Apply to all Contacts"
+msgstr ""
+
+#: CRM/Moregreetings/Job.php
+msgid "Updating moregreetings on contacts %1-%2"
+msgstr ""
+
+#: CRM/Moregreetings/Job.php
+msgid "Applying Moregreetings Templates"
+msgstr ""
+
+#: CRM/Moregreetings/Upgrader.php
+msgid "MoreGreetings has switched to APIv4, which means that some tokens might not work any more."
+msgstr ""
+
+#: CRM/Moregreetings/Upgrader.php
+msgid "An example would be the defunct <code>$individual_prefix</code> token, which can be substituted by the <code>prefix_id:label</code>"
+msgstr ""
+
+#: CRM/Moregreetings/Upgrader.php
+msgid "Make sure you test your greeting templates well before you continue using MoreGreetings."
+msgstr ""
+
+#: CRM/Moregreetings/Upgrader.php
+msgid "Warning"
+msgstr ""
+
+#: CRM/Xdedupe/Resolver/MoreGreetings.php moregreetings.php
+msgid "More Greetings"
+msgstr ""
+
+#: CRM/Xdedupe/Resolver/MoreGreetings.php
+msgid "Will make sure differing MoreGreetings values will not get in the way, by dropping them before the merge and recalculating them after."
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Job already running"
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Done."
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Interrupted processing, more contacts remain."
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Maximum Runtime"
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Maximum runtime in seconds"
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "Block Size"
+msgstr ""
+
+#: api/v3/Job/UpdateMoregreetings.php
+msgid "How many contacts to process in one iteration"
+msgstr ""
+
+#: moregreetings.php
+msgid "Yes"
+msgstr ""
+
+#: moregreetings.php
+msgid "Write Protection"
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "You can decide how many custom greetings you need."
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "The other fields will merely be disabled, so you won't use any data when reducing the number."
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "You can use the <a href=\"http://www.smarty.net/about_smarty\">SMARTY language</a> to define your own logic here."
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "Here's a list of the most relevant variables:"
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.hlp
+msgid "Essentially all variables the Contact.get API call produces are available."
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "Number of Extra Greetings"
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "Instructions"
+msgstr ""
+
+#: templates/CRM/Moregreetings/Form/Settings.tpl
+msgid "If you want to change the labels of the indivdual greetings, you can do so <b><a href=\"%1\">here</a></b> (admin permissions required)."
+msgstr ""
+

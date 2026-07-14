@@ -1,10 +1,12 @@
+includes:
+	- phpstan-baseline.neon
+
 parameters:
 	paths:
-		# TODO: Commented paths should be commented in. Maybe the level should be reduced initially.
-		#- api
-		#- CRM
+		- api
+		- CRM
 		- tests
-		#- moregreetings.php
+		- moregreetings.php
 	excludePaths:
 		analyse:
 			- CRM/Moregreetings/DAO/*
@@ -13,6 +15,7 @@ parameters:
 		- moregreetings.civix.php
 		- tools/phpunit/vendor/bin/.phpunit/phpunit/src/Framework/TestCase.php
 	scanDirectories:
+		- ../de.systopia.xdedupe
 		- CRM
 		- tools/phpunit/vendor/bin/.phpunit/phpunit/src/Framework
 		- mixin
@@ -28,7 +31,7 @@ parameters:
 		CRM_Utils_System:
 			- civiExit
 		CRM_Queue_Runner:
-		  - runAllViaWeb
+			- runAllViaWeb
 	checkTooWideReturnTypesInProtectedAndPublicMethods: true
 	checkUninitializedProperties: true
 	checkMissingCallableSignature: true

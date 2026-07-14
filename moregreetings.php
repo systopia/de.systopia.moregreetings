@@ -15,6 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 require_once 'moregreetings.civix.php';
 
 use CRM_Moregreetings_ExtensionUtil as E;
@@ -22,14 +24,14 @@ use CRM_Moregreetings_ExtensionUtil as E;
 /**
  * implement the hook to customize the rendered tab of our custom group
  */
-function moregreetings_civicrm_pageRun( &$page ) {
-  if ($page->getVar('_name') == 'CRM_Contact_Page_View_Summary') {
-      $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
-      $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
-      $script = str_replace('LOCALISED_YES', ts("Yes", array('domain' => 'de.systopia.moregreetings')), $script);
-      CRM_Core_Region::instance('page-header')->add(array(
-        'script' => $script,
-        ));
+function moregreetings_civicrm_pageRun(&$page) {
+  if ($page->getVar('_name') === 'CRM_Contact_Page_View_Summary') {
+    $script = file_get_contents(__DIR__ . '/js/render_moregreetings_view.js');
+    $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
+    $script = str_replace('LOCALISED_YES', ts('Yes', ['domain' => 'de.systopia.moregreetings']), $script);
+    CRM_Core_Region::instance('page-header')->add([
+      'script' => $script,
+    ]);
   }
 }
 
@@ -37,24 +39,33 @@ function moregreetings_civicrm_pageRun( &$page ) {
  * Hook implementation: Inject JS code into create/edit form
  */
 function moregreetings_civicrm_buildForm($formName, &$form) {
-  if ($formName == 'CRM_Contact_Form_Inline_CustomData') {
+  if ($formName === 'CRM_Contact_Form_Inline_CustomData') {
     if ($form->_groupID == CRM_Moregreetings_Config::getGroupID()) {
       // this is our form
       $script = file_get_contents(__DIR__ . '/js/render_moregreetings_edit.js');
       $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
-      $script = str_replace('WRITE_PROTECTION_TS', ts("Write Protection", array('domain' => 'de.systopia.moregreetings')), $script);
-      CRM_Core_Region::instance('page-footer')->add(array(
+      $script = str_replace(
+        'WRITE_PROTECTION_TS',
+        ts('Write Protection', ['domain' => 'de.systopia.moregreetings']),
+        $script
+      );
+      CRM_Core_Region::instance('page-footer')->add([
         'script' => $script,
-        ));
+      ]);
     }
-  } elseif ($formName == 'CRM_Contact_Form_Contact') {
+  }
+  elseif ($formName === 'CRM_Contact_Form_Contact') {
     // this is our form
     $script = file_get_contents(__DIR__ . '/js/render_moregreetings_contactedit.js');
     $script = str_replace('MOREGREETINGS', CRM_Moregreetings_Config::getGroupID(), $script);
-    $script = str_replace('WRITE_PROTECTION_TS', ts("Write Protection", array('domain' => 'de.systopia.moregreetings')), $script);
-    CRM_Core_Region::instance('page-footer')->add(array(
+    $script = str_replace(
+      'WRITE_PROTECTION_TS',
+      ts('Write Protection', ['domain' => 'de.systopia.moregreetings']),
+      $script
+    );
+    CRM_Core_Region::instance('page-footer')->add([
       'script' => $script,
-      ));
+    ]);
   }
 
 }
@@ -63,8 +74,8 @@ function moregreetings_civicrm_buildForm($formName, &$form) {
  * Hook implementation: update greetings on changes
  */
 function moregreetings_civicrm_post($op, $objectName, $objectId, &$objectRef) {
-  if ($op == 'edit' || $op == 'create') {
-    if ($objectName == 'Individual' || $objectName == 'Organization' || $objectName == 'Household') {
+  if ($op === 'edit' || $op === 'create') {
+    if ($objectName === 'Individual' || $objectName === 'Organization' || $objectName === 'Household') {
       CRM_Moregreetings_Renderer::updateMoreGreetings($objectId);
     }
   }
