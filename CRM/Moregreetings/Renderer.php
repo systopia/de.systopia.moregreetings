@@ -26,7 +26,8 @@ use Civi\Api4\Contact;
 class CRM_Moregreetings_Renderer {
 
   /**
-   * @var array list of contact ids that should be excluded from updating */
+   * @var array list of contact ids that should be excluded from updating
+   */
   protected static $excluded_contact_ids = [];
 
   /**

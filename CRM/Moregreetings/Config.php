@@ -19,9 +19,13 @@
 
 declare(strict_types = 1);
 
+use CRM_Moregreetings_ExtensionUtil as E;
+
 class CRM_Moregreetings_Config {
-  private static $customGroup = NULL;
-  private static $customFields = NULL;
+
+  private static $customGroup;
+
+  private static $customFields;
 
   /**
    * Get the number of currently active greeting fields
@@ -61,7 +65,7 @@ class CRM_Moregreetings_Config {
           // this field should now be active
           if (!$field['is_active']) {
             civicrm_api3('CustomField', 'create', [
-              'id'        => $field['id'],
+              'id' => $field['id'],
               'is_active' => 1,
               'data_type' => $field['data_type'],
               'html_type' => $field['html_type'],
@@ -74,7 +78,7 @@ class CRM_Moregreetings_Config {
           if ($field['is_active']) {
             // this field should NOT be active any more
             civicrm_api3('CustomField', 'create', [
-              'id'        => $field['id'],
+              'id' => $field['id'],
               'is_active' => 0,
               'data_type' => $field['data_type'],
               'html_type' => $field['html_type'],
@@ -112,7 +116,7 @@ class CRM_Moregreetings_Config {
     if (self::$customFields === NULL) {
       $fields = civicrm_api3('CustomField', 'get', [
         'custom_group_id' => self::getGroupID(),
-        'option.limit'    => 0,
+        'option.limit' => 0,
       ]);
       self::$customFields = $fields['values'];
     }
@@ -139,13 +143,12 @@ class CRM_Moregreetings_Config {
    */
   public static function getCurrentData($contact_id) {
     $field_keys = [];
-    $active_fields = self::getActiveFields();
-    foreach ($active_fields as $key => $field) {
+    foreach (self::getActiveFields() as $field) {
       $field_keys[] = "custom_{$field['id']}";
     }
 
     return civicrm_api3('Contact', 'getsingle', [
-      'id'     => $contact_id,
+      'id' => $contact_id,
       'return' => implode(',', $field_keys),
     ]);
   }
@@ -163,7 +166,7 @@ class CRM_Moregreetings_Config {
     // enable cronjob
     if (!$job['is_active']) {
       civicrm_api3('Job', 'create', [
-        'id'        => $job['id'],
+        'id' => $job['id'],
         'is_active' => 1,
       ]);
     }
@@ -178,7 +181,7 @@ class CRM_Moregreetings_Config {
 
     if ($job['is_active']) {
       civicrm_api3('Job', 'create', [
-        'id'        => $job['id'],
+        'id' => $job['id'],
         'is_active' => 0,
       ]);
     }
@@ -195,21 +198,20 @@ class CRM_Moregreetings_Config {
     ]);
     if ($jobs['count'] == 0) {
       $job = [
-        'name' => ts('Update MoreGreetings', ['domain' => 'de.systopia.moregreetings']),
+        'name' => E::ts('Update MoreGreetings', ['domain' => 'de.systopia.moregreetings']),
         // phpcs:ignore Generic.Files.LineLength.TooLong
-        'description'   => ts("Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself.", ['domain' => 'de.systopia.moregreetings']),
+        'description' => E::ts("Will update all the 'MoreGreetings' fields, e.g. after a change to the templates. This job will enable/disable itself.", ['domain' => 'de.systopia.moregreetings']),
         'run_frequency' => 'Always',
-        'is_active'     => 0,
-        'api_entity'    => 'job',
-        'api_action'    => 'update_moregreetings',
+        'is_active' => 0,
+        'api_entity' => 'job',
+        'api_action' => 'update_moregreetings',
       ];
       $result = civicrm_api3('Job', 'create', $job);
       $job['id'] = $result['id'];
       return $job;
     }
-    else {
-      return reset($jobs['values']);
-    }
+
+    return reset($jobs['values']);
   }
 
 }

@@ -54,11 +54,8 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       $fields = CRM_Moregreetings_Config::getFields();
       $field_id = array_search('greeting_field_' . $i, array_column($fields, 'name', 'id'));
       $this->add(
-      // field type
         'textarea',
-        // field name
         "greeting_smarty_{$i}",
-        // field label
         $fields[$field_id]['label'] . ' (' . ts('Greeting %1', [
           1 => $i,
           'domain' => 'de.systopia.moregreetings',
@@ -66,9 +63,7 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
         [
           'rows' => 4,
           'cols' => 50,
-          // list of options
         ],
-        // is required
         FALSE
       );
       $this->addRule("greeting_smarty_{$i}",
@@ -76,7 +71,6 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
         'is_valid_smarty'
       );
     }
-    // add form elements
 
     $this->addButtons([
       [
@@ -91,14 +85,12 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       ],
     ]);
 
-    // add link
     $group_id = CRM_Moregreetings_Config::getGroupID();
     $group_url = CRM_Utils_System::url(
       'civicrm/admin/custom/group/field', "reset=1&action=browse&gid={$group_id}"
     );
     $this->assign('group_url', $group_url);
 
-    // export form elements
     parent::buildQuickForm();
   }
 
@@ -120,9 +112,6 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
   public function postProcess() {
     $values = $this->exportValues();
 
-    // first: update the greetings
-    $old_greetings = Civi::settings()->get('moregreetings_templates');
-    $greetings_changed = FALSE;
     // phpcs:ignore Generic.CodeAnalysis.ForLoopWithTestFunctionCall.NotAllowed
     for ($i = 1; $i <= self::getNumberOfGreetings(); ++$i) {
       if (isset($values["greeting_smarty_{$i}"])) {
@@ -131,26 +120,17 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       else {
         $values_array["greeting_smarty_{$i}"] = '';
       }
-
-      // check if it changed
-      if (CRM_Utils_Array::value("greeting_smarty_{$i}", $old_greetings) != $values_array["greeting_smarty_{$i}"]) {
-        $greetings_changed = TRUE;
-      }
     }
     Civi::settings()->set('moregreetings_templates', $values_array);
 
-    // then: adjust the greeting count
-    if ($values['greeting_count'] != self::getNumberOfGreetings()) {
+    if ((int) $values['greeting_count'] !== self::getNumberOfGreetings()) {
       CRM_Moregreetings_Config::setActiveFieldCount($values['greeting_count']);
 
-      // reload b/c the form has already been generated
       $url = CRM_Utils_System::url('civicrm/admin/setting/moregreetings', 'reset=1');
       CRM_Utils_System::redirect($url);
     }
 
     if (isset($values['_qf_Settings_upload'])) {
-      // somebody pressed the SAVE & APPLY button:
-      // doesn't return
       CRM_Moregreetings_Job::launchApplicationRunner();
     }
 
@@ -165,12 +145,10 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
       return TRUE;
     }
 
-    // Try the rendering.
-    $renderOut = NULL;
     try {
       $renderOut = \CRM_Utils_String::parseOneOffStringThroughSmarty($smartyValue);
     }
-    catch (\CRM_Core_Exception $exception) {
+    catch (\CRM_Core_Exception) {
       return FALSE;
     }
 
