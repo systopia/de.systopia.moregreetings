@@ -15,8 +15,9 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-use Civi\Api4\Contact;
+declare(strict_types = 1);
 
+use Civi\Api4\Contact;
 
 /**
  * update current greetings
@@ -24,7 +25,10 @@ use Civi\Api4\Contact;
  */
 class CRM_Moregreetings_Renderer {
 
-  /** @var array list of contact ids that should be excluded from updating */
+  /**
+   * @phpstan-var list<int>
+   *   A list of contact ids that should be excluded from updating.
+   */
   protected static $excluded_contact_ids = [];
 
   /**
@@ -46,16 +50,23 @@ class CRM_Moregreetings_Renderer {
     if ($contact == NULL) {
       // remark: if you change these parameters, see if you also want to adjust
       //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts
+      $usedContactFields = self::getUsedContactFields($templates);
       $contact = Contact::get(FALSE)
-        ->setSelect(self::getUsedContactFields($templates))
+        ->setSelect($usedContactFields)
         ->addWhere('id', '=', $contact_id)
         ->execute()
         ->single();
+      foreach ($usedContactFields as $templateFieldName => $api4FieldName) {
+        if ($templateFieldName !== $api4FieldName) {
+          // Copy field value to the legacy field name.
+          $contact[$templateFieldName] = $contact[$api4FieldName];
+        }
+      }
     }
 
     // TODO: assign more stuff?
     $templateVars = [
-      'contact' => $contact
+      'contact' => $contact,
     ];
 
     // load the current greetings
@@ -65,7 +76,7 @@ class CRM_Moregreetings_Renderer {
     $greetings_to_render = self::getGreetingsToRender($contact, $templates, $current_greetings);
 
     // render the greetings
-    $greetings_update = array();
+    $greetings_update = [];
     foreach ($greetings_to_render as $greeting_key => $template) {
       $new_value = \CRM_Utils_String::parseOneOffStringThroughSmarty($template, $templateVars);
       $new_value = trim($new_value);
@@ -80,11 +91,8 @@ class CRM_Moregreetings_Renderer {
       $greetings_update['entity_id'] = $contact_id;
       $greetings_update['entity_table'] = 'civicrm_contact';
       civicrm_api3('CustomValue', 'create', $greetings_update);
-    } else {
-      // error_log("Nothing to do");
     }
   }
-
 
   /**
    * Re-calculate the more-greetings for a list of contacts ()
@@ -99,17 +107,25 @@ class CRM_Moregreetings_Renderer {
 
     // remark: if you change these parameters, see if you also want to adjust
     //  CRM_Moregreetings_Job::run and CRM_Moregreetings_Renderer::updateMoreGreetings
+    $usedContactFields = self::getUsedContactFields($templates);
     $contacts = Contact::get(FALSE)
-      ->setSelect(self::getUsedContactFields($templates))
+      ->setSelect($usedContactFields)
       ->addSelect('id')
       ->addWhere('id', '>=', $from_id)
-      ->addWhere('is_deleted', '=', false)
+      ->addWhere('is_deleted', '=', FALSE)
       ->addOrderBy('id')
       ->setLimit($max_count)
       ->execute();
 
     $last_id = 0;
     foreach ($contacts as $contact) {
+      foreach ($usedContactFields as $templateFieldName => $api4FieldName) {
+        if ($templateFieldName !== $api4FieldName) {
+          // Copy field value to the legacy field name.
+          $contact[$templateFieldName] = $contact[$api4FieldName];
+        }
+      }
+
       $last_id = $contact['id'];
       self::updateMoreGreetings($last_id, $contact);
     }
@@ -117,20 +133,19 @@ class CRM_Moregreetings_Renderer {
     return $last_id;
   }
 
-
   /**
    * Get an array [custom_key] => [template]
    * of the fields to be rendered for this contact,
    * i.e. all the fields are there and not protected
    */
-  protected static function getGreetingsToRender($contact, $templates, $current_data) {
+  protected static function getGreetingsToRender($contact, $templates, $current_data): array {
     // first: load
     $active_fields = CRM_Moregreetings_Config::getActiveFields();
 
     // compile a list of protected field data (field_numbers)
-    $protected_fields = array();
+    $protected_fields = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\\d+)_protected$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\\d+)_protected$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         if (!empty($current_data["custom_{$field['id']}"])) {
           $protected_fields[] = $field_number;
@@ -139,9 +154,9 @@ class CRM_Moregreetings_Renderer {
     }
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
+    $fields_to_render = [];
     foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
+      if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
         $field_number = $matches['field_number'];
         if (!in_array($field_number, $protected_fields)) {
           // this field is not protected
@@ -155,28 +170,45 @@ class CRM_Moregreetings_Renderer {
   }
 
   /**
-   * @phpstan-return list<string> Fields used in the templates
+   * @phpstan-return array<string, string>
+   *   A mapping of template field names to APIv4 field names, e.g. `custom_n` to API4-style
+   *   (`custom_group_name.custom_field_name`) custom field names.
    */
   public static function getUsedContactFields($templates): array {
-    $active_fields = CRM_Moregreetings_Config::getActiveFields();
-    $fields_used = array();
+    $activeFields = CRM_Moregreetings_Config::getActiveFields();
+    $fieldsUsed = [];
 
     // now compile the list of unprotected active greeting fields
-    $fields_to_render = array();
-    foreach ($active_fields as $field_id => $field) {
-      if (preg_match("#^greeting_field_(?P<field_number>\d+)$#", $field['name'], $matches)) {
-        $field_number = $matches['field_number'];
-        $template = CRM_Utils_Array::value("greeting_smarty_{$field_number}", $templates, '');
+    $fieldsToRender = [];
+    foreach ($activeFields as $fieldId => $field) {
+      if (preg_match('#^greeting_field_(?P<field_number>\d+)$#', $field['name'], $matches)) {
+        $fieldNumber = $matches['field_number'];
+        $template = CRM_Utils_Array::value("greeting_smarty_{$fieldNumber}", $templates, '');
 
         if (preg_match_all('#\$contact\.(?P<field>\w+)#', $template, $tokens)) {
-          foreach ($tokens['field'] as $field_name) {
-            $fields_used[$field_name] = 1;
+          $customFieldIds = [];
+          foreach ($tokens['field'] as $fieldName) {
+            // Translate legacy custom field names ("custom_123") to API4 notation.
+            if (1 === preg_match('#^custom_(?P<field_id>\d+)$#', $fieldName, $customFieldMatches)) {
+              $customFieldIds[] = $customFieldMatches['field_id'];
+            }
+            else {
+              $fieldsUsed[$fieldName] = $fieldName;
+            }
+          }
+          $customFields = \Civi\Api4\CustomField::get(FALSE)
+            ->addSelect('id', 'custom_group_id:name', 'name')
+            ->addWhere('id', 'IN', $customFieldIds)
+            ->execute()
+            ->indexBy('id');
+          foreach ($customFields as $customFieldId => $customField) {
+            $fieldsUsed['custom_' . $customFieldId] = $customField['custom_group_id:name'] . '.' . $customField['name'];
           }
         }
       }
     }
 
-    return array_keys($fields_used);
+    return $fieldsUsed;
   }
 
   /**
@@ -185,17 +217,17 @@ class CRM_Moregreetings_Renderer {
    * @param array $excluded_contact_ids
    *   list of contact IDs to be excluded from rendering
    */
-  public static function addExcludedContactIDs($excluded_contact_ids) {
+  public static function addExcludedContactIDs($excluded_contact_ids): void {
     self::$excluded_contact_ids = array_merge(self::$excluded_contact_ids, $excluded_contact_ids);
   }
 
   /**
    * Clear the list of contact_ids to be excluded from rendering
    *
-   * @return array
-   *   previously set list of contact IDs
+   * @return void previously set list of contact IDs
    */
-  public static function clearExcludedContactIDs() {
+  public static function clearExcludedContactIDs(): void {
     self::$excluded_contact_ids = [];
   }
+
 }

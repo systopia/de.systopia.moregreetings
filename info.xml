@@ -20,6 +20,9 @@
   <compatibility>
     <ver>5.76</ver>
   </compatibility>
+  <requires>
+    <ext>de.systopia.xdedupe</ext>
+  </requires>
   <comments/>
   <civix>
     <namespace>CRM/Moregreetings</namespace>

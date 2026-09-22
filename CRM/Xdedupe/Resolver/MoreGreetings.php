@@ -14,29 +14,30 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-use Civi\API\Events;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use \Civi\Core\Event\GenericHookEvent;
+declare(strict_types = 1);
 
 /**
  * Implements a resolver to resolve conflicts in the MoreGreetings fields
  */
 class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
 
-    /**
+  /**
    * get the name of the finder
+   *
    * @return string name
    */
-  public function getName() {
-    return ts("More Greetings", array('domain' => 'de.systopia.moregreetings'));
+  public function getName(): string {
+    return ts('More Greetings', ['domain' => 'de.systopia.moregreetings']);
   }
 
   /**
    * get an explanation what the finder does
+   *
    * @return string name
    */
-  public function getHelp() {
-    return ts("Will make sure differing MoreGreetings values will not get in the way, by dropping them before the merge and recalculating them after.", array('domain' => 'de.systopia.moregreetings'));
+  public function getHelp(): string {
+    // phpcs:ignore Generic.Files.LineLength
+    return ts('Will make sure differing MoreGreetings values will not get in the way, by dropping them before the merge and recalculating them after.', ['domain' => 'de.systopia.moregreetings']);
   }
 
   /**
@@ -44,14 +45,17 @@ class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
    *
    * @param $main_contact_id    int     the main contact ID
    * @param $other_contact_ids  array   other contact IDs
+   *
    * @return boolean TRUE, if there was a conflict to be resolved
    * @throws Exception if the conflict couldn't be resolved
    */
-  public function resolve($main_contact_id, $other_contact_ids) {
+  public function resolve(int $main_contact_id, array $other_contact_ids): bool {
     $all_contact_ids = array_merge($other_contact_ids, [$main_contact_id]);
-    if (!empty($all_contact_ids)) {
+    if (count($all_contact_ids) > 0) {
       $all_contact_ids_list = implode(',', $all_contact_ids);
-      CRM_Core_DAO::executeQuery("DELETE FROM civicrm_value_moregreetings WHERE entity_id IN ({$all_contact_ids_list})");
+      CRM_Core_DAO::executeQuery(
+        "DELETE FROM civicrm_value_moregreetings WHERE entity_id IN ($all_contact_ids_list)"
+      );
 
       // suppress new generation
       CRM_Moregreetings_Renderer::addExcludedContactIDs($all_contact_ids);
@@ -65,9 +69,10 @@ class CRM_Xdedupe_Resolver_MoreGreetings extends CRM_Xdedupe_Resolver {
    *
    * @param $main_contact_id    int     the main contact ID
    * @param $other_contact_ids  array   other contact IDs
+   *
    * @throws Exception if the conflict couldn't be resolved
    */
-  public function postProcess($main_contact_id, $other_contact_ids) {
+  public function postProcess(int $main_contact_id, array $other_contact_ids): void {
     CRM_Moregreetings_Renderer::clearExcludedContactIDs();
     CRM_Moregreetings_Renderer::updateMoreGreetings($main_contact_id);
     // todo: other contacts, too? no, right!?

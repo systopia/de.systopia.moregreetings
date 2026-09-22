@@ -3,11 +3,10 @@
          xsi:noNamespaceSchemaLocation="tools/phpcs/vendor/squizlabs/php_codesniffer/phpcs.xsd">
     <description>CiviCRM coding standard with some additional changes</description>
 
-    <!-- TODO: Commented paths should be commented in. -->
-    <!--<file>api</file>-->
-    <!--<file>CRM</file>-->
+    <file>api</file>
+    <file>CRM</file>
     <file>tests</file>
-    <!--<file>moregreetings.php</file>-->
+    <file>moregreetings.php</file>
 
     <exclude-pattern>/CRM/Moregreetings/DAO/.*\.php$</exclude-pattern>
 
@@ -58,6 +57,9 @@
     <rule ref="Squiz.PHP.GlobalKeyword"/>
     <rule ref="Squiz.Strings.DoubleQuoteUsage">
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    </rule>
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude name="PSR1.Files.SideEffects.FoundWithSymbols"/>
     </rule>
 
     <!-- Lines can be 120 chars long, but never show errors -->

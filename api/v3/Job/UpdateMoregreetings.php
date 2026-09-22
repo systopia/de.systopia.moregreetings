@@ -15,14 +15,16 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
+declare(strict_types = 1);
+
 /**
  * Cron Job to update the more-greetings for all contacts
  */
 function civicrm_api3_job_update_moregreetings($params) {
   $last_id = Civi::settings()->get('moregreetings_job_status');
-  if ($last_id == 'busy') {
+  if ($last_id === 'busy') {
     // there's another job running
-    return civicrm_api3_create_success(ts("Job already running", array('domain' => 'de.systopia.moregreetings')));
+    return civicrm_api3_create_success(ts('Job already running', ['domain' => 'de.systopia.moregreetings']));
   }
 
   // ok, let's go
@@ -30,11 +32,11 @@ function civicrm_api3_job_update_moregreetings($params) {
   $start_time = microtime(TRUE);
 
   // run the renderer on blocks of contacts until the time runs out
-  while ( (microtime(TRUE)-$start_time) < $params['max_time'] ) {
+  while ((microtime(TRUE) - $start_time) < $params['max_time']) {
     $next_id = (int) $last_id + 1;
     $last_id = CRM_Moregreetings_Renderer::updateMoreGreetingsForContacts($next_id, $params['block_size']);
 
-    if ($last_id == 0) {
+    if ($last_id === 0) {
       // done
       break;
     }
@@ -43,29 +45,31 @@ function civicrm_api3_job_update_moregreetings($params) {
   // store last processed ID
   Civi::settings()->set('moregreetings_job_status', (string) $last_id);
 
-  if ($last_id == 0) {
+  if ($last_id === 0) {
     // we're done!
     CRM_Moregreetings_Config::stopCalculateAllGreetingsJob();
-    return civicrm_api3_create_success(ts("Done.", array('domain' => 'de.systopia.moregreetings')));
-  } else {
-    return civicrm_api3_create_success(ts("Interrupted processing, more contacts remain.", array('domain' => 'de.systopia.moregreetings')));
+    return civicrm_api3_create_success(ts('Done.', ['domain' => 'de.systopia.moregreetings']));
+  }
+  else {
+    return civicrm_api3_create_success(
+      ts('Interrupted processing, more contacts remain.', ['domain' => 'de.systopia.moregreetings'])
+    );
   }
 }
 
-
 function _civicrm_api3_job_update_moregreetings_spec(&$params) {
-  $params['max_time'] = array(
-    'name'        => 'max_time',
-    'uniqueName'  => 'max_time',
-    'title'       => ts('Maximum Runtime', array('domain' => 'de.systopia.moregreetings')),
-    'description' => ts('Maximum runtime in seconds', array('domain' => 'de.systopia.moregreetings')),
+  $params['max_time'] = [
+    'name' => 'max_time',
+    'uniqueName' => 'max_time',
+    'title' => ts('Maximum Runtime', ['domain' => 'de.systopia.moregreetings']),
+    'description' => ts('Maximum runtime in seconds', ['domain' => 'de.systopia.moregreetings']),
     'api.default' => 120,
-  );
-  $params['block_size'] = array(
-    'name'        => 'block_size',
-    'uniqueName'  => 'block_size',
-    'title'       => ts('Block Size', array('domain' => 'de.systopia.moregreetings')),
-    'description' => ts('How many contacts to process in one iteration', array('domain' => 'de.systopia.moregreetings')),
+  ];
+  $params['block_size'] = [
+    'name' => 'block_size',
+    'uniqueName' => 'block_size',
+    'title' => ts('Block Size', ['domain' => 'de.systopia.moregreetings']),
+    'description' => ts('How many contacts to process in one iteration', ['domain' => 'de.systopia.moregreetings']),
     'api.default' => 50,
-  );
+  ];
 }

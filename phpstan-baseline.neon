@@ -1,0 +1,672 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Cannot access offset ''count'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Cannot access offset ''id'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Cannot access offset ''values'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Do not throw the \\Exception base class\.$#'
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
+			identifier: equal.notAllowed
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getActiveFieldCount\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getActiveFields\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getAllGreetingsJob\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getCurrentData\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getCurrentData\(\) has parameter \$contact_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getFields\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getGroup\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getGroupID\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:getMaxActiveFieldCount\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:restartCalculateAllGreetingsJob\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:setActiveFieldCount\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:setActiveFieldCount\(\) has parameter \$count with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Config\:\:stopCalculateAllGreetingsJob\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, int\|false given\.$#'
+			identifier: if.condNotBoolean
+			count: 2
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Property CRM_Moregreetings_Config\:\:\$customFields has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Property CRM_Moregreetings_Config\:\:\$customGroup has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Moregreetings/Config.php
+
+		-
+			message: '#^Call to function array_search\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Implicit array creation is not allowed \- variable \$values_array might not exist\.$#'
+			identifier: variable.implicitArray
+			count: 2
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:buildQuickForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:getNumberOfGreetings\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:postProcess\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:setDefaultValues\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:validateFieldCount\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:validateFieldCount\(\) has parameter \$field_count with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:validateSmarty\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Form_Settings\:\:validateSmarty\(\) has parameter \$smartyValue with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Variable \$values_array might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: CRM/Moregreetings/Form/Settings.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$contact_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Call to an undefined method object\:\:fetch\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Cannot access offset ''id'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Job\:\:__construct\(\) has parameter \$count with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Job\:\:__construct\(\) has parameter \$offset with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Job\:\:launchApplicationRunner\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Job\:\:run\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Job\:\:run\(\) has parameter \$context with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Property CRM_Moregreetings_Job\:\:\$count has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Property CRM_Moregreetings_Job\:\:\$offset has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Property CRM_Moregreetings_Job\:\:\$title has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Moregreetings/Job.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''\.'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '''
+				#^Call to deprecated method value\(\) of class CRM_Utils_Array\:
+				In most cases this can be replaced with
+				  \$list\[\$key\] \?\? \$default
+				with the minor difference that when \$list\[\$key\] exists and is NULL, this function will always
+				return NULL\.$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 2
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 2
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Cannot access offset ''custom_group_id\:name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Cannot access offset ''id'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 2
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
+			identifier: notEqual.notAllowed
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
+			identifier: equal.notAllowed
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:addExcludedContactIDs\(\) has parameter \$excluded_contact_ids with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:getGreetingsToRender\(\) has parameter \$contact with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:getGreetingsToRender\(\) has parameter \$current_data with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:getGreetingsToRender\(\) has parameter \$templates with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:getGreetingsToRender\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:getUsedContactFields\(\) has parameter \$templates with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:updateMoreGreetings\(\) has parameter \$contact with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:updateMoreGreetings\(\) has parameter \$contact_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_Renderer\:\:updateMoreGreetingsForContacts\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, int\<0, max\>\|false given\.$#'
+			identifier: if.condNotBoolean
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, int\|false given\.$#'
+			identifier: if.condNotBoolean
+			count: 3
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Parameter \#2 \$subject of function preg_match_all expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Static property CRM_Moregreetings_Renderer\:\:\$excluded_contact_ids \(list\<int\>\) does not accept array\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: CRM/Moregreetings/Renderer.php
+
+		-
+			message: '#^Method CRM_Moregreetings_CustomData\:\:syncCustomGroup\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: CRM/Moregreetings/Upgrader.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 2
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
+			identifier: equal.notAllowed
+			count: 5
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:contains\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:contains\(\) has parameter \$substring with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:endswith\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:endswith\(\) has parameter \$suffix with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:startswith\(\) has parameter \$prefix with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:startswith\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:token_extract\(\) has parameter \$index with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:token_extract\(\) has parameter \$split_string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:token_extract\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:token_extract\(\) has parameter \$trim with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:tokens_have_min_length\(\) has parameter \$length with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:tokens_have_min_length\(\) has parameter \$split_string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:tokens_have_min_length\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:tokens_have_min_length\(\) has parameter \$token_indices with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Utils_Smarty\:\:tokens_have_min_length\(\) has parameter \$trim with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Only booleans are allowed in &&, Smarty\\Smarty given on the left side\.$#'
+			identifier: booleanAnd.leftNotBoolean
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, array\|null given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 7
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/Utils/Smarty.php
+
+		-
+			message: '#^Method CRM_Xdedupe_Resolver_MoreGreetings\:\:postProcess\(\) has parameter \$other_contact_ids with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/Xdedupe/Resolver/MoreGreetings.php
+
+		-
+			message: '#^Method CRM_Xdedupe_Resolver_MoreGreetingsSubscriber\:\:addBuiltinResolvers\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Xdedupe/Resolver/MoreGreetingsSubscriber.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Function _civicrm_api3_job_update_moregreetings_spec\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Function _civicrm_api3_job_update_moregreetings_spec\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Function civicrm_api3_job_update_moregreetings\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Function civicrm_api3_job_update_moregreetings\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Parameter \#1 \$values of function civicrm_api3_create_success expects array\|int, string given\.$#'
+			identifier: argument.type
+			count: 3
+			path: api/v3/Job/UpdateMoregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_buildForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_config\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_config\(\) has parameter \$config with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_enable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_install\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_navigationMenu\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_navigationMenu\(\) has parameter \$menu with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_pageRun\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Function moregreetings_civicrm_post\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
+			identifier: equal.notAllowed
+			count: 1
+			path: moregreetings.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 3
+			path: moregreetings.php
+
+		-
+			message: '#^Property CRM_Core_Permission_Base\:\:\$permissions \(array\) does not accept array\<string\>\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/phpunit/Civi/Moregreetings/AbstractMoregreetingsHeadlessTestCase.php
