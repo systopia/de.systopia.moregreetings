@@ -16,6 +16,8 @@
 
 declare(strict_types = 1);
 
+use Smarty\Smarty;
+
 /**
  * provides some useful smarty functions
  */
@@ -23,12 +25,10 @@ class CRM_Utils_Smarty {
 
   /**
    * register custom smarty functions with the smarty instance
-   *
-   * @param Smarty $smarty
    */
-  public static function registerCustomFunctions($smarty): void {
+  public static function registerCustomFunctions(?Smarty $smarty): void {
     static $registered = FALSE;
-    if ($smarty && !$registered) {
+    if (NULL !== $smarty && !$registered) {
       if (!$smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
         $smarty->registerPlugin('modifier', 'mg_startswith', ['CRM_Utils_Smarty', 'startswith']);
       }
