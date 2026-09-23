@@ -15,8 +15,8 @@
 | written permission from the original author(s).        |
 +--------------------------------------------------------*/
 
-return array(
-  'moregreetings_job_status' => array(
+return [
+  'moregreetings_job_status' => [
     'group_name' => 'moregreetings',
     'group' => 'moregreetings',
     'name' => 'moregreetings_job_status',
@@ -27,8 +27,8 @@ return array(
     'is_domain' => 1,
     'is_contact' => 0,
     'description' => "Defines the current status of the MoreGreetings cronjob",
-  ),
-  'moregreetings_templates' => array(
+  ],
+  'moregreetings_templates' => [
     'group_name' => 'moregreetings',
     'group' => 'moregreetings',
     'name' => 'moregreetings_templates',
@@ -37,5 +37,5 @@ return array(
     'is_domain' => 1,
     'is_contact' => 0,
     'description' => "Stores the templates",
-  )
-);
+  ]
+];
