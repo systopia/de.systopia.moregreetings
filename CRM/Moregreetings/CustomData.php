@@ -19,15 +19,10 @@
 declare(strict_types = 1);
 
 class CRM_Moregreetings_CustomData {
-
-  public const CUSTOM_DATA_HELPER_VERSION = '0.13.1';
-
+  public const CUSTOM_DATA_HELPER_VERSION   = '0.13.1';
   public const CUSTOM_DATA_HELPER_LOG_LEVEL = 0;
-
   public const CUSTOM_DATA_HELPER_LOG_DEBUG = 1;
-
-  public const CUSTOM_DATA_HELPER_LOG_INFO = 3;
-
+  public const CUSTOM_DATA_HELPER_LOG_INFO  = 3;
   public const CUSTOM_DATA_HELPER_LOG_ERROR = 5;
 
   /**
@@ -61,8 +56,7 @@ class CRM_Moregreetings_CustomData {
   protected static array $custom_field_cache = [];
 
   protected ?string $ts_domain = NULL;
-
-  protected string $version = self::CUSTOM_DATA_HELPER_VERSION;
+  protected string $version   = self::CUSTOM_DATA_HELPER_VERSION;
 
   public function __construct(string $ts_domain) {
     $this->ts_domain = $ts_domain;
@@ -292,7 +286,7 @@ class CRM_Moregreetings_CustomData {
    * @return array<string, mixed>|"FAILED"|null
    *   The ID of the given entity (if exists).
    */
-  protected function getEntity(string $entity_type, array $selector): array | string | null {
+  protected function getEntity(string $entity_type, array $selector): array|string|null {
     if ([] === $selector) {
       return NULL;
     }
@@ -327,10 +321,10 @@ class CRM_Moregreetings_CustomData {
    *
    * @return array<string, mixed>|"FAILED"|null
    */
-  protected function identifyEntity(string $entity_type, array $data): array | string | null {
+  protected function identifyEntity(string $entity_type, array $data): array|string|null {
     $lookup_query = [
       'sequential' => 1,
-      'options' => ['limit' => 2],
+      'options'    => ['limit' => 2],
     ];
 
     $data['_lookup'] ??= [];
@@ -532,7 +526,7 @@ class CRM_Moregreetings_CustomData {
    *
    * @see getFieldIdentifier
    */
-  public static function getFieldIdentifier(int | string $field_id, string $separator = '.'): string {
+  public static function getFieldIdentifier(int|string $field_id, string $separator = '.'): string {
     // just to be on the safe side
     self::cacheCustomFields([$field_id]);
 
@@ -551,12 +545,10 @@ class CRM_Moregreetings_CustomData {
 
   /**
    * Get the specs/definition of the field
-   *
    * @param int|string $field_id
-   *
    * @return array<string, mixed>|null field specs
    */
-  public static function getFieldSpecs(int | string $field_id): ?array {
+  public static function getFieldSpecs(int|string $field_id): ?array {
     // just to be on the safe side
     self::cacheCustomFields([$field_id]);
 
@@ -568,10 +560,9 @@ class CRM_Moregreetings_CustomData {
    * Get the specs/definition of the group
    *
    * @param int|string $group_id group id
-   *
    * @return array<string, mixed>|null group specs
    */
-  public static function getGroupSpecs(int | string $group_id): ?array {
+  public static function getGroupSpecs(int|string $group_id): ?array {
     // just to be on the safe side
     self::cacheCustomGroupSpecs([$group_id]);
 
@@ -671,7 +662,7 @@ class CRM_Moregreetings_CustomData {
         /** @var array{values: array<array<string, mixed>>} $fields */
         $fields = civicrm_api3('CustomField', 'get', [
           'custom_group_id' => $custom_group_name,
-          'option.limit' => 0,
+          'option.limit'    => 0,
         ]);
         foreach ($fields['values'] as $field) {
           // @phpstan-ignore offsetAccess.invalidOffset
@@ -701,7 +692,7 @@ class CRM_Moregreetings_CustomData {
     if ([] !== $fields_to_load) {
       /** @var array{values: array<array<string, mixed>>} $loaded_fields */
       $loaded_fields = civicrm_api3('CustomField', 'get', [
-        'id' => ['IN' => $fields_to_load],
+        'id'           => ['IN' => $fields_to_load],
         'option.limit' => 0,
       ]);
       foreach ($loaded_fields['values'] as $field) {
@@ -729,7 +720,7 @@ class CRM_Moregreetings_CustomData {
     if ([] !== $groups_to_load) {
       /** @var array{values: array<array<string, mixed>>} $loaded_groups */
       $loaded_groups = civicrm_api3('CustomGroup', 'get', [
-        'id' => ['IN' => $groups_to_load],
+        'id'           => ['IN' => $groups_to_load],
         'option.limit' => 0,
       ]);
       foreach ($loaded_groups['values'] as $group) {
@@ -774,7 +765,7 @@ class CRM_Moregreetings_CustomData {
     self::$custom_group2table_name = [];
     /** @var array{values: array<array{id: string, name: string, table_name: string}>} $group_search */
     $group_search = civicrm_api3('CustomGroup', 'get', [
-      'return' => 'name,table_name',
+      'return'       => 'name,table_name',
       'option.limit' => 0,
     ]);
     foreach ($group_search['values'] as $customGroup) {
@@ -786,7 +777,7 @@ class CRM_Moregreetings_CustomData {
   /**
    * Get the internal name of a custom group
    */
-  public static function getGroupName(int | string $custom_group_id): ?string {
+  public static function getGroupName(int|string $custom_group_id): ?string {
     $group2name = self::getGroup2Name();
     return $group2name[$custom_group_id] ?? NULL;
   }
@@ -805,14 +796,13 @@ class CRM_Moregreetings_CustomData {
    *  (e.g. '%5B6%2C7%2C8%5D' for '[6,7,8]')
    *  they will be unpacked as well.
    *
+   * @todo make it more efficient?
+   *
    * @param array<string, mixed> $params
    *   the parameter array as used by the API
    *
    * @param list<string>|null $group_names
    *   list of group names to process. Default is: all
-   *
-   * @todo make it more efficient?
-   *
    */
   public static function unREST(array &$params, ?array $group_names = NULL): void {
     if ($group_names === NULL) {
@@ -823,6 +813,7 @@ class CRM_Moregreetings_CustomData {
     // look for all group names in all variables
     foreach ($group_names as $group_name) {
       foreach (array_keys($params) as $key) {
+        /** @var string $new_key */
         $new_key = preg_replace("#^{$group_name}_#", "{$group_name}.", $key);
         if ($new_key !== $key) {
           $params[$new_key] = $params[$key];
@@ -883,7 +874,7 @@ class CRM_Moregreetings_CustomData {
    * Generates the following SQL join statment:
    * "LEFT JOIN {$group_table_name} AS {$table_alias} ON {$table_alias}.entity_id = {$join_entity_id}"
    */
-  public static function createSQLJoin(string $group_name, string $table_alias, int | string $join_entity_id): string {
+  public static function createSQLJoin(string $group_name, string $table_alias, int|string $join_entity_id): string {
     // cache the groups used
     $group_table_name = self::getGroupTable($group_name);
     return "LEFT JOIN `{$group_table_name}` AS {$table_alias} ON {$table_alias}.entity_id = {$join_entity_id}";
@@ -901,7 +892,7 @@ class CRM_Moregreetings_CustomData {
    * @return mixed
    *   the current value
    */
-  public static function getPreHookCustomDataValue(array $params, int | string $field_id): mixed {
+  public static function getPreHookCustomDataValue(array $params, int|string $field_id): mixed {
     if ((bool) $field_id) {
       // @phpstan-ignore offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible
       if (isset($params['custom'][$field_id][-1])) {
@@ -929,7 +920,7 @@ class CRM_Moregreetings_CustomData {
    * @phpstan-param mixed $value
    *    the new value
    */
-  public static function setPreHookCustomDataValue(array &$params, int | string $field_id, mixed $value): void {
+  public static function setPreHookCustomDataValue(array &$params, int|string $field_id, mixed $value): void {
     if ((bool) $field_id) {
       if (isset($params['custom'])) {
         // @phpstan-ignore offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible
@@ -954,11 +945,10 @@ class CRM_Moregreetings_CustomData {
 
   /**
    * @param int|string $field_id
-   *
    * @phpstan-param mixed $value
    * @return array<string, mixed>|null
    */
-  protected static function generatePreHookCustomDataRecord(int | string $field_id, mixed $value): ?array {
+  protected static function generatePreHookCustomDataRecord(int|string $field_id, mixed $value): ?array {
     if ($field_id > 0) {
       $field_specs = self::getFieldSpecs($field_id);
       if (NULL !== $field_specs) {

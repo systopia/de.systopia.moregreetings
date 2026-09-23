@@ -528,12 +528,6 @@ parameters:
 			path: CRM/Utils/Smarty.php
 
 		-
-			message: '#^Only booleans are allowed in &&, Smarty\\Smarty given on the left side\.$#'
-			identifier: booleanAnd.leftNotBoolean
-			count: 1
-			path: CRM/Utils/Smarty.php
-
-		-
 			message: '#^Only booleans are allowed in a negated boolean, array\|null given\.$#'
 			identifier: booleanNot.exprNotBoolean
 			count: 7
