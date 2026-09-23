@@ -17,7 +17,9 @@
 
 declare(strict_types = 1);
 
+// phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 require_once 'moregreetings.civix.php';
+// phpcs:enable
 
 use CRM_Moregreetings_ExtensionUtil as E;
 

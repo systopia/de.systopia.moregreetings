@@ -5,6 +5,7 @@
 
     <file>api</file>
     <file>CRM</file>
+    <file>settings</file>
     <file>tests</file>
     <file>moregreetings.php</file>
 
@@ -57,9 +58,6 @@
     <rule ref="Squiz.PHP.GlobalKeyword"/>
     <rule ref="Squiz.Strings.DoubleQuoteUsage">
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
-    </rule>
-    <rule ref="PSR1.Files.SideEffects">
-        <exclude name="PSR1.Files.SideEffects.FoundWithSymbols"/>
     </rule>
 
     <!-- Lines can be 120 chars long, but never show errors -->
