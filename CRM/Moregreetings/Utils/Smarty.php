@@ -16,77 +16,20 @@
 
 declare(strict_types = 1);
 
-use Smarty\Smarty;
-
 /**
  * provides some useful smarty functions
  */
-class CRM_Utils_Smarty {
+final class CRM_Moregreetings_Utils_Smarty {
 
   /**
-   * register custom smarty functions with the smarty instance
+   * @param array<string, mixed> $vars
+   *
+   * @throws \CRM_Core_Exception
    */
-  public static function registerCustomFunctions(?Smarty $smarty): void {
-    static $registered = FALSE;
-    if (NULL !== $smarty && !$registered) {
-      if (!$smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
-        $smarty->registerPlugin('modifier', 'mg_startswith', ['CRM_Utils_Smarty', 'startswith']);
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'mg_endswith')) {
-        $smarty->registerPlugin('modifier', 'mg_endswith', ['CRM_Utils_Smarty', 'endswith']);
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'mg_contains')) {
-        $smarty->registerPlugin('modifier', 'mg_contains', ['CRM_Utils_Smarty', 'contains']);
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'tokens_have_min_length')) {
-        $smarty->registerPlugin('modifier', 'tokens_have_min_length', ['CRM_Utils_Smarty', 'tokens_have_min_length']);
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'token_extract')) {
-        $smarty->registerPlugin('modifier', 'token_extract', ['CRM_Utils_Smarty', 'token_extract']);
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'lcfirst')) {
-        $smarty->registerPlugin('modifier', 'lcfirst', 'lcfirst');
-      }
-      if (!$smarty->getRegisteredPlugin('modifier', 'ucfirst')) {
-        $smarty->registerPlugin('modifier', 'ucfirst', 'ucfirst');
-      }
-      $registered = TRUE;
-    }
-  }
+  public static function parseOneOffStringThroughSmarty(string $string, array $vars = []): string {
+    self::registerCustomModifiers();
 
-  /**
-   * Checks whether the modified string starts with $prefix
-   * Smarty usage: {if $contact.formal_title|mg_startswith:'Dr'}
-   */
-  public static function startswith($string, $prefix): bool {
-    return substr($string, 0, strlen($prefix)) == $prefix;
-  }
-
-  /**
-   * Checks whether the modified string ends with $suffix
-   * Smarty usage: {if $contact.formal_title|mg_endswith:'Dr'}
-   */
-  public static function endswith($string, $suffix): bool {
-    return substr($string, (strlen($string) - strlen($suffix))) == $suffix;
-  }
-
-  /**
-   * Checks whether the modified string contains $substring
-   * Smarty usage: {if $contact.formal_title|mg_contains:'Dr'}
-   */
-  public static function contains($string, $substring): bool {
-    if (strlen($string) == 0) {
-      return strlen($substring) == 0;
-    }
-    else {
-      if (strlen($substring) == 0) {
-        return FALSE;
-      }
-      else {
-        $strstr = strstr($string, $substring);
-        return strlen($strstr) > 0;
-      }
-    }
+    return \CRM_Utils_String::parseOneOffStringThroughSmarty($string, $vars);
   }
 
   /**
@@ -94,17 +37,17 @@ class CRM_Utils_Smarty {
    *   and then check if all these tokens have a minimum length of $length
    * If $token_indices is present, apply only to the tokens with the given indices
    *
-   * @param $string string
+   * @param string $string
    *    the input string
-   * @param $split_string string
+   * @param non-empty-string $split_string
    *    the term used to split the string
-   * @param $length integer
+   * @param int $length
    *    the minimum length to be tested for
-   * @param $token_indices array|string
+   * @param list<int|string>|string $token_indices
    *    only check the given indices instead of all - provided they exist.
-   * @param $all boolean
+   * @param bool $all
    *    test if all the tokens have minimum length, or just some
-   * @param $trim boolean
+   * @param bool $trim
    *    trims the tokens with the default trim set
    *
    * Smarty usage: {if $contact.first_name|tokens_have_min_length:' ':2}
@@ -112,13 +55,13 @@ class CRM_Utils_Smarty {
    */
   // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
   public static function tokens_have_min_length(
-    $string,
-    $split_string,
-    $length,
-    $token_indices = NULL, bool $all = TRUE,
-    $trim = TRUE
+    string $string,
+    string $split_string,
+    int $length,
+    array|string|null $token_indices = NULL,
+    bool $all = TRUE,
+    bool $trim = TRUE
   ): bool {
-    $length = (int) $length;
     $tokens = explode($split_string, $string);
 
     if ($trim) {
@@ -129,16 +72,16 @@ class CRM_Utils_Smarty {
     if ($token_indices === NULL) {
       $token_indices = array_keys($tokens);
     }
-
     // if somebody just passed a single one or a comma separated string, turn that into an array
-    if (!is_array($token_indices)) {
+    elseif (!is_array($token_indices)) {
       $token_indices = explode(',', $token_indices);
     }
 
     if ($all) {
       // now check if all of them have the minimal length
       foreach ($tokens as $index => $token) {
-        if (in_array($index, $token_indices)) {
+        // @phpstan-ignore function.strict
+        if (in_array($index, $token_indices, FALSE)) {
           if (strlen($token) < $length) {
             return FALSE;
           }
@@ -149,7 +92,8 @@ class CRM_Utils_Smarty {
     else {
       // now check if some of them have the minimal length
       foreach ($tokens as $index => $token) {
-        if (in_array($index, $token_indices)) {
+        // @phpstan-ignore function.strict
+        if (in_array($index, $token_indices, FALSE)) {
           if (strlen($token) >= $length) {
             return TRUE;
           }
@@ -163,20 +107,24 @@ class CRM_Utils_Smarty {
    * Split the given string by the given $split_string into individual tokens,
    *   and extract the token with the given index
    *
-   * @param $string string
+   * @param string $string
    *    the input string
-   * @param $split_string string
+   * @param non-empty-string $split_string
    *    the term used to split the string
-   * @param $index integer
+   * @param int $index
    *    the index of the token to return
-   * @param $trim boolean
+   * @param bool $trim
    *    trims the token with the default trim set
    *
    * Smarty usage: {$contact.first_name|token_extract:' ':1}
    *    will return the 'van' if the first_name is "Herbert van Halen"
    */
-  public static function token_extract($string, $split_string, $index = 0, $trim = TRUE): string {
-    $index = (int) $index;
+  public static function token_extract(
+    string $string,
+    string $split_string,
+    int $index = 0,
+    bool $trim = TRUE
+  ): string {
     $tokens = explode($split_string, $string);
     $token = $tokens[$index] ?? '';
     if ($trim) {
@@ -184,6 +132,42 @@ class CRM_Utils_Smarty {
     }
     else {
       return $token;
+    }
+  }
+
+  private static function registerCustomModifiers(): void {
+    static $registered = FALSE;
+    if (!$registered) {
+      $smarty = \CRM_Core_Smarty::singleton();
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'mg_startswith')) {
+        $smarty->registerPlugin('modifier', 'mg_startswith', 'str_starts_with');
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'mg_endswith')) {
+        $smarty->registerPlugin('modifier', 'mg_endswith', 'str_ends_with');
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'mg_contains')) {
+        $smarty->registerPlugin('modifier', 'mg_contains', 'str_contains');
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'tokens_have_min_length')) {
+        $smarty->registerPlugin('modifier', 'tokens_have_min_length', [__CLASS__, 'tokens_have_min_length']);
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'token_extract')) {
+        $smarty->registerPlugin('modifier', 'token_extract', [__CLASS__, 'token_extract']);
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'lcfirst')) {
+        $smarty->registerPlugin('modifier', 'lcfirst', 'lcfirst');
+      }
+
+      if (NULL === $smarty->getRegisteredPlugin('modifier', 'ucfirst')) {
+        $smarty->registerPlugin('modifier', 'ucfirst', 'ucfirst');
+      }
+
+      $registered = TRUE;
     }
   }
 

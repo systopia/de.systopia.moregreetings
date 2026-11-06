@@ -9,9 +9,9 @@ use Civi\Test\HeadlessInterface;
 use Civi\Test\TransactionalInterface;
 use PHPUnit\Framework\TestCase;
 
-// phpcs:disable Generic.Files.LineLength.TooLong
+// phpcs:ignore Generic.Files.LineLength.TooLong
 abstract class AbstractMoregreetingsHeadlessTestCase extends TestCase implements HeadlessInterface, TransactionalInterface {
-// phpcs:enable
+
   public function setUpHeadless(): CiviEnvBuilder {
     return Test::headless()
       ->installMe(__DIR__)
