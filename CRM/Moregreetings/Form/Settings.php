@@ -140,19 +140,19 @@ class CRM_Moregreetings_Form_Settings extends CRM_Core_Form {
   /**
    * Form validation rule
    */
-  public static function validateSmarty($smartyValue) {
+  public static function validateSmarty(string $smartyValue): bool {
     if ($smartyValue === '') {
       return TRUE;
     }
 
     try {
-      $renderOut = \CRM_Utils_String::parseOneOffStringThroughSmarty($smartyValue);
+      CRM_Moregreetings_Utils_Smarty::parseOneOffStringThroughSmarty($smartyValue);
+
+      return TRUE;
     }
     catch (\CRM_Core_Exception) {
       return FALSE;
     }
-
-    return is_string($renderOut);
   }
 
   /**
