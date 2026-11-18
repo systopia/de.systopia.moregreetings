@@ -146,3 +146,8 @@ function moregreetings_civicrm_navigationMenu(&$menu) {
   );
   _moregreetings_civix_navigationMenu($menu);
 }
+function moregreetings_civicrm_userContentPolicy(CRM_Core_Smarty_UserContentPolicy $policy) {
+  // Enable access to '{crmAPI}'
+  $policy->disabled_tags = array_diff($policy->disabled_tags, ['crmAPI']);
+}
+
